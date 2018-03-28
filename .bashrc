@@ -55,6 +55,8 @@ export PATH=$PATH:"$HOME/.fastlane/bin"
 export PATH=$PATH:"/opt/metasploit-framework/bin"
 export PATH=$PATH:"/usr/local/opt/mongodb@3.2/bin"
 
+eval $(thefuck --alias)    # https://github.com/nvbn/thefuck
+
 #export JAVA_HOME="$(/usr/libexec/java_home -v 1.6)"
 #export JAVA_HOME="$(/usr/libexec/java_home -v 1.7)"
 #export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
