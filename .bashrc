@@ -88,7 +88,7 @@ alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; 
 alias serve="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias hosts="sudo $EDITOR /etc/hosts"
 alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
-alias digg="dig +nocmd any +multiline +noall +answer"
+alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
 
 alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
