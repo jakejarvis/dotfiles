@@ -44,6 +44,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 # Exports (custom)
 
 export EDITOR="nano"
+export VISUAL="nano"
 
 export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
@@ -74,6 +75,7 @@ alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias ~="cd ~"
 
 alias ip="dig +short myip.opendns.com A @resolver1.opendns.com"
 alias ip4="dig +short myip.opendns.com A @resolver1.opendns.com"
@@ -84,9 +86,11 @@ alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; 
 alias serve="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias hosts="sudo $EDITOR /etc/hosts"
 alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
+alias digg="dig +nocmd any +multiline +noall +answer"
 
 alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 alias update="brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup"   # sudo softwareupdate -i -a; 
 
