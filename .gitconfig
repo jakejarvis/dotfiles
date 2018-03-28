@@ -1,0 +1,15 @@
+[user]
+	email = jakejarvis@gmail.com
+	name = Jake Jarvis
+	signingkey = D36CB66F4002B25B
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = nano
+[push]
+	default = current
+[credential]
+	helper = osxkeychain
+[github]
+	user = jakejarvis

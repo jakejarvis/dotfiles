@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "workbench.colorTheme": "Slime",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "Source Code Pro, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14.5,
+    "editor.cursorStyle": "line",
+    "extensions.autoUpdate": false
+}
