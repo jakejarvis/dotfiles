@@ -1,0 +1,11 @@
+# syntax highlighting
+# clone from https://github.com/scopatz/nanorc
+include "~/.nano/syntax/*.nanorc"
+
+# options
+set const
+set mouse
+set smooth
+set multibuffer
+set tabstospaces
+set tabsize 2
