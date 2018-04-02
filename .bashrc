@@ -92,6 +92,7 @@ alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
 
 alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias forcetrash="sudo rm -rf ~/.Trash /Volumes/*/.Trashes"
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 alias update="brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup"   # sudo softwareupdate -i -a; 
