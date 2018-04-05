@@ -101,3 +101,6 @@ alias dc="docker-compose"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 alias gundo="git push -f origin HEAD^:master"
+
+alias sshalt="ssh -p 2222"
+alias moshalt="mosh --ssh=\"ssh -p 2222\""
