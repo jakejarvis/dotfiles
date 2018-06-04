@@ -104,3 +104,9 @@ alias gundo="git push -f origin HEAD^:master"
 
 alias sshalt="ssh -p 2222"
 alias moshalt="mosh --ssh=\"ssh -p 2222\""
+
+alias unq="sudo xattr -rd com.apple.quarantine"
+
+docker-bash() {
+  docker exec -ti $1 /bin/bash
+}
