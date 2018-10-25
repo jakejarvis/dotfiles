@@ -110,3 +110,8 @@ alias unq="sudo xattr -rd com.apple.quarantine"
 docker-bash() {
   docker exec -ti $1 /bin/bash
 }
+
+mkcdir() {
+  mkdir -p -- "$1" &&
+  cd -P -- "$1"
+}
