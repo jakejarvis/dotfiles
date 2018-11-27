@@ -84,6 +84,12 @@ alias ip4="dig +short myip.opendns.com A @resolver1.opendns.com"
 alias ip6="dig +short -6 myip.opendns.com AAAA @resolver1.ipv6-sandbox.opendns.com"
 alias iplocal="ipconfig getifaddr en0"
 
+alias dns-check="networksetup -setdnsservers Wi-Fi"
+alias dns-clear="networksetup -getdnsservers Wi-Fi"
+alias dns-set="networksetup -setdnsservers Wi-Fi "
+alias dns-set-cloudflare="dns-set 1.1.1.1 1.0.0.1"
+alias dns-set-google="dns-set 8.8.8.8 8.8.4.4"
+
 alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache"
 alias serve="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias hosts="sudo $EDITOR /etc/hosts"
@@ -107,6 +113,10 @@ alias moshalt="mosh --ssh=\"ssh -p 2222\""
 
 alias unq="sudo xattr -rd com.apple.quarantine"
 
+s3ls() {
+  aws s3 ls s3://$1
+}
+
 docker-bash() {
   docker exec -ti $1 /bin/bash
 }
@@ -115,3 +125,5 @@ mkcdir() {
   mkdir -p -- "$1" &&
   cd -P -- "$1"
 }
+
+eval "$(rbenv init -)"
