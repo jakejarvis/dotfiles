@@ -12,7 +12,15 @@ export PATH=$PATH:"/opt/metasploit-framework/bin"
 #export PATH=$PATH:"/usr/local/opt/mongodb@3.2/bin"
 #export PATH=$PATH:"/Users/jake/Library/Python/3.7/bin"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jake/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jake/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jake/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jake/google-cloud-sdk/completion.zsh.inc'; fi
+
+eval "$(rbenv init -)"
 eval $(thefuck --alias)    # https://github.com/nvbn/thefuck
 
 # Path to your oh-my-zsh installation.
@@ -163,7 +171,7 @@ alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && k
 alias forcetrash="sudo rm -rf ~/.Trash /Volumes/*/.Trashes"
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-alias update="brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup"   # sudo softwareupdate -i -a; 
+alias update="brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; gcloud components update; gem update --system; gem update; gem cleanup"   # sudo softwareupdate -i -a; 
 
 alias dc="docker-compose"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
@@ -188,4 +196,3 @@ mkcdir() {
   cd -P -- "$1"
 }
 
-eval "$(rbenv init -)"
