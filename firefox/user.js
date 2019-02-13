@@ -1,5 +1,5 @@
-user_pref("accessibility.force_disabled", 1);
-user_pref("accessibility.typeaheadfind.flashBar", 0);
+// user_pref("accessibility.force_disabled", 1);
+// user_pref("accessibility.typeaheadfind.flashBar", 0);
 
 
 user_pref("app.shield.optoutstudies.enabled", false);
@@ -312,7 +312,7 @@ user_pref("security.ssl.errorReporting.enabled", false);
 user_pref("security.ssl.errorReporting.url", "");
 
 user_pref("security.ssl.treat_unsafe_negotiation_as_broken", true);
-user_pref("security.ssl.require_safe_negotiation", true);           // still breaks lots of stuff: https://github.com/pyllyukko/user.js/issues/237
+// user_pref("security.ssl.require_safe_negotiation", true);           // still breaks lots of stuff: https://github.com/pyllyukko/user.js/issues/237
 
 user_pref("security.ssl3.dhe_dss_aes_128_sha", false);
 user_pref("security.ssl3.dhe_dss_aes_256_sha", false);
