@@ -394,3 +394,9 @@ user_pref("webgl.disable-fail-if-major-performance-caveat", true);
 user_pref("webgl.disabled", true);
 user_pref("webgl.enable-debug-renderer-info", false);
 user_pref("webgl.min_capability_mode", false);
+
+user_pref("media.autoplay.default", 1);
+user_pref("media.autoplay.ask-permission", true);
+user_pref("media.autoplay.enabled.user-gestures-needed", true);
+user_pref("media.autoplay.allow-muted", false);
+user_pref("media.autoplay.block-webaudio", true);
