@@ -121,7 +121,7 @@ user_pref("dom.enable_performance", false);
 user_pref("dom.enable_performance_navigation_timing", false);
 user_pref("dom.enable_performance_observer", false);
 user_pref("dom.enable_resource_timing", false);
-user_pref("dom.event.clipboardevents.enabled", false);
+// user_pref("dom.event.clipboardevents.enabled", false);
 user_pref("dom.event.contextmenu.enabled", false);
 user_pref("dom.flyweb.enabled", false);
 user_pref("dom.gamepad.enabled", false);
