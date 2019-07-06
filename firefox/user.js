@@ -275,7 +275,7 @@ user_pref("privacy.cpd.passwords", true);
 user_pref("privacy.cpd.sessions", true);
 
 user_pref("privacy.donottrackheader.enabled", true);
-user_pref("privacy.firstparty.isoloate", true);
+// user_pref("privacy.firstparty.isolate", true);       breaks CAPTCHAs, way too annoying
 // user_pref("privacy.resistFingerprinting", true);      less breakage by using https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/
 
 user_pref("browser.contentblocking.rejecttrackers.reportBreakage.enabled", false);
@@ -296,8 +296,8 @@ user_pref("security.dialog_enable_delay", 0);
 user_pref("security.fileuri.strict_origin_policy", true);
 user_pref("security.insecure_connection_icon.enabled", true);
 user_pref("security.insecure_field_warning.contextual.enabled", true);
-user_pref("security.mixed_content.block_display_content", true);
-user_pref("security.mixed_content.block_object_subrequest", true);
+// user_pref("security.mixed_content.block_display_content", true);         // breaks xfinity on demand
+// user_pref("security.mixed_content.block_object_subrequest", true);       // breaks xfinity on demand
 
 user_pref("security.OCSP.enabled", 1);
 user_pref("security.ssl.enable_ocsp_stapling", true);

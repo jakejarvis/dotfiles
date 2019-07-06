@@ -1,3 +1,8 @@
+# debug zsh startup time
+# uncomment following line and run: zsh -ic zprof
+# zmodload zsh/zprof
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -9,19 +14,25 @@ export PATH=$PATH:"$(go env GOPATH)/bin"
 export PATH=$PATH:"$HOME/adt-bundle-mac/sdk/platform-tools"
 export PATH=$PATH:"$HOME/.fastlane/bin"
 export PATH=$PATH:"/opt/metasploit-framework/bin"
-#export PATH=$PATH:"/usr/local/opt/mongodb@3.2/bin"
-#export PATH=$PATH:"/Users/jake/Library/Python/3.7/bin"
+# export PATH=$PATH:"/usr/local/opt/mongodb@3.2/bin"
+# export PATH=$PATH:"/Users/jake/Library/Python/3.7/bin"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/opt/curl/bin:$PATH"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jake/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jake/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jake/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jake/google-cloud-sdk/completion.zsh.inc'; fi
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
-eval "$(rbenv init -)"
-eval $(thefuck --alias)    # https://github.com/nvbn/thefuck
+# eval $(thefuck --alias)    # https://github.com/nvbn/thefuck
+
+export NVM_DIR="$HOME/.nvm"
+#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# NVM makes zsh startup suuuuuuuuuper slow -- commented out above lines to speed up and 'loadnvm' loads NVM when needed
+alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"; [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"'
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jake/.oh-my-zsh"
@@ -87,7 +98,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  colored-man-pages
+#  colored-man-pages
   colorize
   pip
   python
@@ -129,10 +140,21 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+
 export VISUAL="nano"
 export EDITOR="nano"
 
-# Enable aliases to be sudo’ed
+
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
+
+
+# Enable aliases to be sudo'ed
 alias sudo="sudo "
 
 alias ll="ls -lah"
@@ -161,7 +183,7 @@ alias dns-set-cloudflare="dns-set 1.1.1.1 1.0.0.1"
 alias dns-set-google="dns-set 8.8.8.8 8.8.4.4"
 
 alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache"
-alias serve="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
+alias serve="echo 'Starting server at http://127.0.0.1:8000/ ...'; python3 -m http.server"
 alias hosts="sudo $EDITOR /etc/hosts"
 alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
@@ -171,17 +193,51 @@ alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && k
 alias forcetrash="sudo rm -rf ~/.Trash /Volumes/*/.Trashes"
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-alias update="brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; gcloud components update; gem update --system; gem update; gem cleanup"   # sudo softwareupdate -i -a; 
+alias displays="system_profiler SPDisplaysDataType"
+alias cpu="sysctl -n machdep.cpu.brand_string"
+alias screenfetch="neofetch"
+
+alias killfinder="killall Finder"
+alias killdock="killall Dock"
+alias killmenubar="killall SystemUIServer NotificationCenter"
+alias killos="killfinder && killdock && killmenubar"
+
+alias update="brew update; brew upgrade; brew cleanup; nvm install node --latest-npm --reinstall-packages-from=node; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup"   # sudo softwareupdate -i -a; 
 
 alias dc="docker-compose"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
-alias gundo="git push -f origin HEAD^:master"
+alias gundo="git reset --soft HEAD~1"
+alias gac="git add . && git commit -m "
+alias gs="git status -sb"
+alias gd="git diff"
+
+alias vs="code ./"
+alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 
 alias sshalt="ssh -p 2222"
 alias moshalt="mosh --ssh=\"ssh -p 2222\""
 
+alias finder="open ."
 alias unq="sudo xattr -rd com.apple.quarantine"
+
+alias weather="curl -4 http://wttr.in/Boston"
+
+push_ssh_cert() {
+    local _host
+    test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
+    for _host in "$@";
+    do
+        echo $_host
+        ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+    done
+}
+
+# Find the real location of a short URL
+unshorten() {
+  curl -sIL $1 | sed -n 's/Location: *//p'
+}
 
 s3ls() {
   aws s3 ls s3://$1
@@ -191,8 +247,7 @@ docker-bash() {
   docker exec -ti $1 /bin/bash
 }
 
-mkcdir() {
+mkcd() {
   mkdir -p -- "$1" &&
   cd -P -- "$1"
 }
-

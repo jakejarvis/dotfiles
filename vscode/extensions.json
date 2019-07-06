@@ -1,43 +1,33 @@
 [
   {
     "metadata": {
+      "id": "819a23e1-b6c6-41cf-9029-e653b537d996",
+      "publisherId": "ms-vscode.azure-account",
+      "publisherDisplayName": "ms-vscode"
+    },
+    "name": "azure-account",
+    "publisher": "ms-vscode",
+    "version": "0.8.4"
+  },
+  {
+    "metadata": {
+      "id": "464f4ac7-af65-4aa9-9907-4ba7fa419085",
+      "publisherId": "bungcip.better-toml",
+      "publisherDisplayName": "bungcip"
+    },
+    "name": "better-toml",
+    "publisher": "bungcip",
+    "version": "0.3.2"
+  },
+  {
+    "metadata": {
       "id": "e337c67b-55c2-4fef-8949-eb260e7fb7fd",
       "publisherId": "Shan.code-settings-sync",
       "publisherDisplayName": "Shan"
     },
     "name": "code-settings-sync",
     "publisher": "Shan",
-    "version": "2.9.0"
-  },
-  {
-    "metadata": {
-      "id": "690b692e-e8a9-493f-b802-8089d50ac1b2",
-      "publisherId": "ms-vscode.cpptools",
-      "publisherDisplayName": "ms-vscode"
-    },
-    "name": "cpptools",
-    "publisher": "ms-vscode",
-    "version": "0.15.0"
-  },
-  {
-    "metadata": {
-      "id": "1ec62ca5-d7f9-4ddb-a882-e8d018c0aefd",
-      "publisherId": "msjsdiag.debugger-for-chrome",
-      "publisherDisplayName": "msjsdiag"
-    },
-    "name": "debugger-for-chrome",
-    "publisher": "msjsdiag",
-    "version": "4.2.1"
-  },
-  {
-    "metadata": {
-      "id": "5960f38e-0bbe-4644-8f9c-9c8824e82511",
-      "publisherId": "donjayamanne.githistory",
-      "publisherDisplayName": "donjayamanne"
-    },
-    "name": "githistory",
-    "publisher": "donjayamanne",
-    "version": "0.4.0"
+    "version": "3.3.1"
   },
   {
     "metadata": {
@@ -47,7 +37,7 @@
     },
     "name": "jshint",
     "publisher": "dbaeumer",
-    "version": "0.10.17"
+    "version": "0.10.20"
   },
   {
     "metadata": {
@@ -57,27 +47,7 @@
     },
     "name": "material-icon-theme",
     "publisher": "PKief",
-    "version": "3.2.6"
-  },
-  {
-    "metadata": {
-      "id": "5e69f001-f945-4c97-baf0-320d82a153b3",
-      "publisherId": "felixfbecker.php-intellisense",
-      "publisherDisplayName": "felixfbecker"
-    },
-    "name": "php-intellisense",
-    "publisher": "felixfbecker",
-    "version": "2.3.0"
-  },
-  {
-    "metadata": {
-      "id": "85e57fc6-8e21-4402-8e66-af4155fbb5d2",
-      "publisherId": "qinjia.seti-icons",
-      "publisherDisplayName": "qinjia"
-    },
-    "name": "seti-icons",
-    "publisher": "qinjia",
-    "version": "0.1.3"
+    "version": "3.8.0"
   },
   {
     "metadata": {
@@ -87,26 +57,36 @@
     },
     "name": "slime",
     "publisher": "smlombardi",
-    "version": "2.31.2"
+    "version": "2.34.0"
+  },
+  {
+    "metadata": {
+      "id": "e2c479df-2c90-4915-9015-595ef0d79bd5",
+      "publisherId": "ms-vsts.team",
+      "publisherDisplayName": "ms-vsts"
+    },
+    "name": "team",
+    "publisher": "ms-vsts",
+    "version": "1.149.2"
   },
   {
     "metadata": {
       "id": "0479fc1c-3d67-49f9-b087-fb9069afe48f",
-      "publisherId": "PeterJausovec.vscode-docker",
-      "publisherDisplayName": "PeterJausovec"
+      "publisherId": "ms-azuretools.vscode-docker",
+      "publisherDisplayName": "ms-azuretools"
     },
     "name": "vscode-docker",
-    "publisher": "PeterJausovec",
-    "version": "0.0.25"
+    "publisher": "ms-azuretools",
+    "version": "0.6.4"
   },
   {
     "metadata": {
-      "id": "ae9e3eb0-3357-4cc0-90ee-598d2d384757",
-      "publisherId": "eg2.vscode-npm-script",
-      "publisherDisplayName": "eg2"
+      "id": "5a6dc0d5-dc02-4121-8e24-cad33a2ff0af",
+      "publisherId": "ms-vsliveshare.vsliveshare",
+      "publisherDisplayName": "ms-vsliveshare"
     },
-    "name": "vscode-npm-script",
-    "publisher": "eg2",
-    "version": "0.3.3"
+    "name": "vsliveshare",
+    "publisher": "ms-vsliveshare",
+    "version": "1.0.488"
   }
 ]
