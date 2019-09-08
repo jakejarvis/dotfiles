@@ -5,7 +5,7 @@
 tap "aws/tap"
 tap "caskroom/cask"
 tap "cloudflare/cloudflare"
-tap "exolnet/deprecated"
+# tap "exolnet/deprecated"
 tap "facebook/fb"
 tap "heroku/brew"
 tap "hhvm/hhvm"
@@ -17,8 +17,6 @@ tap "homebrew/services"
 tap "mongodb/brew"
 tap "thoughtbot/formulae"
 tap "wpengine/wpe-cli"
-
-cask_args appdir: '/Applications'
 
 
 ###############################
@@ -204,8 +202,10 @@ brew "tcpdump"
 
 
 ###############################
-#  macOS Apps                 #
+#  macOS Apps via Cask        #
 ###############################
+
+cask_args appdir: "/Applications"
 
 # System Utilities
 cask "osxfuse"
@@ -299,3 +299,34 @@ cask "qlvideo"
 #    - Canary: https://www.google.com/chrome/canary/
 # * Safari
 #    - Preview: https://developer.apple.com/safari/technology-preview/
+
+
+###############################
+#  macOS Apps via App Store   #
+###############################
+
+# Apple
+mas "Apple Configurator 2", id: 1037126344
+mas "Compressor", id: 424390742
+mas "Final Cut Pro", id: 424389933
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Logic Pro X", id: 634148309
+mas "MainStage 3", id: 634159523
+mas "Motion", id: 434290957
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Xcode", id: 497799835
+
+# Third Party
+mas "Amphetamine", id: 937984704
+mas "Disk Speed Test", id: 425264550
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft Remote Desktop", id: 715768417
+mas "Outline", id: 1356178125
+mas "Shazam", id: 897118787
+mas "TweetDeck", id: 485812721
+mas "Twitter", id: 409789998
+mas "WireGuard", id: 1451685025
+mas "Wunderlist", id: 410628904
