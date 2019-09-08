@@ -1,4 +1,4 @@
-# Make new directory and change into it (this seems like a no-brainer)
+# Make a new directory and `cd` right into it (this seems like a no-brainer)
 mkcd() {
   mkdir -p -- "$1" &&
   cd -P -- "$1"
@@ -6,10 +6,10 @@ mkcd() {
 
 # Start an HTTP server from a directory, optionally specifying the port
 serve() {
-  local port="${1:-8000}"
+  local port="${1:-8090}"
   sleep 1 && open "http://localhost:${port}/" &
   # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+  # And serve everything as UTF-8 (although not technically correct, this doesn't break anything for binary files)
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
@@ -18,9 +18,9 @@ docker-bash() {
   docker exec -ti $1 /bin/bash
 }
 
-# Extract a compressed archive without worrying which tool to use
+# Extract a compressed archive without worrying about which tool to use
 extract() {
-  if [ -f $1 ] ; then
+  if [ -f $1 ]; then
     case $1 in
       *.tar.bz2)   tar xjf $1    ;;
       *.tar.gz)    tar xzf $1    ;;
@@ -45,7 +45,8 @@ unshort() {
   curl -sIL $1 | sed -n 's/Location: *//p'
 }
 
-# Create a git.io short URL
+# Create a custom git.io short URL (if available)
+# ex: gitio dotfiles https://github.com/jakejarvis/dotfiles => https://git.io/dotfiles
 gitio() {
   if [ -z "${1}" ] || [ -z "${2}" ]; then
     echo "Usage: \`gitio slug url\`"
@@ -54,7 +55,7 @@ gitio() {
   curl -i https://git.io/ -F "url=${2}" -F "code=${1}"
 }
 
-# List files in an S3 buckett
+# List files in an S3 bucket
 s3ls() {
   aws s3 ls s3://$1
 }
