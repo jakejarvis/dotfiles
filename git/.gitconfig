@@ -1,0 +1,24 @@
+[credential]
+	helper = osxkeychain
+[user]
+	email = jake@jarv.is
+	name = Jake Jarvis
+	signingkey = 2B0C9CF251E69A39
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true
+[push]
+	default = current
+[pull]
+	rebase = true
+[core]
+	editor = nano
+	excludesfile = ~/.gitignore_global
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[github]
+	user = jakejarvis

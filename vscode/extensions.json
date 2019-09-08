@@ -1,43 +1,23 @@
 [
   {
     "metadata": {
-      "id": "819a23e1-b6c6-41cf-9029-e653b537d996",
-      "publisherId": "ms-vscode.azure-account",
-      "publisherDisplayName": "ms-vscode"
-    },
-    "name": "azure-account",
-    "publisher": "ms-vscode",
-    "version": "0.8.4"
-  },
-  {
-    "metadata": {
-      "id": "464f4ac7-af65-4aa9-9907-4ba7fa419085",
-      "publisherId": "bungcip.better-toml",
-      "publisherDisplayName": "bungcip"
-    },
-    "name": "better-toml",
-    "publisher": "bungcip",
-    "version": "0.3.2"
-  },
-  {
-    "metadata": {
       "id": "e337c67b-55c2-4fef-8949-eb260e7fb7fd",
       "publisherId": "Shan.code-settings-sync",
       "publisherDisplayName": "Shan"
     },
     "name": "code-settings-sync",
     "publisher": "Shan",
-    "version": "3.3.1"
+    "version": "3.4.2"
   },
   {
     "metadata": {
-      "id": "82dfe17d-bb64-404e-bcc5-f9803f7ab5d5",
-      "publisherId": "dbaeumer.jshint",
-      "publisherDisplayName": "dbaeumer"
+      "id": "1ec62ca5-d7f9-4ddb-a882-e8d018c0aefd",
+      "publisherId": "msjsdiag.debugger-for-chrome",
+      "publisherDisplayName": "msjsdiag"
     },
-    "name": "jshint",
-    "publisher": "dbaeumer",
-    "version": "0.10.20"
+    "name": "debugger-for-chrome",
+    "publisher": "msjsdiag",
+    "version": "4.11.7"
   },
   {
     "metadata": {
@@ -47,7 +27,57 @@
     },
     "name": "material-icon-theme",
     "publisher": "PKief",
-    "version": "3.8.0"
+    "version": "3.9.0"
+  },
+  {
+    "metadata": {
+      "id": "93ce222b-5f6f-49b7-9ab1-a0463c6238df",
+      "publisherId": "ms-vscode-remote.remote-containers",
+      "publisherDisplayName": "ms-vscode-remote"
+    },
+    "name": "remote-containers",
+    "publisher": "ms-vscode-remote",
+    "version": "0.74.0"
+  },
+  {
+    "metadata": {
+      "id": "607fd052-be03-4363-b657-2bd62b83d28a",
+      "publisherId": "ms-vscode-remote.remote-ssh",
+      "publisherDisplayName": "ms-vscode-remote"
+    },
+    "name": "remote-ssh",
+    "publisher": "ms-vscode-remote",
+    "version": "0.46.0"
+  },
+  {
+    "metadata": {
+      "id": "bfeaf631-bcff-4908-93ed-fda4ef9a0c5c",
+      "publisherId": "ms-vscode-remote.remote-ssh-edit",
+      "publisherDisplayName": "ms-vscode-remote"
+    },
+    "name": "remote-ssh-edit",
+    "publisher": "ms-vscode-remote",
+    "version": "0.46.0"
+  },
+  {
+    "metadata": {
+      "id": "5d9b66c1-7da3-4004-8c92-2b0852ec0c9b",
+      "publisherId": "ms-vscode-remote.remote-ssh-explorer",
+      "publisherDisplayName": "ms-vscode-remote"
+    },
+    "name": "remote-ssh-explorer",
+    "publisher": "ms-vscode-remote",
+    "version": "0.46.0"
+  },
+  {
+    "metadata": {
+      "id": "f0c5397b-d357-4197-99f0-cb4202f22818",
+      "publisherId": "ms-vscode-remote.remote-wsl",
+      "publisherDisplayName": "ms-vscode-remote"
+    },
+    "name": "remote-wsl",
+    "publisher": "ms-vscode-remote",
+    "version": "0.39.5"
   },
   {
     "metadata": {
@@ -61,32 +91,22 @@
   },
   {
     "metadata": {
-      "id": "e2c479df-2c90-4915-9015-595ef0d79bd5",
-      "publisherId": "ms-vsts.team",
-      "publisherDisplayName": "ms-vsts"
-    },
-    "name": "team",
-    "publisher": "ms-vsts",
-    "version": "1.149.2"
-  },
-  {
-    "metadata": {
       "id": "0479fc1c-3d67-49f9-b087-fb9069afe48f",
       "publisherId": "ms-azuretools.vscode-docker",
       "publisherDisplayName": "ms-azuretools"
     },
     "name": "vscode-docker",
     "publisher": "ms-azuretools",
-    "version": "0.6.4"
+    "version": "0.7.0"
   },
   {
     "metadata": {
-      "id": "5a6dc0d5-dc02-4121-8e24-cad33a2ff0af",
-      "publisherId": "ms-vsliveshare.vsliveshare",
-      "publisherDisplayName": "ms-vsliveshare"
+      "id": "23d72dfc-8dd1-4e30-926e-8783b4378f13",
+      "publisherId": "ms-vscode-remote.vscode-remote-extensionpack",
+      "publisherDisplayName": "ms-vscode-remote"
     },
-    "name": "vsliveshare",
-    "publisher": "ms-vsliveshare",
-    "version": "1.0.488"
+    "name": "vscode-remote-extensionpack",
+    "publisher": "ms-vscode-remote",
+    "version": "0.17.0"
   }
 ]

@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "workbench.iconTheme": "material-icon-theme",
     "editor.fontFamily": "Source Code Pro, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 14.5,
     "editor.cursorStyle": "line",
@@ -36,5 +35,16 @@
     "css.lint.unknownVendorSpecificProperties": "warning",
     "css.lint.zeroUnits": "warning",
     "git.enableCommitSigning": true,
-    "git.showPushSuccessNotification": true
+    "git.showPushSuccessNotification": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "liveshare.featureSet": "insiders",
+    "aws.telemetry": false,
+    "aws.profile": "default",
+    "githubPullRequests.remotes": [
+        "origin",
+        "upstream",
+        "github"
+    ],
+    "sync.forceUpload": true,
+    "editor.renderWhitespace": "none"
 }
