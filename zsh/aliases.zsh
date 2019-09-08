@@ -1,6 +1,8 @@
 # Enable aliases to be sudo'ed
 alias sudo="sudo "
 
+alias reload="source ~/.zshrc"
+
 alias ll="ls -lah"
 alias la="ls -a"
 alias l="ls -lh"
@@ -11,10 +13,11 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ~="cd ~"
 
-alias ip="ipv4"
-alias ipv4="curl -4 icanhazip.com"
-alias ipv6="curl -6 icanhazip.com"
-alias iplocal="ipconfig getifaddr en0"
+# My own creation! See: https://github.com/jakejarvis/simpip
+alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
+alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
+alias ip="ipv6; ipv4"
+alias iploc="ipconfig getifaddr en0"
 
 alias dns-clear="networksetup -setdnsservers Wi-Fi"
 alias dns-check="networksetup -getdnsservers Wi-Fi"
@@ -47,9 +50,12 @@ alias finder="open ./"
 alias vsc="code ./"
 
 alias gundo="git reset --soft HEAD~1"
-alias gc="git add . && git commit -m "
+alias gc="git commit -m"
+alias gca="git add . && git commit -m"
 alias gs="git status -sb"
+alias gl="git log --pretty=short"
 alias gd="git diff"
+alias gds="git diff --staged"
 
 alias dc="docker-compose"
 
