@@ -76,7 +76,7 @@ sudo systemsetup -setrestartfreeze on
 # Keyboard & Input                                                            #
 ###############################################################################
 
-# Disable smart quotes and dashes as they’re annoying when typing code
+# Disable smart quotes and dashes as they're annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
@@ -273,7 +273,7 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # Disable automatic emoji substitution (i.e. use plain text smileys)
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
-# Disable smart quotes as it’s annoying for messages that contain code
+# Disable smart quotes as it's annoying for messages that contain code
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 # Disable continuous spell checking

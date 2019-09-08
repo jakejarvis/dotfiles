@@ -17,12 +17,7 @@ SAVEHIST=10000
 ZSH_CUSTOM=$DOTFILES
 ZSH_THEME="agnoster"
 plugins=(
-  git
-#  colored-man-pages
   colorize
-  pip
-  python
-  brew
   osx
   zsh-syntax-highlighting
   zsh-autosuggestions

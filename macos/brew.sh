@@ -11,7 +11,7 @@
 # basically just a list of everything I've installed with Homebrew. :)
 
 
-# Make sure we’re using the latest Homebrew.
+# Make sure we're using the latest Homebrew.
 brew update
 
 # Upgrade any already-installed formulae.
@@ -20,7 +20,7 @@ brew upgrade
 # Tap casks. (Just for Android SDK here, otherwise not a fan of using casks!)
 brew tap caskroom/cask
 
-# Save Homebrew’s installed location.
+# Save Homebrew's installed location.
 BREW_PREFIX=$(brew --prefix)
 
 
@@ -32,7 +32,7 @@ brew install bash
 brew install bash-completion
 
 # Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+# Don't forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 # ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 

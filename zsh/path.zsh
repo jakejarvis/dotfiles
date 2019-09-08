@@ -1,4 +1,4 @@
-# Default junk
+# Default paths
 export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
 # Go
@@ -7,11 +7,11 @@ export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$GOROOT/bin"
 
-# ruby
+# Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-# metasploit
-export PATH=:"/opt/metasploit-framework/bin:$PATH"
+# Metasploit
+export PATH="/opt/metasploit-framework/bin:$PATH"
 
 # curl
 export PATH="/usr/local/opt/curl/bin:$PATH"

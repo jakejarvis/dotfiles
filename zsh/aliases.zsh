@@ -44,7 +44,7 @@ alias ripdock="killall Dock"
 alias ripmenu="killall SystemUIServer NotificationCenter"
 
 alias finder="open ./"
-alias vs="code ./"
+alias vsc="code ./"
 
 alias gundo="git reset --soft HEAD~1"
 alias gc="git add . && git commit -m "
@@ -61,4 +61,4 @@ alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simu
 
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
 
-alias weather="curl -4 http://wttr.in/Boston"
+alias weather="curl -4 https://wttr.in/Boston"
