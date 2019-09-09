@@ -46,7 +46,7 @@ unshort() {
 }
 
 # Create a custom git.io short URL (if available)
-# ex: gitio dotfiles https://github.com/jakejarvis/dotfiles => https://git.io/dotfiles
+# ex: gitio jakesdotfiles https://github.com/jakejarvis/dotfiles => https://git.io/jakesdotfiles
 gitio() {
   if [ -z "${1}" ] || [ -z "${2}" ]; then
     echo "Usage: \`gitio slug url\`"
