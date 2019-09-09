@@ -15,9 +15,12 @@ fi
 # Update Homebrew recipes
 brew update
 
-# Install all our dependencies with bundle (See Brewfile)
+# Install all apps from the Brewfile
 brew tap homebrew/bundle
 brew bundle
+
+# Install Xcode Command Line Tools
+xcode-select --install
 
 # Get Oh My ZSH up and running
 if [ ! -e ~/.oh-my-zsh ]; then
