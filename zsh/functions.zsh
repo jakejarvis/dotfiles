@@ -45,14 +45,21 @@ unshort() {
   curl -sIL $1 | sed -n 's/Location: *//p'
 }
 
-# Create a custom git.io short URL (if available)
-# ex: gitio jakesdotfiles https://github.com/jakejarvis/dotfiles => https://git.io/jakesdotfiles
+# Create a git.io short URL (custom slug optional)
+# ex: gitio https://github.com/jakejarvis/dotfiles [jakesdotfiles] => https://git.io/jakesdotfiles
+# https://blog.github.com/2011-11-10-git-io-github-url-shortener
 gitio() {
-  if [ -z "${1}" ] || [ -z "${2}" ]; then
-    echo "Usage: \`gitio slug url\`"
-    return 1
-  fi
-  curl -i https://git.io/ -F "url=${2}" -F "code=${1}"
+  PARAMS="-F \"url=$1\""
+  if [ -n "$2" ]; then PARAMS="$PARAMS -F \"code=$2\""; fi
+  RESPONSE=$(eval "curl -i https://git.io $PARAMS 2>&1" | grep "Location: ")
+  echo "${RESPONSE//Location: /}"
+}
+
+# Transfers text file as sharable link.
+# See https://transfer.sh/
+transfer() {
+  if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+  tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile;
 }
 
 # List files in an S3 bucket

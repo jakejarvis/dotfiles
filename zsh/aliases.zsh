@@ -16,8 +16,9 @@ alias ~="cd ~"
 # My own creation! See: https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
 alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
-alias ip="ipv6; ipv4"
+alias ip="ipv4; ipv6"
 alias iploc="ipconfig getifaddr en0"
+alias ips="ip; ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 alias dns-clear="networksetup -setdnsservers Wi-Fi"
 alias dns-check="networksetup -getdnsservers Wi-Fi"
@@ -30,6 +31,7 @@ alias hosts="sudo $EDITOR /etc/hosts"
 alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
 
+# Update: brew, npm, gem, macos
 alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; nvm install node --latest-npm --reinstall-packages-from=node; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo softwareupdate -ia --include-config-data;"
 
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
@@ -42,20 +44,27 @@ alias displays="system_profiler SPDisplaysDataType"
 alias cpu="sysctl -n machdep.cpu.brand_string"
 alias screenfetch="neofetch"
 
-alias ripfinder="killall Finder"
-alias ripdock="killall Dock"
-alias ripmenu="killall SystemUIServer NotificationCenter"
+alias ripfinder="sudo killall Finder"
+alias ripdock="sudo killall Dock"
+alias ripmenu="sudo killall SystemUIServer NotificationCenter"
 
-alias finder="open ./"
-alias vsc="code ./"
+alias finder="open -a Finder ./"
+alias vs="code ./"
 
-alias gundo="git reset --soft HEAD~1"
-alias gc="git commit -m"
-alias gca="git add . && git commit -m"
+alias gc="git commit -m"  # + commit message
+alias gca="git add . && git commit -m"  # + commit message
 alias gs="git status -sb"
 alias gl="git log --pretty=short"
 alias gd="git diff"
 alias gds="git diff --staged"
+alias gpom="git push origin master"
+alias glom="git pull origin master"
+alias gpo="git push origin"  # + branch name
+alias glo="git pull origin"  # + branch name
+alias gb="git checkout"  # + branch name
+alias gbn="git checkout -b"  # + branch name
+alias grm="git rebase -i origin/master"
+alias gundo="git reset --soft HEAD~1"
 
 alias dc="docker-compose"
 
