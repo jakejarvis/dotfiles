@@ -51,6 +51,9 @@ alias ripmenu="sudo killall SystemUIServer NotificationCenter"
 alias finder="open -a Finder ./"
 alias vs="code ./"
 
+# required: https://github.com/github/hub
+# `brew install hub`
+alias git="hub"
 alias gc="git commit -m"  # + commit message
 alias gca="git add . && git commit -m"  # + commit message
 alias gs="git status -sb"
@@ -64,7 +67,12 @@ alias glo="git pull origin"  # + branch name
 alias gb="git checkout"  # + branch name
 alias gbn="git checkout -b"  # + branch name
 alias grm="git rebase -i origin/master"
+alias gsub="git submodule update --recursive --remote"
 alias gundo="git reset --soft HEAD~1"
+alias gf="hub fork --remote-name=origin"
+alias gpr="hub pull-request"
+alias gsync="hub sync"
+alias gopen="hub browse"
 
 alias dc="docker-compose"
 
@@ -75,5 +83,8 @@ alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
+
+alias ytdl="youtube-dl -f bestvideo+bestaudio"
+alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"
 
 alias weather="curl -4 https://wttr.in/Boston"

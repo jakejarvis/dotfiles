@@ -33,7 +33,7 @@ chsh -s $(which zsh)
 # Set up symbolic links for ZSH and Git pointing to this cloned repo
 ln -s $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
 ln -s $HOME/.dotfiles/git/.gitconfig $HOME/.gitconfig
-ln -s $HOME/.dotfiles/zsh/git/.gitignore_global $HOME/.gitignore_global
+ln -s $HOME/.dotfiles/git/.gitignore_global $HOME/.gitignore_global
 
 # Set macOS defaults
 # Needs to be last since this will restart everything when done

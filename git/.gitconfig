@@ -10,15 +10,18 @@
 	gpgsign = true
 [push]
 	default = current
-[pull]
-	rebase = true
 [core]
 	editor = nano
 	excludesfile = ~/.gitignore_global
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
 	required = true
+	smudge = git-lfs smudge -- %f
 	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
 [github]
 	user = jakejarvis
+[pull]
+	rebase = true
+[hub]
+	host = github.com
+	host = git.jarv.is
