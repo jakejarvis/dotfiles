@@ -75,7 +75,7 @@ brew "git-crypt"
 
 # Node & NPM / NVM
 brew "node"
-brew "nvm"
+# brew "nvm"
 
 # Mostly ordinary binaries
 brew "amazon-ecs-cli"
@@ -258,6 +258,7 @@ cask "visual-studio"
 cask "docker"
 cask "virtualbox"
 cask "virtualbox-extension-pack"
+cask "vagrant"
 cask "vmware-fusion"
 
 # Media

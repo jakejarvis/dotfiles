@@ -69,6 +69,7 @@ brew cask install visual-studio
 brew cask install docker
 brew cask install virtualbox
 brew cask install virtualbox-extension-pack
+brew cask install vagrant
 brew cask install vmware-fusion
 
 

@@ -82,7 +82,7 @@ brew install git-crypt
 
 # Node & NPM / NVM
 brew install node
-brew install nvm
+# brew install nvm
 
 # mtr (better ping & traceroute)
 brew install mtr

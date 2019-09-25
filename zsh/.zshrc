@@ -1,5 +1,5 @@
 # Path to cloned dotfiles repo
-export DOTFILES=$HOME/.dotfiles/zsh
+export DOTFILES=$HOME/.dotfiles
 
 # Path to oh-my-zsh installation
 export ZSH=$HOME/.oh-my-zsh
@@ -14,7 +14,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # Oh My ZSH settings
-ZSH_CUSTOM=$DOTFILES
+ZSH_CUSTOM=$DOTFILES/zsh
 ZSH_THEME="agnoster"
 plugins=(
   colorize
@@ -22,6 +22,14 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
+
+# https://gist.github.com/ctechols/ca1035271ad134841284
+#autoload -Uz compinit
+#if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+#  compinit
+#else
+#  compinit -C
+#fi
 
 # Load everything!
 source $ZSH/oh-my-zsh.sh

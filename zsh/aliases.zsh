@@ -32,7 +32,7 @@ alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
 
 # Update: brew, npm, gem, macos
-alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; nvm install node --latest-npm --reinstall-packages-from=node; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo softwareupdate -ia --include-config-data;"
+alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo softwareupdate -ia --include-config-data;"
 
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
