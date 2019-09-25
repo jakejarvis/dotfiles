@@ -49,6 +49,9 @@ alias ripdock="sudo killall Dock"
 alias ripmenu="sudo killall SystemUIServer NotificationCenter"
 
 alias finder="open -a Finder ./"
+
+# use VS Code insiders build
+alias code="code-insiders"
 alias vs="code ./"
 
 # required: https://github.com/github/hub
