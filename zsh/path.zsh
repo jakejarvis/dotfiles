@@ -8,7 +8,7 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$GOROOT/bin"
 
 # Ruby
-#export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Metasploit
 export PATH="/opt/metasploit-framework/bin:$PATH"
@@ -21,8 +21,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # ----- Third-party additions below: -----
-
-#eval "$(rbenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/jake/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jake/google-cloud-sdk/path.zsh.inc'; fi

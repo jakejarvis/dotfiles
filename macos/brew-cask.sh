@@ -39,7 +39,8 @@ brew cask install vnc-viewer
 
 brew cask install 1password
 brew cask install authy
-brew cask install gpg-suite-no-mail     # Install separately: https://github.com/GpgMailNoActivation/GpgMailNoActivation
+# brew cask install gpg-suite-no-mail     # Install separately: https://github.com/GpgMailNoActivation/GpgMailNoActivation
+brew tap jakejarvis/brew && brew install jakejarvis/brew/gpg-suite-no-drm
 brew cask install keybase
 brew cask install little-snitch
 brew cask install nordvpn
