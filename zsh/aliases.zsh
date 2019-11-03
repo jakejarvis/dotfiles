@@ -78,6 +78,10 @@ alias gsync="hub sync"
 alias gopen="hub browse"
 
 alias dc="docker-compose"
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcr="docker-compose down && docker-compose up -d"
+alias dcl="docker-compose logs -f"
 
 alias sshalt="ssh -p 2222"
 alias moshalt="mosh --ssh=\"ssh -p 2222\""
@@ -91,3 +95,5 @@ alias ytdl="youtube-dl -f bestvideo+bestaudio"
 alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"
 
 alias weather="curl -4 https://wttr.in/Boston"
+
+alias hugod="docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop"

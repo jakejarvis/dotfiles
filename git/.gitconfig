@@ -13,11 +13,6 @@
 [core]
 	editor = nano
 	excludesfile = ~/.gitignore_global
-[filter "lfs"]
-	required = true
-	smudge = git-lfs smudge -- %f
-	clean = git-lfs clean -- %f
-	process = git-lfs filter-process
 [github]
 	user = jakejarvis
 [pull]
@@ -25,3 +20,8 @@
 [hub]
 	host = github.com
 	host = git.jarv.is
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

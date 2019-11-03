@@ -50,7 +50,7 @@ defaults write com.apple.sound.beep.feedback -bool false
 sudo nvram SystemAudioVolume=" "
 
 # Menu bar: show battery percentage
-defaults write com.apple.menuextra.battery ShowPercent YES
+defaults write com.apple.menuextra.battery ShowPercent "YES"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true

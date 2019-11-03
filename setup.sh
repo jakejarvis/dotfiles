@@ -6,6 +6,9 @@ fi
 
 echo "👋  Deep breaths, everything will (probably) be fine!"
 
+# Make sure macOS is fully up to date before doing anything
+sudo softwareupdate --install --all
+
 # This whole thing kinda hinges on having Homebrew...
 # Check for it and install from GitHub if it's not there
 if test ! $(which brew); then
@@ -20,14 +23,16 @@ brew tap homebrew/bundle
 brew bundle
 
 # Install Xcode Command Line Tools
-xcode-select --install
+sudo xcode-select --install
+# Accept Xcode license
+sudo xcodebuild -license accept
 
 # Get Oh My ZSH up and running
 if [ ! -e ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-# Make ZSH the default shell environment
+# Make ZSH the default shell environment (maybe unnecessary on Catalina?)
 chsh -s $(which zsh)
 
 # Set up symbolic links for ZSH and Git pointing to this cloned repo

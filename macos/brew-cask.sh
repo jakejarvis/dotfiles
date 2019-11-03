@@ -17,6 +17,7 @@
 # System Utilities
 
 brew cask install osxfuse
+brew cask install appzapper
 brew cask install backblaze
 brew cask install backblaze-downloader
 brew cask install carbon-copy-cloner
@@ -28,6 +29,7 @@ brew cask install endurance
 brew cask install etrecheckpro
 brew cask install filebot
 brew cask install geekbench
+brew cask install intel-power-gadget
 brew cask install paragon-ntfs
 brew cask install the-unarchiver
 brew cask install transmission
