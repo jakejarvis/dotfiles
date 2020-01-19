@@ -185,6 +185,9 @@ user_pref("geo.wifi.logging.enabled", false);
 user_pref("geo.wifi.uri", "");
 
 
+user_pref("gfx.font_rendering.opentype_svg.enabled", false);
+
+
 user_pref("intl.accept_languages", "en-US, en");
 user_pref("intl.locale.matchOS", false);
 

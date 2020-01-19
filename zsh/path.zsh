@@ -8,7 +8,10 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$GOROOT/bin"
 
 # Ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+export RUBY_HOME=/usr/local/opt/ruby/bin
+export GEM_PATH=~/.gem/ruby/2.6.0
+export PATH="$RUBY_HOME:$PATH"
+export PATH="$GEM_PATH/bin:$PATH"
 
 # Metasploit
 export PATH="/opt/metasploit-framework/bin:$PATH"
@@ -18,6 +21,9 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
 # ----- Third-party additions below: -----

@@ -67,6 +67,7 @@ alias gpom="git push origin master"
 alias glom="git pull origin master"
 alias gpo="git push origin"  # + branch name
 alias glo="git pull origin"  # + branch name
+alias gphm="git push hosted master"  # self-hosted gitlab
 alias gb="git checkout"  # + branch name
 alias gbn="git checkout -b"  # + branch name
 alias grm="git rebase -i origin/master"

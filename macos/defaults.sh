@@ -190,8 +190,9 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
 
-# Automatically hide and show the Dock
+# Automatically hide and show the Dock without delay
 defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
 
 # Group windows by application in Mission Control
 defaults write com.apple.dock expose-group-by-app -bool true

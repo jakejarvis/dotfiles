@@ -5,7 +5,7 @@
 	name = Jake Jarvis
 	signingkey = 2B0C9CF251E69A39
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /usr/local/MacGPG2/bin/gpg
 [commit]
 	gpgsign = true
 [push]
