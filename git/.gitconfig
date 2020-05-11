@@ -3,7 +3,7 @@
 [user]
 	email = jake@jarv.is
 	name = Jake Jarvis
-	signingkey = 2B0C9CF251E69A39
+	signingkey = 3BC6E5776BF379D36F6714802B0C9CF251E69A39
 [gpg]
 	program = /usr/local/MacGPG2/bin/gpg
 [commit]
@@ -19,7 +19,6 @@
 	rebase = true
 [hub]
 	host = github.com
-	host = git.jarv.is
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

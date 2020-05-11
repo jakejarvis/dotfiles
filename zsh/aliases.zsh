@@ -51,12 +51,16 @@ alias ripmenu="sudo killall SystemUIServer NotificationCenter"
 alias finder="open -a Finder ./"
 
 # use VS Code insiders build
-alias code="code-insiders"
+#alias code="code-insiders"
 alias vs="code ./"
 
 # required: https://github.com/github/hub
 # `brew install hub`
 alias git="hub"
+alias g="hub"
+alias github="hub browse"
+alias gist="hub gist create --open"
+
 alias gc="git commit -m"  # + commit message
 alias gca="git add . && git commit -m"  # + commit message
 alias gs="git status -sb"
@@ -67,16 +71,18 @@ alias gpom="git push origin master"
 alias glom="git pull origin master"
 alias gpo="git push origin"  # + branch name
 alias glo="git pull origin"  # + branch name
-alias gphm="git push hosted master"  # self-hosted gitlab
-alias gb="git checkout"  # + branch name
-alias gbn="git checkout -b"  # + branch name
+alias gphm="git push hosted master"  # self-hosted git
+alias gb="git checkout"  # + existing branch name
+alias gbn="git checkout -b"  # + new branch name
 alias grm="git rebase -i origin/master"
 alias gsub="git submodule update --recursive --remote"
 alias gundo="git reset --soft HEAD~1"
-alias gf="hub fork --remote-name=origin"
-alias gpr="hub pull-request"
+alias greset="git reset"
 alias gsync="hub sync"
-alias gopen="hub browse"
+alias ghnew="hub create --browse"
+alias ghfork="hub fork --remote-name=origin"
+alias ghpr="hub pull-request --push --edit --browse"
+alias ghci="hub ci-status --verbose"
 
 alias dc="docker-compose"
 alias dcu="docker-compose up -d"
@@ -97,4 +103,5 @@ alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"
 
 alias weather="curl -4 https://wttr.in/Boston"
 
+alias make_hugo="cd ~/golang/src/github.com/gohugoio/hugo && git pull && mage hugo && HUGO_BUILD_TAGS=extended mage install"
 alias hugod="docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop"

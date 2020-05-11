@@ -9,7 +9,7 @@ export PATH="$PATH:$GOROOT/bin"
 
 # Ruby
 export RUBY_HOME=/usr/local/opt/ruby/bin
-export GEM_PATH=~/.gem/ruby/2.6.0
+export GEM_PATH=/usr/local/lib/ruby/gems/2.7.0
 export PATH="$RUBY_HOME:$PATH"
 export PATH="$GEM_PATH/bin:$PATH"
 
@@ -22,9 +22,20 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# rbenv
+eval "$(rbenv init -)"
 
 # ----- Third-party additions below: -----
 
