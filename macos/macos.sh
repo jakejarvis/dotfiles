@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+set -e
+
 if test ! "$(uname)" = "Darwin"; then
   exit 0
 fi
-
-echo "👋  Deep breaths, everything will (probably) be fine!"
 
 # Make sure macOS is fully up to date before doing anything
 sudo softwareupdate --install --all
@@ -27,19 +27,7 @@ sudo xcode-select --install
 # Accept Xcode license
 sudo xcodebuild -license accept
 
-# Get Oh My ZSH up and running
-if [ ! -e ~/.oh-my-zsh ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
-
-# Make ZSH the default shell environment (maybe unnecessary on Catalina?)
-chsh -s $(which zsh)
-
-# Set up symbolic links for ZSH and Git pointing to this cloned repo
-ln -s $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
-ln -s $HOME/.dotfiles/git/.gitconfig $HOME/.gitconfig
-ln -s $HOME/.dotfiles/git/.gitignore_global $HOME/.gitignore_global
-
 # Set macOS defaults
 # Needs to be last since this will restart everything when done
+# shellcheck disable=SC1091
 source ./macos/defaults.sh

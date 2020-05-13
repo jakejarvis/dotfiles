@@ -47,7 +47,7 @@
     },
     "name": "cpptools",
     "publisher": "ms-vscode",
-    "version": "0.27.1"
+    "version": "0.28.0"
   },
   {
     "metadata": {
@@ -68,6 +68,16 @@
     "name": "EditorConfig",
     "publisher": "EditorConfig",
     "version": "0.14.5"
+  },
+  {
+    "metadata": {
+      "id": "7328a705-91fc-49e6-8293-da6f112e482d",
+      "publisherId": "GitHub.github-vscode-theme",
+      "publisherDisplayName": "GitHub"
+    },
+    "name": "github-vscode-theme",
+    "publisher": "GitHub",
+    "version": "1.0.0"
   },
   {
     "metadata": {
@@ -101,13 +111,23 @@
   },
   {
     "metadata": {
+      "id": "96fa4707-6983-4489-b7c5-d5ffdfdcce90",
+      "publisherId": "esbenp.prettier-vscode",
+      "publisherDisplayName": "esbenp"
+    },
+    "name": "prettier-vscode",
+    "publisher": "esbenp",
+    "version": "4.6.0"
+  },
+  {
+    "metadata": {
       "id": "f1f59ae4-9318-4f3c-a9b5-81b2eaa5f8a5",
       "publisherId": "ms-python.python",
       "publisherDisplayName": "ms-python"
     },
     "name": "python",
     "publisher": "ms-python",
-    "version": "2020.4.76186"
+    "version": "2020.5.78807"
   },
   {
     "metadata": {
@@ -167,7 +187,7 @@
     },
     "name": "vscode-docker",
     "publisher": "ms-azuretools",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   {
     "metadata": {
@@ -181,6 +201,16 @@
   },
   {
     "metadata": {
+      "id": "583b2b34-2c1e-4634-8c0b-0b82e283ea3a",
+      "publisherId": "dbaeumer.vscode-eslint",
+      "publisherDisplayName": "dbaeumer"
+    },
+    "name": "vscode-eslint",
+    "publisher": "dbaeumer",
+    "version": "2.1.5"
+  },
+  {
+    "metadata": {
       "id": "c5f4d87f-a524-462c-ac01-923eb19cf3e9",
       "publisherId": "firefox-devtools.vscode-firefox-debug",
       "publisherDisplayName": "firefox-devtools"
@@ -188,6 +218,16 @@
     "name": "vscode-firefox-debug",
     "publisher": "firefox-devtools",
     "version": "2.8.0"
+  },
+  {
+    "metadata": {
+      "id": "9ccc1dd7-7ec4-4a46-bd4f-7d7b8b9d322a",
+      "publisherId": "vscode-icons-team.vscode-icons",
+      "publisherDisplayName": "vscode-icons-team"
+    },
+    "name": "vscode-icons",
+    "publisher": "vscode-icons-team",
+    "version": "10.1.1"
   },
   {
     "metadata": {

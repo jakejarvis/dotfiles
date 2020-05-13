@@ -2,11 +2,15 @@
 #  Taps                       #
 ###############################
 
+tap "appveyor/brew"
 tap "aws/tap"
 tap "caskroom/cask"
 tap "cloudflare/cloudflare"
+tap "dart-lang/dart"
 # tap "exolnet/deprecated"
 tap "facebook/fb"
+tap "github/bootstrap"
+tap "github/gh"
 tap "goreleaser/tap"
 tap "heroku/brew"
 tap "hhvm/hhvm"
@@ -18,10 +22,11 @@ tap "homebrew/services"
 tap "homebrew/test-bot"
 tap "jakejarvis/brew", "git@github.com:jakejarvis/homebrew-brew.git"
 tap "mongodb/brew"
+tap "sass/sass"
+tap "teamookla/speedtest"
 tap "thoughtbot/formulae"
 tap "twilio/brew"
 tap "wpengine/wpe-cli"
-
 
 ###############################
 #  Binaries                   #
@@ -69,7 +74,7 @@ brew "pigz"
 brew "pv"
 brew "rename"
 brew "rlwrap"
-brew "ssh-copy-id"
+brew "ssh-copy-id", link: true
 brew "tree"
 brew "vbindiff"
 brew "zopfli"
@@ -79,10 +84,12 @@ brew "the_silver_searcher"
 brew "git"
 brew "git-lfs"
 brew "git-crypt"
+brew "hub"
+brew "github/gh/gh"
 
 # Node & NPM / NVM
 brew "node"
-# brew "nvm"
+brew "nvm"
 
 # Mostly ordinary binaries
 brew "amazon-ecs-cli"
@@ -108,18 +115,19 @@ brew "gitlab-runner"
 brew "go"
 brew "goreleaser/tap/goreleaser"
 brew "govendor"
-brew "heroku"
-brew "heroku-node"
+brew "guetzli"
+brew "heroku/brew/heroku-node"
+brew "heroku/brew/heroku"
 brew "hhvm"
 brew "htop"
 brew "httpie"
 brew "httrack"
-brew "hub"
 brew "hydra"
 brew "iproute2mac"
 brew "jq"
 brew "kubernetes-cli"
 brew "kubernetes-helm"
+brew "libsass", args: ["HEAD"]
 brew "mcrypt"
 brew "mhash"
 brew "mkcert"
@@ -152,12 +160,16 @@ brew "ruby-build"
 brew "rbenv"
 brew "rclone"
 brew "s3fs"
+brew "sass/sass/migrator"
+brew "sass/sass/sass"
 brew "serverless"
 brew "shellcheck"
 brew "speedtest-cli"
 brew "sqlite"
 brew "sub2srt"
+brew "teamookla/speedtest/speedtest"
 brew "terraform"
+brew "thoughtbot/formulae/parity"
 brew "tor"
 brew "torsocks"
 brew "travis"
@@ -213,7 +225,6 @@ brew "hashcat"
 brew "nikto"
 brew "tcpdump"
 
-
 ###############################
 #  macOS Apps via Cask        #
 ###############################
@@ -244,6 +255,7 @@ cask "vnc-viewer"
 # Passwords, VPNs, other Security
 cask "1password"
 cask "authy"
+cask "expressvpn"
 # cask "gpg-suite-no-mail"     # Install Mail separately: https://github.com/GpgMailNoActivation/GpgMailNoActivation
 cask "jakejarvis/brew/gpg-suite-no-drm"      # personal cask to install GPG suite and mail.app plugin without activation
 cask "keybase"
@@ -258,17 +270,20 @@ cask "eclipse-java"
 cask "filezilla"
 cask "github"
 cask "glyphs"
+cask "google-cloud-sdk"
 cask "imageoptim"
 cask "intellij-idea"
 cask "iterm2"
 cask "java8"
+cask "multipass"
+cask "ngrok"
 cask "postman"
 cask "powershell"
 cask "robo-3t"
 cask "sequel-pro"
+cask "tower"
 cask "transmit"
-# install insiders build instead: https://code.visualstudio.com/insiders/
-# cask "visual-studio-code"
+cask "visual-studio-code"
 cask "visual-studio"
 cask "xquartz"
 
@@ -296,6 +311,7 @@ cask "whatsapp"
 cask "zoomus"
 
 # Gaming
+cask "shadow"
 cask "steam"
 cask "nvidia-geforce-now"
 
@@ -305,10 +321,6 @@ cask "charles"
 cask "metasploit"
 cask "wifi-explorer"
 cask "wireshark"
-
-# QuickLook Extensions
-# cask "qlstephen"
-# cask "qlvideo"
 
 # Browsers (for reference only -- install these via offline DMGs no matter what)
 # * Firefox
@@ -320,7 +332,6 @@ cask "wireshark"
 #    - Canary: https://www.google.com/chrome/canary/
 # * Safari
 #    - Preview: https://developer.apple.com/safari/technology-preview/
-
 
 ###############################
 #  macOS Apps via App Store   #
@@ -344,7 +355,6 @@ mas "Xcode", id: 497799835
 mas "Amphetamine", id: 937984704
 mas "Disk Speed Test", id: 425264550
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Microsoft Remote Desktop", id: 715768417
 mas "Outline", id: 1356178125
 mas "Shazam", id: 897118787
 mas "TweetDeck", id: 485812721

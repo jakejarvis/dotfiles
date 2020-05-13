@@ -6,6 +6,7 @@
 #    https://github.com/paulirish/dotfiles/blob/master/.osx
 #    https://github.com/kevinSuttle/macOS-Defaults/blob/master/.macos
 
+set -e
 
 COMPUTER_NAME="JJ-MBP15"
 

@@ -58,8 +58,6 @@ alias vs="code ./"
 # `brew install hub`
 alias git="hub"
 alias g="hub"
-alias github="hub browse"
-alias gist="hub gist create --open"
 
 alias gc="git commit -m"  # + commit message
 alias gca="git add . && git commit -m"  # + commit message
@@ -79,9 +77,10 @@ alias gsub="git submodule update --recursive --remote"
 alias gundo="git reset --soft HEAD~1"
 alias greset="git reset"
 alias gsync="hub sync"
-alias ghnew="hub create --browse"
-alias ghfork="hub fork --remote-name=origin"
-alias ghpr="hub pull-request --push --edit --browse"
+alias github="hub browse"
+alias gist="hub gist create --open"
+alias ghnew="gh repo create"
+alias ghfork="gh repo fork"
 alias ghci="hub ci-status --verbose"
 
 alias dc="docker-compose"

@@ -35,15 +35,14 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # rbenv
-eval "$(rbenv init -)"
+if command -v rbenv 1>/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
 
 # ----- Third-party additions below: -----
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jake/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jake/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jake/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jake/google-cloud-sdk/completion.zsh.inc'; fi
+# Google Cloud SDK
+[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 # added by travis gem
 [ -f /Users/jake/.travis/travis.sh ] && source /Users/jake/.travis/travis.sh
