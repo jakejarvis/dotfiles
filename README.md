@@ -12,6 +12,12 @@ Thanks for visiting, the `exit` is that way!
 
 ❤️ [Jake](https://jarv.is/)
 
+## Usage
+
+```bash
+git clone https://github.com/jakejarvis/dotfiles.git ~/.dotfiles
+~/.dotfiles/install.sh
+```
 
 ## License
 
