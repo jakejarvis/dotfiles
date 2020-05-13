@@ -11,7 +11,8 @@ sudo softwareupdate --install --all
 
 # This whole thing kinda hinges on having Homebrew...
 # Check for it and install from GitHub if it's not there
-if test ! $(which brew); then
+# shellcheck disable=SC2230
+if test ! "$(which brew)"; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 

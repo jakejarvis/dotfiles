@@ -5,9 +5,9 @@ set -e
 echo "👋  Deep breaths, everything will (probably) be fine!"
 
 # Set up symbolic links for ZSH and Git pointing to this cloned repo
-ln -sf $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
-ln -sf $HOME/.dotfiles/git/.gitconfig $HOME/.gitconfig
-ln -sf $HOME/.dotfiles/git/.gitignore_global $HOME/.gitignore_global
+ln -sf "$HOME"/.dotfiles/zsh/.zshrc "$HOME"/.zshrc
+ln -sf "$HOME"/.dotfiles/git/.gitconfig "$HOME"/.gitconfig
+ln -sf "$HOME"/.dotfiles/git/.gitignore_global "$HOME"/.gitignore_global
 
 # Get Oh My ZSH up and running
 if [ ! -e ~/.oh-my-zsh ]; then
@@ -15,7 +15,8 @@ if [ ! -e ~/.oh-my-zsh ]; then
 fi
 
 # Make ZSH the default shell environment (maybe unnecessary on Catalina?)
-chsh -s $(which zsh)
+# shellcheck disable=SC2230
+chsh -s "$(which zsh)"
 
 if [ "$(uname)" == "Darwin" ]; then
   # shellcheck disable=SC1091
