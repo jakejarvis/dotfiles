@@ -18,7 +18,6 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until this script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -38,17 +37,8 @@ defaults write NSGlobalDomain AppleMetricUnits -bool false
 # Set the timezone (see `sudo systemsetup -listtimezones` for other values)
 sudo systemsetup -settimezone "America/New_York" > /dev/null
 
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
-
-# Disable Sudden Motion Sensor
-sudo pmset -a sms 0
-
 # Disable audio feedback when volume is changed
 defaults write com.apple.sound.beep.feedback -bool false
-
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
 
 # Menu bar: show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent "YES"
@@ -61,17 +51,18 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+# Disable automatic termination of inactive apps
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# Reveal IP address, hostname, OS version, etc. when clicking the clock
+# in the login window
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 ###############################################################################
 # Keyboard & Input                                                            #
@@ -106,7 +97,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 ###############################################################################
 
 # Trackpad: enable tap to click for this user and for the login screen
-defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -117,6 +107,19 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+
+###############################################################################
+# Energy saving                                                               #
+###############################################################################
+
+# Restart automatically on power loss
+sudo pmset -a autorestart 1
+
+# Restart automatically if the computer freezes
+sudo systemsetup -setrestartfreeze on
+
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
 
 ###############################################################################
 # Screen                                                                      #
@@ -131,9 +134,6 @@ defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
-
-# Disable shadow in screenshots
-defaults write com.apple.screencapture disable-shadow -bool true
 
 ###############################################################################
 # Finder                                                                      #
@@ -188,9 +188,6 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock                                                                        #
 ###############################################################################
 
-# Show indicator lights for open applications in the Dock
-defaults write com.apple.dock show-process-indicators -bool true
-
 # Automatically hide and show the Dock without delay
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
@@ -207,14 +204,19 @@ defaults write com.apple.dock wvous-br-corner -int 0
 # Don't show recently used applications in the Dock
 defaults write com.Apple.Dock show-recents -bool false
 
+# Disable the Launchpad gesture (pinch with thumb and three fingers)
+defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+
+###############################################################################
+# Mail                                                                        #
+###############################################################################
+
+# Disable inline attachments (just show the icons)
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
+
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
-
-# Disable Spotlight indexing for any volume that gets mounted and has not yet
-# been indexed before.
-# Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
 # Change indexing order and disable some file types
 defaults write com.apple.spotlight orderedItems -array \
@@ -291,6 +293,13 @@ defaults write com.apple.TextEdit RichText -int 0
 # Open and save files as UTF-8 in TextEdit
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+###############################################################################
+# iTerm 2                                                          #
+###############################################################################
+
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
 # GPGMail 2                                                                   #
