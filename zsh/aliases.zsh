@@ -13,6 +13,17 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ~="cd ~"
 
+#
+# Remap macOS core utils to GNU
+#
+alias sed="gsed"
+alias grep="ggrep"
+alias find="gfind"
+alias make="gmake"
+alias tar="gtar"
+alias which="gwhich"
+alias awk="gawk"
+
 # My own creation! See: https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
 alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
@@ -25,14 +36,14 @@ alias dns-check="networksetup -getdnsservers Wi-Fi"
 alias dns-set="networksetup -setdnsservers Wi-Fi "
 alias dns-set-cloudflare="dns-set 1.1.1.1 1.0.0.1"
 alias dns-set-google="dns-set 8.8.8.8 8.8.4.4"
-
 alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache"
+
 alias hosts="sudo $EDITOR /etc/hosts"
 alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
 
-# Update: brew, npm, gem, macos
-alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo softwareupdate -ia --include-config-data;"
+# Update: brew, npm, gem, app store, macos
+alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; mas upgrade; sudo softwareupdate -ia --include-config-data;"
 
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -40,7 +51,7 @@ alias forcetrash="sudo rm -rf ~/.Trash /Volumes/*/.Trashes"
 alias unq="sudo xattr -rd com.apple.quarantine"
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-alias displays="system_profiler SPDisplaysDataType"
+alias gpu="system_profiler SPDisplaysDataType"
 alias cpu="sysctl -n machdep.cpu.brand_string"
 alias screenfetch="neofetch"
 
@@ -48,17 +59,21 @@ alias ripfinder="sudo killall Finder"
 alias ripdock="sudo killall Dock"
 alias ripmenu="sudo killall SystemUIServer NotificationCenter"
 
-alias finder="open -a Finder ./"
+# open current directory in Finder
+alias opdir="open -a Finder ./"
 
 # use VS Code insiders build
-#alias code="code-insiders"
+# alias code="code-insiders"
 alias vs="code ./"
 
+#
+# Git
+#
 # required: https://github.com/github/hub
 # `brew install hub`
+#
 alias git="hub"
 alias g="hub"
-
 alias gc="git commit -m"  # + commit message
 alias gca="git add . && git commit -m"  # + commit message
 alias gs="git status -sb"
@@ -83,11 +98,33 @@ alias ghnew="gh repo create"
 alias ghfork="gh repo fork"
 alias ghci="hub ci-status --verbose"
 
+#
+# Docker
+#
+alias d="docker"
+alias dit="docker run -it"
+alias dps="docker ps -a"
+dsh() {
+  docker exec -ti "$1" /bin/sh
+}
+dhub() {
+  # search docker hub by tag
+  curl -sS "https://registry.hub.docker.com/v2/repositories/$1/tags/" | jq '."results"[]["name"]' | sort
+}
 alias dc="docker-compose"
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 alias dcr="docker-compose down && docker-compose up -d"
 alias dcl="docker-compose logs -f"
+alias docker-clean-containers='docker ps --filter "status=exited" -a -q | xargs docker rm -v'
+alias docker-clean-images='docker images --filter "dangling=true" -q | xargs docker rmi'
+alias docker-clean-volumes='docker volume ls --filter dangling=true | xargs docker volume rm'
+
+#
+# Node
+#
+alias npm-reset="rm -rf node_modules && npm cache clean && npm install"
+alias yarn-reset="rm -rf node_modules && yarn cache clean && yarn install"
 
 alias sshalt="ssh -p 2222"
 alias moshalt="mosh --ssh=\"ssh -p 2222\""
@@ -95,7 +132,8 @@ alias moshalt="mosh --ssh=\"ssh -p 2222\""
 alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 
-alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
+alias pubkey="more ~/.ssh/id_ed25519.pub | pbcopy | echo '=> Public key copied to clipboard.'"
+alias pubkey_rsa="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
 
 alias ytdl="youtube-dl -f bestvideo+bestaudio"
 alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"

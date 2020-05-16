@@ -13,11 +13,6 @@ serve() {
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
-# Start a bash shell inside of a running Docker container
-docker-bash() {
-  docker exec -ti $1 /bin/bash
-}
-
 # Extract a compressed archive without worrying about which tool to use
 extract() {
   if [ -f $1 ]; then

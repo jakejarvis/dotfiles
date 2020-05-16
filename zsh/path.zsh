@@ -4,8 +4,8 @@ export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/b
 # Go
 export GOPATH="$HOME/golang"
 export GOROOT="/usr/local/opt/go/libexec"
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:$GOROOT/bin"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOROOT/bin:$PATH"
 
 # Ruby
 export RUBY_HOME=/usr/local/opt/ruby/bin
