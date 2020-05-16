@@ -6,10 +6,10 @@
 #    https://github.com/paulirish/dotfiles/blob/master/.osx
 #    https://github.com/kevinSuttle/macOS-Defaults/blob/master/.macos
 
-set -e
-
+# Change new hostname here if necessary
 COMPUTER_NAME="JJ-MBP15"
 
+# Quit System Preferences.app if open
 osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
@@ -79,9 +79,9 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+# Set a faster keyboard repeat rate (but not too fast, thanks butterfly keyboard)
+defaults write NSGlobalDomain KeyRepeat -int 5
+defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
 # Automatically illuminate built-in MacBook keyboard in low light
 defaults write com.apple.BezelServices kDim -bool true

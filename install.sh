@@ -8,6 +8,7 @@ echo "👋  Deep breaths, everything will (probably) be fine!"
 ln -sf "$HOME"/.dotfiles/zsh/.zshrc "$HOME"/.zshrc
 ln -sf "$HOME"/.dotfiles/git/.gitconfig "$HOME"/.gitconfig
 ln -sf "$HOME"/.dotfiles/git/.gitignore_global "$HOME"/.gitignore_global
+ln -sf "$HOME"/.dotfiles/ssh/.ssh/config "$HOME"/.ssh/config
 
 # Get Oh My ZSH up and running
 if [ ! -e ~/.oh-my-zsh ]; then

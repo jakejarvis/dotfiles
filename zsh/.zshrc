@@ -5,8 +5,9 @@ export DOTFILES=$HOME/.dotfiles
 export ZSH=$HOME/.oh-my-zsh
 
 # Default to nano 'cause I'm a wimp
-export VISUAL="nano"
 export EDITOR="nano"
+export VISUAL="code"
+export BROWSER="firefox"
 
 # Adjust history for speed
 HISTFILE=~/.zsh_history
