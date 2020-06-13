@@ -43,7 +43,7 @@ alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
 
 # Update: brew, npm, gem, app store, macos
-alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; mas upgrade; sudo softwareupdate -ia --include-config-data;"
+alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; mas upgrade;"  # sudo softwareupdate -ia --include-config-data;
 
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -65,6 +65,9 @@ alias opdir="open -a Finder ./"
 # use VS Code insiders build
 # alias code="code-insiders"
 alias vs="code ./"
+
+alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox-bin"
+alias ff="firefox"
 
 #
 # Git
@@ -126,6 +129,22 @@ alias docker-clean-volumes='docker volume ls --filter dangling=true | xargs dock
 alias npm-reset="rm -rf node_modules && npm cache clean && npm install"
 alias yarn-reset="rm -rf node_modules && yarn cache clean && yarn install"
 
+#
+# Hugo
+#
+make_hugo() {
+  (
+    cd ~/golang/src/github.com/gohugoio/hugo \
+    && git pull origin master \
+    && git reset --hard HEAD \
+    && git checkout master \
+    && mage -v hugo \
+    && HUGO_BUILD_TAGS=extended mage -v install
+  )
+}
+# run `hugo config` to make sure we're in a Hugo directory:
+alias hugo-clean="hugo config 1>/dev/null && rm -rf public/ resources/ build/"
+
 alias sshalt="ssh -p 2222"
 alias moshalt="mosh --ssh=\"ssh -p 2222\""
 
@@ -139,6 +158,3 @@ alias ytdl="youtube-dl -f bestvideo+bestaudio"
 alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"
 
 alias weather="curl -4 https://wttr.in/Boston"
-
-alias make_hugo="cd ~/golang/src/github.com/gohugoio/hugo && git pull && mage hugo && HUGO_BUILD_TAGS=extended mage install"
-alias hugod="docker run -v $(pwd):/src -p 1313:1313 jarv.is:develop"
