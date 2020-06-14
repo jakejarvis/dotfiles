@@ -30,4 +30,4 @@ sudo xcodebuild -license accept
 # Set macOS defaults
 # Needs to be last since this will restart everything when done
 # shellcheck disable=SC1091
-source ./macos/defaults.sh
+source ./defaults.sh
