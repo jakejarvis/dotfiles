@@ -83,14 +83,14 @@ alias gs="git status -sb"
 alias gl="git log --pretty=short"
 alias gd="git diff"
 alias gds="git diff --staged"
-alias gpom="git push origin master"
-alias glom="git pull origin master"
+alias gpom="git push origin main"
+alias glom="git pull origin main"
 alias gpo="git push origin"  # + branch name
 alias glo="git pull origin"  # + branch name
-alias gphm="git push hosted master"  # self-hosted git
+alias gphm="git push hosted main"  # self-hosted git
 alias gb="git checkout"  # + existing branch name
 alias gbn="git checkout -b"  # + new branch name
-alias grm="git rebase -i origin/master"
+alias grm="git rebase -i origin/main"
 alias gsub="git submodule update --recursive --remote"
 alias gundo="git reset --soft HEAD~1"
 alias greset="git reset"
@@ -133,8 +133,9 @@ alias yarn-reset="rm -rf node_modules && yarn cache clean && yarn install"
 # Hugo
 #
 make_hugo() {
+  # parentheses lets us cd to Hugo path without changing user's current location
   (
-    cd ~/golang/src/github.com/gohugoio/hugo \
+    cd "$GOPATH/src/github.com/gohugoio/hugo" \
     && git pull origin master \
     && git reset --hard HEAD \
     && git checkout master \

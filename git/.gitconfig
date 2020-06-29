@@ -1,22 +1,41 @@
-[credential]
-	helper = osxkeychain
+[core]
+	editor = code --wait
+	excludesfile = ~/.gitignore_global
+
+	# Make `git rebase` safer on macOS
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+[alias]
+	undo = reset --soft HEAD~1
+	pom = push origin main
+
+	# Show verbose output about tags, branches, remotes, aliases and contributors
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+	aliases = config --get-regexp alias
+	contributors = shortlog --summary --numbered
+	new = !git init && git symbolic-ref HEAD refs/heads/main
 [user]
 	email = jake@jarv.is
 	name = Jake Jarvis
 	signingkey = 3BC6E5776BF379D36F6714802B0C9CF251E69A39
-[gpg]
-	program = /usr/local/MacGPG2/bin/gpg
-[commit]
-	gpgsign = true
 [push]
 	default = current
-[core]
-	editor = nano
-	excludesfile = ~/.gitignore_global
-[github]
-	user = jakejarvis
 [pull]
 	rebase = true
+[diff]
+	tool = default-difftool
+[difftool "default-difftool"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[credential]
+	helper = osxkeychain
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg
+[github]
+	user = jakejarvis
 [hub]
 	host = github.com
 [filter "lfs"]
