@@ -24,6 +24,9 @@ alias tar="gtar"
 alias which="gwhich"
 alias awk="gawk"
 
+# macOS has no `md5sum`, so use `md5` as a fallback
+command -v md5sum > /dev/null || alias md5sum="md5"
+
 # My own creation! See: https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
 alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
@@ -40,10 +43,42 @@ alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; 
 
 alias hosts="sudo $EDITOR /etc/hosts"
 alias speed="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
-alias digg="dig @8.8.8.8 +nocmd any +multiline +noall +answer"
+alias digg="dig @1.1.1.1 +nocmd any +multiline +noall +answer"
 
 # Update: brew, npm, gem, app store, macos
-alias update="brew update; brew upgrade; brew cask upgrade; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update; gem cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; mas upgrade;"  # sudo softwareupdate -ia --include-config-data;
+update() {
+  NC="\033[0m"
+  YELLOW="\033[0;33m"
+
+  echo -e "${YELLOW}Updating Homebrew formulae and casks...${NC}"
+  brew update
+  brew upgrade
+  brew cask upgrade
+  brew cleanup
+
+  echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
+  npm install npm -g
+  npm update -g
+  yarn global upgrade
+
+  echo -e "${YELLOW}Updating Ruby gems...${NC}"
+  gem update --system
+  gem update
+  gem upgrade --user-install
+  gem cleanup
+
+  echo -e "${YELLOW}Updating Composer packages...${NC}"
+  composer global update
+
+  echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"
+  upgrade_oh_my_zsh
+
+  # echo -e "${YELLOW}Updating MAS apps...${NC}"
+  mas upgrade
+
+  # echo -e "${YELLOW}Updating macOS system...${NC}"
+  sudo softwareupdate -ia --include-config-data
+}
 
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -60,7 +95,7 @@ alias ripdock="sudo killall Dock"
 alias ripmenu="sudo killall SystemUIServer NotificationCenter"
 
 # open current directory in Finder
-alias opdir="open -a Finder ./"
+alias finder="open -a Finder ./"
 
 # use VS Code insiders build
 # alias code="code-insiders"
@@ -105,10 +140,14 @@ alias ghci="hub ci-status --verbose"
 # Docker
 #
 alias d="docker"
-alias dit="docker run -it"
 alias dps="docker ps -a"
+# build and run:
+# https://stackoverflow.com/questions/45141402/build-and-run-dockerfile-with-one-command/59220656#59220656
+dbar() {
+  docker build --no-cache . | tee /dev/tty | tail -n1 | cut -d' ' -f3 | xargs -I{} docker run --rm -i {}
+}
 dsh() {
-  docker exec -ti "$1" /bin/sh
+  docker exec -it "$1" /bin/sh
 }
 dhub() {
   # search docker hub by tag
@@ -119,21 +158,18 @@ alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 alias dcr="docker-compose down && docker-compose up -d"
 alias dcl="docker-compose logs -f"
-alias docker-clean-containers='docker ps --filter "status=exited" -a -q | xargs docker rm -v'
-alias docker-clean-images='docker images --filter "dangling=true" -q | xargs docker rmi'
-alias docker-clean-volumes='docker volume ls --filter dangling=true | xargs docker volume rm'
 
 #
 # Node
 #
-alias npm-reset="rm -rf node_modules && npm cache clean && npm install"
-alias yarn-reset="rm -rf node_modules && yarn cache clean && yarn install"
+alias npm_clean="rm -rf node_modules && npm cache clean && npm install"
+alias yarn_clean="rm -rf node_modules && yarn cache clean && yarn install"
 
 #
 # Hugo
 #
 make_hugo() {
-  # parentheses lets us cd to Hugo path without changing user's current location
+  # parentheses lets us cd to Hugo path without changing our current location
   (
     cd "$GOPATH/src/github.com/gohugoio/hugo" \
     && git pull origin master \
@@ -143,8 +179,8 @@ make_hugo() {
     && HUGO_BUILD_TAGS=extended mage -v install
   )
 }
-# run `hugo config` to make sure we're in a Hugo directory:
-alias hugo-clean="hugo config 1>/dev/null && rm -rf public/ resources/ build/"
+# run `hugo config` first to make sure we're in a Hugo directory:
+alias hugo_clean="hugo config 1>/dev/null && rm -rf public/ resources/ build/"
 
 alias sshalt="ssh -p 2222"
 alias moshalt="mosh --ssh=\"ssh -p 2222\""
