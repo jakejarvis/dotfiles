@@ -269,8 +269,8 @@ user_pref("privacy.cpd.passwords", true);
 // user_pref("privacy.cpd.siteSettings", true);
 user_pref("privacy.cpd.sessions", true);
 user_pref("privacy.donottrackheader.enabled", true);
-// user_pref("privacy.firstparty.isolate", true);  // breaks CAPTCHAs, way too annoying
-// user_pref("privacy.resistFingerprinting", true);  // less breakage by using https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/
+// user_pref("privacy.firstparty.isolate", true);       // breaks CAPTCHAs, way too annoying
+// user_pref("privacy.resistFingerprinting", true);     // less breakage by using https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/
 user_pref("privacy.trackingprotection.cryptomining.enabled", true);
 user_pref("privacy.trackingprotection.enabled", true);  // https://wiki.mozilla.org/Security/Tracking_protection
 user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
@@ -292,10 +292,10 @@ user_pref("security.insecure_connection_icon.enabled", true);
 user_pref("security.insecure_connection_text.enabled", true);
 user_pref("security.insecure_field_warning.contextual.enabled", true);
 user_pref("security.insecure_password.ui.enabled", true);  // warn on non-secure forms
-// user_pref("security.mixed_content.block_display_content", true);  // breaks xfinity on demand
-// user_pref("security.mixed_content.block_object_subrequest", true);  // breaks xfinity on demand
+// user_pref("security.mixed_content.block_display_content", true);         // breaks xfinity on demand
+// user_pref("security.mixed_content.block_object_subrequest", true);       // breaks xfinity on demand
 user_pref("security.OCSP.enabled", 1);
-user_pref("security.OCSP.require", false);  // TODO: turn back on
+user_pref("security.OCSP.require", false); // TODO: turn back on
 user_pref("security.pki.sha1_enforcement_level", 1);
 user_pref("security.sri.enable", true);
 user_pref("security.ssl.disable_session_identifiers", true);
@@ -304,7 +304,7 @@ user_pref("security.ssl.enable_ocsp_must_staple", true);
 user_pref("security.ssl.errorReporting.enabled", false);
 user_pref("security.ssl.errorReporting.url", "");
 user_pref("security.ssl.treat_unsafe_negotiation_as_broken", true);
-// user_pref("security.ssl.require_safe_negotiation", true);  // still breaks lots of stuff: https://github.com/pyllyukko/user.js/issues/237
+// user_pref("security.ssl.require_safe_negotiation", true);           // still breaks lots of stuff: https://github.com/pyllyukko/user.js/issues/237
 user_pref("security.ssl3.dhe_dss_aes_128_sha", false);
 user_pref("security.ssl3.dhe_dss_aes_256_sha", false);
 user_pref("security.ssl3.dhe_dss_camellia_128_sha", false);
