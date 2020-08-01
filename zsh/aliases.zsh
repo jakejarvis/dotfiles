@@ -135,6 +135,13 @@ alias gist="hub gist create --open"
 alias ghnew="gh repo create"
 alias ghfork="gh repo fork"
 alias ghci="hub ci-status --verbose"
+glall() {
+  # pull all remote branches
+  # https://stackoverflow.com/a/10312587
+  for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
+  git fetch --all
+  git pull --all
+}
 
 #
 # Docker
@@ -172,9 +179,10 @@ make_hugo() {
   # parentheses lets us cd to Hugo path without changing our current location
   (
     cd "$GOPATH/src/github.com/gohugoio/hugo" \
+    && git checkout master \
+    && mage uninstall \
     && git pull origin master \
     && git reset --hard HEAD \
-    && git checkout master \
     && mage -v hugo \
     && HUGO_BUILD_TAGS=extended mage -v install
   )
