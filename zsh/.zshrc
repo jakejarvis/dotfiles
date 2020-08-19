@@ -10,7 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Default to nano 'cause I'm a wimp
 export EDITOR="nano"
 export VISUAL="code"
-export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox-bin"
+export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # Adjust history for speed
 HISTFILE=~/.zsh_history

@@ -17,7 +17,9 @@ export PATH="$GEM_PATH/bin:$PATH"
 export PATH="/opt/metasploit-framework/bin:$PATH"
 
 # curl
-export PATH="/usr/local/opt/curl/bin:$PATH"
+# export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
+
 
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
