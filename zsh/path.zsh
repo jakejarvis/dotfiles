@@ -20,7 +20,6 @@ export PATH="/opt/metasploit-framework/bin:$PATH"
 # export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
 
-
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -29,7 +28,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -45,6 +45,3 @@ fi
 
 # Google Cloud SDK
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-
-# added by travis gem
-[ -f /Users/jake/.travis/travis.sh ] && source /Users/jake/.travis/travis.sh

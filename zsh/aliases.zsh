@@ -52,8 +52,9 @@ update() {
 
   echo -e "${YELLOW}Updating Homebrew formulae and casks...${NC}"
   brew update
+  # git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask" fetch --unshallow
   brew upgrade
-  brew cask upgrade
+  brew upgrade --cask
   brew cleanup
 
   echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
@@ -67,16 +68,20 @@ update() {
   gem upgrade --user-install
   gem cleanup
 
+  # https://stackoverflow.com/a/3452888
+  echo -e "${YELLOW}Updating pip packages...${NC}"
+  pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+
   echo -e "${YELLOW}Updating Composer packages...${NC}"
   composer global update
 
   echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"
-  upgrade_oh_my_zsh
+  omz update
 
-  # echo -e "${YELLOW}Updating MAS apps...${NC}"
+  echo -e "${YELLOW}Updating MAS apps...${NC}"
   mas upgrade
 
-  # echo -e "${YELLOW}Updating macOS system...${NC}"
+  echo -e "${YELLOW}Updating macOS system...${NC}"
   sudo softwareupdate -ia --include-config-data
 }
 

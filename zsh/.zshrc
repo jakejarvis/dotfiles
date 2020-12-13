@@ -31,16 +31,14 @@ plugins=(
   zsh-autosuggestions
 )
 
-# Perform compinit only once a day
-# https://gist.github.com/ctechols/ca1035271ad134841284
+# Perform compinit only once a day for speed
+# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
 autoload -Uz compinit
-if [[ -n ${ZDOTDIR}/.zcompdump(\#qN.mh+24) ]]; then
+for dump in ~/.zcompdump(N.mh+24); do
+  echo "reloading compinit"
   compinit
-  compdump
-else
-  compinit -C
-fi;
-
+done
+compinit -C
 
 # Load everything!
 source $ZSH/oh-my-zsh.sh

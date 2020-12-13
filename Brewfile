@@ -185,7 +185,7 @@ brew "twilio/brew/twilio"
 brew "typescript"
 brew "unrar"
 brew "watchman"
-brew "whois"
+brew "whois", link: true
 brew "wireguard-tools"
 brew "wireguard-go"
 brew "wp-cli"

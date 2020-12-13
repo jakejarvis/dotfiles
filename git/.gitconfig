@@ -22,6 +22,7 @@
 	signingkey = 3BC6E5776BF379D36F6714802B0C9CF251E69A39
 [push]
 	default = current
+	gpgSign = if-asked
 [pull]
 	rebase = true
 [diff]
@@ -45,3 +46,5 @@
 	required = true
 [init]
 	defaultBranch = main
+[mergetool]
+	keepBackup = true
