@@ -20,6 +20,10 @@ if test ! "$(which brew)"; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+# Fix some installation errors
+sudo chown -R $(whoami) /usr/local/share/man/man8
+chmod u+w /usr/local/share/man/man8
+
 # Disable analytics
 # https://docs.brew.sh/Analytics
 brew analytics off
