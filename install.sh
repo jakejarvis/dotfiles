@@ -11,6 +11,10 @@ ln -sf "$HOME"/.dotfiles/git/.gitignore_global "$HOME"/.gitignore_global
 mkdir -p "$HOME"/.ssh
 ln -sf "$HOME"/.dotfiles/ssh/.ssh/config "$HOME"/.ssh/config
 
+# https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390187157
+chmod 755 /usr/local/share/zsh
+chmod 755 /usr/local/share/zsh/site-functions
+
 # Get Oh My ZSH up and running
 if [ ! -e ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
