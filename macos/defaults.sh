@@ -7,7 +7,7 @@
 #    https://github.com/kevinSuttle/macOS-Defaults/blob/master/.macos
 
 # Change new hostname here if necessary
-COMPUTER_NAME="JJ-MBP15"
+COMPUTER_NAME="JJ-MBP13"
 
 # Quit System Preferences.app if open
 osascript -e 'tell application "System Preferences" to quit'
@@ -59,10 +59,6 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
-
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 ###############################################################################
 # Keyboard & Input                                                            #
@@ -121,6 +117,9 @@ sudo systemsetup -setrestartfreeze on
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
+# Don't automatically boot when shut down completely and lid opened
+sudo nvram AutoBoot=%00
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -161,7 +160,7 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Use AirDrop over every interface.
+# Use AirDrop over every interface
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Enable snap-to-grid for icons on the desktop and in other icon views
@@ -199,7 +198,10 @@ defaults write com.apple.dock expose-group-by-app -bool true
 defaults write com.apple.dock wvous-tl-corner -int 0
 defaults write com.apple.dock wvous-tr-corner -int 0
 defaults write com.apple.dock wvous-bl-corner -int 0
-defaults write com.apple.dock wvous-br-corner -int 0
+
+# Lock screen via bottom-right hot corner
+defaults write com.apple.dock wvous-br-corner -int 13
+defaults write com.apple.dock wvous-br-modifier -int 0
 
 # Don't show recently used applications in the Dock
 defaults write com.Apple.Dock show-recents -bool false
@@ -213,38 +215,6 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # Disable inline attachments (just show the icons)
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
-
-###############################################################################
-# Spotlight                                                                   #
-###############################################################################
-
-# Change indexing order and disable some file types
-defaults write com.apple.spotlight orderedItems -array \
-	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
-	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
-	'{"enabled" = 1;"name" = "CONTACT";}' \
-	'{"enabled" = 1;"name" = "DOCUMENTS";}' \
-	'{"enabled" = 1;"name" = "PDF";}' \
-	'{"enabled" = 0;"name" = "FONTS";}' \
-	'{"enabled" = 0;"name" = "MESSAGES";}' \
-	'{"enabled" = 0;"name" = "EVENT_TODO";}' \
-	'{"enabled" = 0;"name" = "IMAGES";}' \
-	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
-	'{"enabled" = 0;"name" = "MUSIC";}' \
-	'{"enabled" = 0;"name" = "MOVIES";}' \
-	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-	'{"enabled" = 0;"name" = "SOURCE";}'
-
-# Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
-
-# Make sure indexing is enabled for the main volume
-sudo mdutil -i on / > /dev/null
-
-# Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -295,7 +265,7 @@ defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
 ###############################################################################
-# iTerm 2                                                          #
+# iTerm 2                                                                     #
 ###############################################################################
 
 # Don’t display the annoying prompt when quitting iTerm
