@@ -4,6 +4,9 @@ set -e
 
 echo "👋  Deep breaths, everything will (probably) be fine!"
 
+# Ask for the administrator password upfront
+sudo -v
+
 # Set up symbolic links for ZSH and Git pointing to this cloned repo
 ln -sf "$HOME"/.dotfiles/zsh/.zshrc "$HOME"/.zshrc
 ln -sf "$HOME"/.dotfiles/git/.gitconfig "$HOME"/.gitconfig
