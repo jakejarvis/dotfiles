@@ -8,6 +8,11 @@ fi
 # Make sure macOS is fully up to date before doing anything
 sudo softwareupdate --install --all
 
+# Install Xcode Command Line Tools
+sudo xcode-select --install
+# Accept Xcode license
+sudo xcodebuild -license accept
+
 # This whole thing kinda hinges on having Homebrew...
 # Check for it and install from GitHub if it's not there
 # shellcheck disable=SC2230
@@ -25,11 +30,6 @@ brew update
 # Install all apps from the Brewfile
 brew tap homebrew/bundle
 brew bundle
-
-# Install Xcode Command Line Tools
-sudo xcode-select --install
-# Accept Xcode license
-sudo xcodebuild -license accept
 
 # Set macOS defaults
 # Needs to be last since this will restart everything when done
