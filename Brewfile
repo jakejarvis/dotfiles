@@ -5,7 +5,6 @@
 tap "AdoptOpenJDK/openjdk"
 tap "appveyor/brew"
 tap "aws/tap"
-tap "caskroom/cask"
 tap "cloudflare/cloudflare"
 tap "dart-lang/dart"
 # tap "exolnet/deprecated"
