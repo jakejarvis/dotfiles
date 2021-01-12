@@ -66,10 +66,10 @@ s3ls() {
 # https://github.com/rtomayko/dotfiles/blob/rtomayko/.bashrc
 push_ssh_cert() {
   local _host
-  test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
+  test -f ~/.ssh/id_ed25519.pub || ssh-keygen -t ed25519
   for _host in "$@";
   do
     echo $_host
-    ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+    ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_ed25519.pub
   done
 }
