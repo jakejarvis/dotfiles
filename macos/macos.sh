@@ -33,9 +33,9 @@ brew update
 
 # Install all apps from the Brewfile
 brew tap homebrew/bundle
-brew bundle
+brew bundle || true
 
 # Set macOS defaults
 # Needs to be last since this will restart everything when done
 # shellcheck disable=SC1091
-source ./defaults.sh
+source ./macos/defaults.sh

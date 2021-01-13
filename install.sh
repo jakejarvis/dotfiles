@@ -23,6 +23,9 @@ if [ ! -e ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
+# Use Git submodules to get OMZ plugins
+git submodule update --init --recursive
+
 # Make ZSH the default shell environment (maybe unnecessary on Catalina?)
 # shellcheck disable=SC2230
 chsh -s "$(which zsh)"

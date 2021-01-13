@@ -3,7 +3,6 @@
 ###############################
 
 tap "AdoptOpenJDK/openjdk"
-tap "appveyor/brew"
 tap "aws/tap"
 tap "cloudflare/cloudflare"
 tap "dart-lang/dart"
@@ -51,7 +50,7 @@ brew "gnu-indent"
 brew "gnu-which"
 
 # wget with IRI support
-brew "wget", args: ["with-iri"]
+brew "wget"  #, args: ["with-iri"]
 
 # GnuPG to enable PGP-signing commits
 brew "gnupg"
@@ -68,8 +67,8 @@ brew "gmp"
 # Other useful binaries
 brew "ack"
 brew "gs"
-brew "imagemagick", args: ["with-webp"]
-brew "ffmpeg", args: ["with-libvpx"]
+brew "imagemagick"  #, args: ["with-webp"]
+brew "ffmpeg"  #, args: ["with-libvpx"]
 brew "gawk"
 brew "less"
 brew "lua"
@@ -91,8 +90,8 @@ brew "the_silver_searcher"
 brew "git"
 brew "git-lfs"
 brew "git-crypt"
+brew "gh"
 brew "hub"
-brew "github/gh/gh"
 
 # Node & NPM / NVM
 brew "node"
@@ -112,19 +111,20 @@ brew "cli53"
 brew "cloudflare/cloudflare/cloudflared"
 brew "cocoapods"
 brew "composer"
+brew "dart-lang/dart/dart"
 brew "dnsmasq"
 brew "doctl"
 brew "elixir"
 brew "erlang"
-brew "facebook/fb/fbsimctl", args: ["HEAD"]
+# brew "facebook/fb/fbsimctl", args: ["HEAD"]
 brew "geoip"
 brew "go"
 brew "goreleaser/tap/goreleaser"
 brew "govendor"
 brew "guetzli"
-brew "heroku/brew/heroku-node"
 brew "heroku/brew/heroku"
-brew "hhvm"
+brew "heroku/brew/heroku-node"
+# brew "hhvm"
 brew "htop"
 brew "httpie"
 brew "httrack"
@@ -160,7 +160,7 @@ brew "pngcheck"
 brew "pngcrush"
 brew "postgresql"
 brew "python"
-brew "python@2"
+# brew "python@2"
 brew "pyenv"
 brew "ruby"
 brew "ruby-build"
@@ -171,7 +171,6 @@ brew "sass/sass/migrator"
 brew "sass/sass/sass"
 brew "serverless"
 brew "shellcheck"
-brew "speedtest-cli"
 brew "sqlite"
 brew "sub2srt"
 brew "teamookla/speedtest/speedtest"
@@ -182,7 +181,6 @@ brew "torsocks"
 brew "travis"
 brew "twilio/brew/twilio"
 brew "typescript"
-brew "unrar"
 brew "watchman"
 brew "whois", link: true
 brew "wireguard-tools"
@@ -248,7 +246,6 @@ cask "cleanmymac"
 cask "coconutbattery"
 cask "daisydisk"
 cask "duet"
-cask "endurance"
 cask "etrecheckpro"
 cask "filebot"
 cask "geekbench"
@@ -279,18 +276,14 @@ cask "adobe-creative-cloud"
 cask "adoptopenjdk"
 cask "chromedriver"
 cask "eclipse-java"
-cask "filezilla"
 cask "github"
 cask "glyphs"
 cask "google-cloud-sdk"
 cask "imageoptim"
 cask "iterm2"
-# cask "java8"
 cask "jetbrains-toolbox"
 cask "mamp"
 cask "microsoft-office"
-cask "multipass"
-cask "ngrok"
 cask "postman"
 cask "powershell"
 cask "robo-3t"
@@ -314,8 +307,6 @@ cask "beamer"
 cask "handbrake"
 cask "iina"
 cask "plex-media-player"
-cask "pocket-casts"
-cask "spotify"
 cask "vlc"
 
 # Communication/Social
@@ -324,12 +315,6 @@ cask "skype"
 cask "slack"
 cask "whatsapp"
 cask "zoomus"
-
-# Gaming
-cask "shadow"
-cask "steam"
-cask "minecraft"
-cask "nvidia-geforce-now"
 
 # Pentesting
 cask "burp-suite"
@@ -365,7 +350,6 @@ mas "MainStage 3", id: 634159523
 mas "Motion", id: 434290957
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Xcode", id: 497799835
 
 # Third Party
 mas "Amphetamine", id: 937984704
@@ -376,4 +360,3 @@ mas "Shazam", id: 897118787
 mas "TweetDeck", id: 485812721
 mas "Twitter", id: 409789998
 mas "WireGuard", id: 1451685025
-mas "Wunderlist", id: 410628904
