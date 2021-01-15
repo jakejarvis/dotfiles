@@ -273,7 +273,8 @@ cask "tunnelblick"
 
 # Development/Work
 cask "adobe-creative-cloud"
-cask "adoptopenjdk"
+cask "AdoptOpenJDK/openjdk/adoptopenjdk"
+cask "AdoptOpenJDK/openjdk/adoptopenjdk-jre"
 cask "chromedriver"
 cask "eclipse-java"
 cask "github"
@@ -284,6 +285,7 @@ cask "iterm2"
 cask "jetbrains-toolbox"
 cask "mamp"
 cask "microsoft-office"
+cask "ngrok"
 cask "postman"
 cask "powershell"
 cask "robo-3t"
@@ -307,6 +309,8 @@ cask "beamer"
 cask "handbrake"
 cask "iina"
 cask "plex-media-player"
+cask "pocket-casts"
+cask "spotify"
 cask "vlc"
 
 # Communication/Social
@@ -315,6 +319,12 @@ cask "skype"
 cask "slack"
 cask "whatsapp"
 cask "zoomus"
+
+# Gaming
+cask "shadow"
+cask "steam"
+cask "minecraft"
+cask "nvidia-geforce-now"
 
 # Pentesting
 cask "burp-suite"

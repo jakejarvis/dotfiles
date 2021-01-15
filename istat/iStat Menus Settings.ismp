@@ -8,6 +8,29 @@
 	<dict>
 		<key>CPU_DropdownOrderDisabled</key>
 		<string></string>
+		<key>CPU_MenubarGraphBreakdowns</key>
+		<integer>0</integer>
+		<key>CPU_MenubarMode</key>
+		<array>
+			<dict>
+				<key>key</key>
+				<string>100</string>
+				<key>uuid</key>
+				<string>3438CB2E-D428-4495-B786-66F1FC6F9D45</string>
+			</dict>
+			<dict>
+				<key>key</key>
+				<string>6</string>
+				<key>uuid</key>
+				<string>3D1DD3D6-B06B-4DF1-A2F5-2846A94D9723</string>
+			</dict>
+			<dict>
+				<key>key</key>
+				<string>5</string>
+				<key>uuid</key>
+				<string>B9C7FEFC-25C6-41F8-A6E3-AF4E5B589EBB</string>
+			</dict>
+		</array>
 		<key>CPU_ProcessCount</key>
 		<integer>15</integer>
 		<key>Disks_DropdownOrderDisabled</key>
@@ -28,11 +51,13 @@
 		<key>Disks_ProcessCount</key>
 		<integer>15</integer>
 		<key>DropdownGraphBackground</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>DropdownTheme-Dark</key>
 		<integer>1</integer>
 		<key>DropdownTheme-Light</key>
-		<integer>3</integer>
+		<integer>2</integer>
+		<key>FanControl_Enabled</key>
+		<false/>
 		<key>FanControl_Sets</key>
 		<array>
 			<dict>
@@ -130,11 +155,13 @@
 		<key>Memory_ProcessCount</key>
 		<integer>15</integer>
 		<key>Menubar-DetectedColor</key>
-		<string>1.00 1.00 1.00 0.90</string>
+		<string>0.00 0.00 0.00 0.85</string>
 		<key>MenubarGraphOpacity-Dark-Modern</key>
 		<real>0.14743457734584808</real>
+		<key>MenubarGraphOpacity-Modern</key>
+		<real>0.34533438086509705</real>
 		<key>MenubarTheme</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>Migrated_6.0</key>
 		<true/>
 		<key>Migrated_6.22</key>
@@ -144,7 +171,7 @@
 		<key>Network_DropdownOrderDisabled</key>
 		<string></string>
 		<key>Network_GraphShowBackground</key>
-		<integer>1</integer>
+		<integer>0</integer>
 		<key>Network_MenubarMode</key>
 		<array>
 			<dict>
@@ -217,6 +244,8 @@
 		</array>
 		<key>Sensors-Limits-Updated</key>
 		<true/>
+		<key>Sensors_DropdownOrderDisabled</key>
+		<string></string>
 		<key>StatusItems-Order</key>
 		<array>
 			<integer>4</integer>

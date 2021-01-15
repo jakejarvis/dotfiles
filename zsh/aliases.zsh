@@ -50,16 +50,18 @@ update() {
   NC="\033[0m"
   YELLOW="\033[0;33m"
 
+  sudo -v
+
   echo -e "${YELLOW}Updating Homebrew formulae and casks...${NC}"
   brew update
   # git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask" fetch --unshallow
   brew upgrade
-  brew upgrade --cask
+  brew upgrade --cask --greedy
   brew cleanup
 
   echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
-  npm install npm -g
-  npm update -g
+  npm install npm@latest --global
+  npm update --global
   yarn global upgrade
 
   echo -e "${YELLOW}Updating Ruby gems...${NC}"
@@ -70,7 +72,7 @@ update() {
 
   # https://stackoverflow.com/a/3452888
   echo -e "${YELLOW}Updating pip packages...${NC}"
-  pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+  pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
 
   echo -e "${YELLOW}Updating Composer packages...${NC}"
   composer global update

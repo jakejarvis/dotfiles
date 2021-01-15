@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 
-set -e
-
 echo "👋  Deep breaths, everything will (probably) be fine!"
 
 # Ask for the administrator password upfront
 sudo -v
 
 # Set up symbolic links for ZSH and Git pointing to this cloned repo
-ln -sf "$HOME"/.dotfiles/zsh/.zshrc "$HOME"/.zshrc
-ln -sf "$HOME"/.dotfiles/git/.gitconfig "$HOME"/.gitconfig
-ln -sf "$HOME"/.dotfiles/git/.gitignore_global "$HOME"/.gitignore_global
-mkdir -p "$HOME"/.ssh
-ln -sf "$HOME"/.dotfiles/ssh/.ssh/config "$HOME"/.ssh/config
+ln -sf ~/.dotfiles/zsh/.zshrc ~/.zshrc
+ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/git/.gitignore_global ~/.gitignore_global
+mkdir -p ~/.ssh
+ln -sf ~/.dotfiles/ssh/.ssh/config ~/.ssh/config
+
+# Suppress terminal login banners
+touch ~/.hushlogin
 
 # https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390187157
 chmod 755 /usr/local/share/zsh
@@ -25,10 +26,6 @@ fi
 
 # Use Git submodules to get OMZ plugins
 git submodule update --init --recursive
-
-# Make ZSH the default shell environment (maybe unnecessary on Catalina?)
-# shellcheck disable=SC2230
-chsh -s "$(which zsh)"
 
 if [ "$(uname)" == "Darwin" ]; then
   # shellcheck disable=SC1091
