@@ -8,7 +8,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$GOROOT/bin:$PATH"
 
 # Ruby
-export RUBY_HOME=/usr/local/opt/ruby/bin
+export RUBY_HOME=/usr/local/opt/ruby@2.7/bin
 export GEM_PATH=/usr/local/lib/ruby/gems/2.7.0
 export PATH="$RUBY_HOME:$PATH"
 export PATH="$GEM_PATH/bin:$PATH"

@@ -67,7 +67,7 @@ update() {
   echo -e "${YELLOW}Updating Ruby gems...${NC}"
   gem update --system
   gem update
-  gem upgrade --user-install
+  # gem upgrade --user-install
   gem cleanup
 
   # https://stackoverflow.com/a/3452888
