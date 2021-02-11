@@ -16,8 +16,8 @@ ln -sf ~/.dotfiles/ssh/.ssh/config ~/.ssh/config
 touch ~/.hushlogin
 
 # https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390187157
-chmod 755 /usr/local/share/zsh
-chmod 755 /usr/local/share/zsh/site-functions
+chmod 755 /opt/homebrew/share/zsh
+chmod 755 /opt/homebrew/share/zsh/site-functions
 
 # Get Oh My ZSH up and running
 if [ ! -e ~/.oh-my-zsh ]; then

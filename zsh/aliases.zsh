@@ -80,8 +80,8 @@ update() {
   echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"
   omz update
 
-  echo -e "${YELLOW}Updating MAS apps...${NC}"
-  mas upgrade
+  # echo -e "${YELLOW}Updating MAS apps...${NC}"
+  # mas upgrade
 
   echo -e "${YELLOW}Updating macOS system...${NC}"
   sudo softwareupdate -ia --include-config-data
@@ -104,7 +104,7 @@ alias ripmenu="sudo killall SystemUIServer NotificationCenter"
 # open current directory in Finder
 alias finder="open -a Finder ./"
 
-# use VS Code insiders build
+# uncomment to use VS Code insiders build
 # alias code="code-insiders"
 alias vs="code ./"
 
@@ -114,11 +114,7 @@ alias ff="firefox"
 #
 # Git
 #
-# required: https://github.com/github/hub
-# `brew install hub`
-#
-alias git="hub"
-alias g="hub"
+alias g="git"
 alias gc="git commit -m"  # + commit message
 alias gca="git add . && git commit -m"  # + commit message
 alias gs="git status -sb"
@@ -136,12 +132,10 @@ alias grm="git rebase -i origin/main"
 alias gsub="git submodule update --recursive --remote"
 alias gundo="git reset --soft HEAD~1"
 alias greset="git reset"
-alias gsync="hub sync"
 alias github="gh repo view --web"
 alias gist="gh gist create --web"
 alias ghnew="gh repo create"
 alias ghfork="gh repo fork"
-alias ghci="hub ci-status --verbose"
 glall() {
   # pull all remote branches
   # https://stackoverflow.com/a/10312587

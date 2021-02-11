@@ -7,7 +7,7 @@
 #    https://github.com/kevinSuttle/macOS-Defaults/blob/master/.macos
 
 # Change new hostname here if necessary
-COMPUTER_NAME="JJ-MBP13"
+COMPUTER_NAME="JJ-MBA"
 
 # Quit System Preferences.app if open
 osascript -e 'tell application "System Preferences" to quit'

@@ -21,8 +21,8 @@ if test ! "$(which brew)"; then
 fi
 
 # Fix some installation errors
-sudo chown -R "$(whoami)" /usr/local/share/man/man8
-chmod u+w /usr/local/share/man/man8
+# sudo chown -R "$(whoami)" /usr/local/share/man/man8
+# chmod u+w /usr/local/share/man/man8
 
 # Disable analytics
 # https://docs.brew.sh/Analytics

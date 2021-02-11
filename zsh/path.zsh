@@ -1,35 +1,52 @@
 # Default paths
 export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
+# homebrew
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
 # Go
 export GOPATH="$HOME/golang"
-export GOROOT="/usr/local/opt/go/libexec"
+#export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$GOPATH/bin:$PATH"
-export PATH="$GOROOT/bin:$PATH"
+#export PATH="$GOROOT/bin:$PATH"
 
 # Ruby
-export RUBY_HOME=/usr/local/opt/ruby@2.7/bin
-export GEM_PATH=/usr/local/lib/ruby/gems/2.7.0
+export RUBY_HOME="/opt/homebrew/opt/ruby/bin"
+export GEM_PATH="$HOME/.gem/ruby/3.0.0"
 export PATH="$RUBY_HOME:$PATH"
 export PATH="$GEM_PATH/bin:$PATH"
+
+# openjdk
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Metasploit
 export PATH="/opt/metasploit-framework/bin:$PATH"
 
 # curl
-# export PATH="/usr/local/opt/curl/bin:$PATH"
-export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # yarn
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# misc.
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/whois/bin:$PATH"
+export PATH="/opt/homebrew/opt/jpeg-turbo/bin:$PATH"
+#export LDFLAGS="-L/opt/homebrew/opt/jpeg-turbo/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/jpeg-turbo/include"
+
+# nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -44,4 +61,4 @@ fi
 # ----- Third-party additions below: -----
 
 # Google Cloud SDK
-[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+[ -f /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
