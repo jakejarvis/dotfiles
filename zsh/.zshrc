@@ -21,12 +21,16 @@ SAVEHIST=10000
 ZSH_CUSTOM=$DOTFILES/zsh
 ZSH_THEME="agnoster"
 DEFAULT_USER=jake
-DISABLE_UPDATE_PROMPT=true
 
 # Oh My ZSH plugins
 plugins=(
   colorize
   osx
+  history
+  vscode
+  gitignore
+  gnu-utils
+  zsh_reload
   zsh-syntax-highlighting
   zsh-autosuggestions
 )

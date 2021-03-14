@@ -21,7 +21,6 @@
     "git.enableCommitSigning": true,
     "git.showPushSuccessNotification": true,
     "workbench.iconTheme": "material-icon-theme",
-    "liveshare.featureSet": "insiders",
     "editor.renderWhitespace": "none",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",

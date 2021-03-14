@@ -17,9 +17,18 @@ export PATH="$GOPATH/bin:$PATH"
 
 # Ruby
 export RUBY_HOME="/opt/homebrew/opt/ruby/bin"
-export GEM_PATH="$HOME/.gem/ruby/3.0.0"
+export GEM_PATH="/opt/homebrew/lib/ruby/gems/3.0.0/bin"
 export PATH="$RUBY_HOME:$PATH"
-export PATH="$GEM_PATH/bin:$PATH"
+export PATH="$GEM_PATH:$PATH"
+
+# rbenv
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml)"
+if command -v rbenv 1>/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
+
+# Python
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 # openjdk
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -51,11 +60,6 @@ export PATH="/opt/homebrew/opt/jpeg-turbo/bin:$PATH"
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
-fi
-
-# rbenv
-if command -v rbenv 1>/dev/null 2>&1; then
-  eval "$(rbenv init -)"
 fi
 
 # ----- Third-party additions below: -----

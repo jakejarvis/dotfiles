@@ -8,6 +8,9 @@ fi
 # Make sure macOS is fully up to date before doing anything
 sudo softwareupdate --install --all
 
+# Install Rosetta 2
+sudo softwareupdate --install-rosetta --agree-to-license
+
 # Install Xcode Command Line Tools
 sudo xcode-select --install
 # Accept Xcode license
@@ -20,10 +23,6 @@ if test ! "$(which brew)"; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Fix some installation errors
-# sudo chown -R "$(whoami)" /usr/local/share/man/man8
-# chmod u+w /usr/local/share/man/man8
-
 # Disable analytics
 # https://docs.brew.sh/Analytics
 brew analytics off
@@ -31,7 +30,13 @@ brew analytics off
 # Update Homebrew recipes
 brew update
 
-# Install all apps from the Brewfile
+# Install more current ZSH and set as default shell
+# https://stackoverflow.com/a/44549662/1438024
+brew install zsh
+sudo sh -c "echo $(brew --prefix zsh)/bin/zsh >> /etc/shells"
+chsh -s "$(brew --prefix zsh)/bin/zsh"
+
+# Install all apps from the Brewfile, ignore errors
 brew tap homebrew/bundle
 brew bundle || true
 

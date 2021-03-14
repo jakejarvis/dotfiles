@@ -2,30 +2,26 @@
 #  Taps                       #
 ###############################
 
-tap "AdoptOpenJDK/openjdk"
+tap "adoptopenjdk/openjdk"
 tap "aws/tap"
 tap "cloudflare/cloudflare"
 tap "dart-lang/dart"
-# tap "exolnet/deprecated"
 tap "facebook/fb"
 tap "github/bootstrap"
 tap "github/gh"
-tap "goreleaser/tap"
 tap "heroku/brew"
-tap "hhvm/hhvm"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
-# tap "jakejarvis/brew", "git@github.com:jakejarvis/homebrew-brew.git"
-tap "mongodb/brew"
 tap "sass/sass"
 tap "teamookla/speedtest"
 tap "thoughtbot/formulae"
 tap "twilio/brew"
 # tap "wpengine/wpe-cli"
+tap "wpscanteam/tap"
 
 ###############################
 #  Binaries                   #
@@ -98,12 +94,12 @@ brew "node"
 brew "nvm"
 
 # Mostly ordinary binaries
-brew "amazon-ecs-cli"
-brew "aws/tap/aws-sam-cli"
 brew "aws-shell"
 brew "awscli"
 brew "angular-cli"
 brew "asciinema"
+brew "autoconf"
+brew "automake"
 brew "azure-cli"
 brew "caddy"
 brew "carthage"
@@ -115,18 +111,15 @@ brew "dart-lang/dart/dart"
 brew "doctl"
 brew "elixir"
 brew "erlang"
-# brew "facebook/fb/fbsimctl", args: ["HEAD"]
 brew "geoip"
 brew "go"
-brew "goreleaser/tap/goreleaser"
-brew "govendor"
 brew "guetzli"
 brew "heroku/brew/heroku"
 brew "heroku/brew/heroku-node"
-# brew "hhvm"
 brew "htop"
 brew "httpie"
 brew "httrack"
+brew "hugo", args: ["HEAD"]
 brew "hydra"
 brew "iproute2mac"
 brew "jq"
@@ -137,10 +130,7 @@ brew "mas"
 brew "mcrypt"
 brew "mhash"
 brew "mkcert"
-# brew "mongodb"
-brew "mongodb/brew/mongodb-community"
 brew "mosh"
-# brew "mysql"
 brew "mariadb"
 brew "mysql-client"
 brew "ncurses"
@@ -150,14 +140,18 @@ brew "openvpn"
 brew "optipng"
 brew "packer"
 brew "php"
+brew "pkg-config"
 brew "pngcheck"
 brew "pngcrush"
 brew "postgresql"
+brew "python@3.8"
+brew "python@3.9"
 brew "python"
-# brew "python@2"
 brew "pyenv"
+brew "qemu"
 brew "ruby"
 brew "ruby-build"
+brew "rust"
 brew "rbenv"
 brew "rclone"
 brew "s3fs"
@@ -191,9 +185,10 @@ brew "zopfli"
 brew "ant"
 brew "maven"
 brew "gradle"
-cask "android-sdk"
+# cask "android-sdk"
 # cask "android-ndk"
 cask "android-platform-tools"
+# cask "android-studio"
 
 # Pentesting tools
 brew "aircrack-ng"
@@ -209,6 +204,8 @@ brew "hashpump"
 brew "hydra"
 brew "john"
 brew "knock"
+brew "massdns"
+brew "mitmproxy"
 brew "netpbm"
 brew "nmap"
 brew "pdfcrack"
@@ -223,6 +220,7 @@ brew "bettercap"
 brew "hashcat"
 brew "nikto"
 brew "tcpdump"
+# brew "wpscanteam/tap/wpscan"  # not yet compatible with M1
 
 ###############################
 #  macOS Apps via Cask        #
@@ -239,6 +237,7 @@ cask "carbon-copy-cloner"
 cask "cleanmymac"
 cask "coconutbattery"
 cask "daisydisk"
+cask "dropbox"
 cask "duet"
 cask "etrecheckpro"
 cask "filebot"
@@ -267,8 +266,7 @@ cask "tunnelblick"
 
 # Development/Work
 cask "adobe-creative-cloud"
-cask "AdoptOpenJDK/openjdk/adoptopenjdk"
-cask "AdoptOpenJDK/openjdk/adoptopenjdk-jre"
+cask "adoptopenjdk/openjdk/adoptopenjdk"
 cask "chromedriver"
 cask "eclipse-java"
 cask "github"
@@ -293,10 +291,10 @@ cask "xquartz"
 
 # Virtual Machines (& Docker)
 cask "docker"
-cask "virtualbox"
-cask "virtualbox-extension-pack"
-cask "vagrant"
-cask "vmware-fusion"
+# cask "virtualbox"
+# cask "virtualbox-extension-pack"
+# cask "vagrant"
+# cask "vmware-fusion"
 
 # Media
 cask "beamer"
@@ -345,22 +343,32 @@ cask "wireshark"
 # Apple
 mas "Apple Configurator 2", id: 1037126344
 mas "Compressor", id: 424390742
+mas "Developer", id: 640199958
 mas "Final Cut Pro", id: 424389933
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
-mas "Logic Pro X", id: 634148309
+mas "Logic Pro", id: 634148309
 mas "MainStage 3", id: 634159523
 mas "Motion", id: 434290957
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Playgrounds", id: 1496833156
+mas "Transporter", id: 1450874784
+mas "Xcode", id: 497799835
 
 # Third Party
 mas "Amphetamine", id: 937984704
+mas "Deliveries", id: 290986013
 mas "Disk Speed Test", id: 425264550
+mas "Kindle", id: 405399194
+mas "Magnet", id: 441258766
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft To Do", id: 1274495053
 mas "Outline", id: 1356178125
 mas "Shazam", id: 897118787
+mas "Silicon Info", id: 1542271266
 mas "TweetDeck", id: 485812721
 mas "Twitter", id: 409789998
+mas "VMware Remote Console", id: 1230249825
 mas "WireGuard", id: 1451685025
