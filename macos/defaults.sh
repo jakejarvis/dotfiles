@@ -6,6 +6,8 @@
 #    https://github.com/paulirish/dotfiles/blob/master/.osx
 #    https://github.com/kevinSuttle/macOS-Defaults/blob/master/.macos
 
+set -euo pipefail
+
 # Change new hostname here if necessary
 COMPUTER_NAME="JJ-MBA"
 

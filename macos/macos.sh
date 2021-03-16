@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # This shouldn't be run if not on macOS, but make double sure
 if test ! "$(uname)" = "Darwin"; then
   exit 0

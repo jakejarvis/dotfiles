@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+# what a mess. https://stackoverflow.com/a/53183593
+YOU_ARE_HERE="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+
 echo "👋  Deep breaths, everything will (probably) be fine!"
 
 # Ask for the administrator password upfront
 sudo -v
 
+# Clone this repo if we haven't already
+git clone --recurse-submodules https://github.com/jakejarvis/dotfiles.git "$YOU_ARE_HERE" || true
+
 # Set up symbolic links for ZSH and Git pointing to this cloned repo
-ln -sf ~/.dotfiles/zsh/.zshrc ~/.zshrc
-ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
-ln -sf ~/.dotfiles/git/.gitignore_global ~/.gitignore_global
+ln -sf "$YOU_ARE_HERE/zsh/.zshrc" ~/.zshrc
+ln -sf "$YOU_ARE_HERE/git/.gitconfig" ~/.gitconfig
+ln -sf "$YOU_ARE_HERE/git/.gitignore_global" ~/.gitignore_global
 mkdir -p ~/.ssh
-ln -sf ~/.dotfiles/ssh/.ssh/config ~/.ssh/config
+ln -sf "$YOU_ARE_HERE/ssh/.ssh/config" ~/.ssh/config
 
 # Suppress terminal login banners
 touch ~/.hushlogin
@@ -28,8 +36,8 @@ fi
 git submodule update --init --recursive
 
 if [ "$(uname)" == "Darwin" ]; then
-  # shellcheck disable=SC1091
-  source ./macos/macos.sh
+  # shellcheck disable=SC1090,SC1091
+  source "$YOU_ARE_HERE/macos/macos.sh"
 else
   echo ""
   echo "This isn't a Mac, so we're all done here!"

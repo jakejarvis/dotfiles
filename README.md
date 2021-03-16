@@ -17,8 +17,15 @@ Thanks for visiting, the `exit` is that way!
 Designed for macOS, kinda works on Linux (requires [ZSH to be installed](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#ubuntu-debian--derivatives-windows-10-wsl--native-linux-kernel-with-windows-10-build-1903) first):
 
 ```bash
-git clone https://github.com/jakejarvis/dotfiles.git ~/.dotfiles
-~/.dotfiles/install.sh
+git clone --recurse-submodules https://github.com/jakejarvis/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+bash install.sh
+```
+
+or:
+
+```bash
+curl -sL jrvs.io/bootstrap | bash    # probably don't do this if you're not me
 ```
 
 ## License
