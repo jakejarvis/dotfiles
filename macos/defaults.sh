@@ -214,6 +214,12 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 # Disable inline attachments (just show the icons)
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
+# Compose mail in plain-text
+defaults write com.apple.mail SendFormat Plain
+
+# Disable remote content
+defaults write com.apple.mail DisableURLLoading -bool true
+
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################

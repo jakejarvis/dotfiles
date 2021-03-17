@@ -5,6 +5,17 @@
 	# Make `git rebase` safer on macOS
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
+[user]
+	email = jake@jarv.is
+	name = Jake Jarvis
+	signingkey = 3BC6E5776BF379D36F6714802B0C9CF251E69A39
+[init]
+	defaultBranch = main
+[push]
+	default = current
+	gpgSign = if-asked
+[pull]
+	rebase = true
 [alias]
 	undo = reset --soft HEAD~1
 	pom = push origin main
@@ -16,15 +27,6 @@
 	aliases = config --get-regexp alias
 	contributors = shortlog --summary --numbered
 	new = !git init && git symbolic-ref HEAD refs/heads/main
-[user]
-	email = jake@jarv.is
-	name = Jake Jarvis
-	signingkey = 3BC6E5776BF379D36F6714802B0C9CF251E69A39
-[push]
-	default = current
-	gpgSign = if-asked
-[pull]
-	rebase = true
 [diff]
 	tool = default-difftool
 [difftool "default-difftool"]
@@ -44,7 +46,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[init]
-	defaultBranch = main
 [mergetool]
 	keepBackup = true

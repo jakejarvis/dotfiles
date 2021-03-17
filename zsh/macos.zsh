@@ -14,6 +14,10 @@ alias awk="gawk"
 # macOS has no `md5sum`, so use `md5` as a fallback
 command -v md5sum > /dev/null || alias md5sum="md5"
 
+# system python -> homebrew python3
+alias python="python3"
+alias pip="pip3"
+
 # My own creation! See: https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
 alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
