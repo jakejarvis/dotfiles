@@ -12,10 +12,19 @@
 [init]
 	defaultBranch = main
 [push]
-	default = current
+	default = tracking
 	gpgSign = if-asked
 [pull]
 	rebase = true
+[commit]
+	gpgsign = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+[diff]
+	tool = default-difftool
+[difftool "default-difftool"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
 	undo = reset --soft HEAD~1
 	pom = push origin main
@@ -27,14 +36,8 @@
 	aliases = config --get-regexp alias
 	contributors = shortlog --summary --numbered
 	new = !git init && git symbolic-ref HEAD refs/heads/main
-[diff]
-	tool = default-difftool
-[difftool "default-difftool"]
-	cmd = code --wait --diff $LOCAL $REMOTE
 [credential]
 	helper = osxkeychain
-[commit]
-	gpgsign = true
 [gpg]
 	program = /usr/local/MacGPG2/bin/gpg
 [github]
@@ -48,3 +51,5 @@
 	required = true
 [mergetool]
 	keepBackup = true
+[color]
+	ui = auto

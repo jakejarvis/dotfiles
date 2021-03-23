@@ -12,7 +12,9 @@ tap "github/gh"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
@@ -94,6 +96,8 @@ brew "node"
 brew "nvm"
 
 # Mostly ordinary binaries
+brew "act"
+brew "aws/tap/aws-sam-cli"
 brew "aws-shell"
 brew "awscli"
 brew "angular-cli"
@@ -101,6 +105,7 @@ brew "asciinema"
 brew "autoconf"
 brew "automake"
 brew "azure-cli"
+brew "bat"
 brew "caddy"
 brew "carthage"
 brew "cli53"
@@ -108,6 +113,8 @@ brew "cloudflare/cloudflare/cloudflared"
 brew "cocoapods"
 brew "composer"
 brew "dart-lang/dart/dart"
+brew "deno"
+brew "dive"
 brew "doctl"
 brew "elixir"
 brew "erlang"
@@ -155,6 +162,7 @@ brew "ruby-build"
 brew "rust"
 brew "rbenv"
 brew "rclone"
+brew "s3cmd"
 brew "s3fs"
 brew "sass/sass/migrator"
 brew "sass/sass/sass"
@@ -193,6 +201,7 @@ cask "android-platform-tools"
 
 # Pentesting tools
 brew "aircrack-ng"
+# brew "apktool"
 brew "bfg"
 brew "binutils"
 brew "binwalk"
@@ -336,6 +345,39 @@ cask "wireshark"
 #    - Canary: https://www.google.com/chrome/canary/
 # * Safari
 #    - Preview: https://developer.apple.com/safari/technology-preview/
+
+###############################
+#  Drivers                    #
+###############################
+
+cask "homebrew/cask-drivers/hp-easy-start"
+cask "homebrew/cask-drivers/logitech-camera-settings"
+cask "homebrew/cask-drivers/sonos"
+
+###############################
+#  Fonts                      #
+###############################
+
+# Monospace
+cask "homebrew/cask-fonts/font-source-code-pro"  # VS Code font
+cask "homebrew/cask-fonts/font-source-code-pro-for-powerline"
+cask "homebrew/cask-fonts/font-hack"
+cask "homebrew/cask-fonts/font-ibm-plex-mono"
+cask "homebrew/cask-fonts/font-meslo-for-powerline"  # iTerm font
+cask "homebrew/cask-fonts/font-meslo-lg-nerd-font"
+cask "homebrew/cask-fonts/font-fira-code"
+cask "homebrew/cask-fonts/font-roboto-mono"
+cask "homebrew/cask-fonts/font-ubuntu-mono"
+cask "homebrew/cask-fonts/font-sf-mono"  # comes in .pkg
+cask "homebrew/cask-fonts/font-sf-mono-for-powerline"
+
+# Serif
+cask "homebrew/cask-fonts/font-inter"
+cask "homebrew/cask-fonts/font-roboto"
+cask "homebrew/cask-fonts/font-open-sans"
+cask "homebrew/cask-fonts/font-sf-compact"  # comes in .pkg
+cask "homebrew/cask-fonts/font-sf-pro"  # comes in .pkg
+cask "homebrew/cask-fonts/font-ubuntu"
 
 ###############################
 #  macOS Apps via App Store   #

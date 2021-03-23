@@ -65,8 +65,8 @@ update() {
   echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"
   omz update
 
-  echo -e "${YELLOW}Updating MAS apps...${NC}"
-  mas upgrade
+  # echo -e "${YELLOW}Updating MAS apps...${NC}"
+  # mas upgrade
 
   echo -e "${YELLOW}Check for macOS system updates...${NC}"
   softwareupdate --list

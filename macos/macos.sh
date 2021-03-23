@@ -35,8 +35,8 @@ brew update
 # Install more current ZSH and set as default shell
 # https://stackoverflow.com/a/44549662/1438024
 brew install zsh
-sudo sh -c "echo $(brew --prefix zsh)/bin/zsh >> /etc/shells"
-chsh -s "$(brew --prefix zsh)/bin/zsh"
+sudo sh -c "echo $(brew --prefix)/bin/zsh >> /etc/shells"
+chsh -s "$(brew --prefix)/bin/zsh"
 
 # Install all apps from the Brewfile, ignore errors
 brew tap homebrew/bundle
