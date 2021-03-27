@@ -39,7 +39,7 @@ plugins=(
 # https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
-  echo "reloading compinit"
+  # echo "reloading compinit"
   compinit
 done
 compinit -C

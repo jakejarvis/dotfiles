@@ -23,10 +23,6 @@ ln -sf "$YOU_ARE_HERE/ssh/.ssh/config" ~/.ssh/config
 # Suppress terminal login banners
 touch ~/.hushlogin
 
-# https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390187157
-chmod 755 /opt/homebrew/share/zsh
-chmod 755 /opt/homebrew/share/zsh/site-functions
-
 # Get Oh My ZSH up and running
 if [ ! -e ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

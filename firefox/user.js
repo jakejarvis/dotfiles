@@ -300,11 +300,12 @@ user_pref("security.pki.sha1_enforcement_level", 1);
 user_pref("security.sri.enable", true);
 user_pref("security.ssl.disable_session_identifiers", true);
 user_pref("security.ssl.enable_ocsp_stapling", true);
-user_pref("security.ssl.enable_ocsp_must_staple", true);
+// user_pref("security.ssl.enable_ocsp_must_staple", true);
 user_pref("security.ssl.errorReporting.enabled", false);
 user_pref("security.ssl.errorReporting.url", "");
 user_pref("security.ssl.treat_unsafe_negotiation_as_broken", true);
 // user_pref("security.ssl.require_safe_negotiation", true);           // still breaks lots of stuff: https://github.com/pyllyukko/user.js/issues/237
+/*
 user_pref("security.ssl3.dhe_dss_aes_128_sha", false);
 user_pref("security.ssl3.dhe_dss_aes_256_sha", false);
 user_pref("security.ssl3.dhe_dss_camellia_128_sha", false);
@@ -350,6 +351,7 @@ user_pref("security.tls.enable_0rtt_data", false);
 user_pref("security.tls.unrestricted_rc4_fallback", false);
 user_pref("security.tls.version.fallback-limit", 3);
 user_pref("security.tls.version.min", 3);
+*/
 user_pref("security.xpconnect.plugin.unrestricted", false);
 user_pref("security.webauth.u2f", true);
 user_pref("services.blocklist.update_enabled", true);

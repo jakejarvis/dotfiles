@@ -16,8 +16,8 @@ export PATH="$GOPATH/bin:$PATH"
 #export PATH="$GOROOT/bin:$PATH"
 
 # Ruby
-export RUBY_HOME="/opt/homebrew/opt/ruby/bin"
-export GEM_PATH="/opt/homebrew/lib/ruby/gems/3.0.0/bin"
+export RUBY_HOME="$HOMEBREW_PREFIX/opt/ruby/bin"
+export GEM_PATH="$HOMEBREW_PREFIX/lib/ruby/gems/3.0.0/bin"
 export PATH="$RUBY_HOME:$PATH"
 export PATH="$GEM_PATH:$PATH"
 
@@ -31,13 +31,13 @@ fi
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 # openjdk
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 
 # Metasploit
 export PATH="/opt/metasploit-framework/bin:$PATH"
 
 # curl
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -47,11 +47,11 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # misc.
-export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/whois/bin:$PATH"
-export PATH="/opt/homebrew/opt/jpeg-turbo/bin:$PATH"
-#export LDFLAGS="-L/opt/homebrew/opt/jpeg-turbo/lib"
-#export CPPFLAGS="-I/opt/homebrew/opt/jpeg-turbo/include"
+export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/whois/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/jpeg-turbo/bin:$PATH"
+#export LDFLAGS="-L$HOMEBREW_PREFIX/opt/jpeg-turbo/lib"
+#export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/jpeg-turbo/include"
 
 # nvm
 # export NVM_DIR="$HOME/.nvm"
@@ -65,4 +65,4 @@ fi
 # ----- Third-party additions below: -----
 
 # Google Cloud SDK
-[ -f /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+[ -f $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
