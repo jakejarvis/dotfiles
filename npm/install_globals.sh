@@ -20,6 +20,7 @@ packages=(
   newman
   nodemon
   npm-check
+  pm2
   postcss-cli
   postcss
   prettier
