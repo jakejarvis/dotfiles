@@ -15,15 +15,19 @@ packages=(
   gatsby-cli
   gitmoji-cli
   gulp
+  is-up-cli
   json-server
   netlify-cli
   newman
   nodemon
   npm-check
+  npm-check-updates
   pm2
   postcss-cli
   postcss
   prettier
+  release-it
+  serve
   standard
   stylelint
   superstatic

@@ -45,8 +45,8 @@ update() {
   brew cleanup
 
   echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
-  npm install npm@latest --global
-  npm update --global
+  npm install --global npm@latest npm-check-updates@latest
+  npm-check-updates --global --upgrade
   yarn global upgrade
 
   echo -e "${YELLOW}Updating Ruby gems...${NC}"

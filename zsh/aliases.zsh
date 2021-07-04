@@ -86,12 +86,14 @@ make_hugo() {
   # parentheses lets us cd to Hugo path without changing our current location
   (
     cd "$GOPATH/src/github.com/gohugoio/hugo" \
+    && /bin/bash -c "$GOPATH/bin/hugo env" \
     && git checkout master \
     && mage uninstall \
     && git pull origin master \
     && git reset --hard HEAD \
     && mage -v hugo \
-    && HUGO_BUILD_TAGS=extended mage -v install
+    && HUGO_BUILD_TAGS=extended mage -v install \
+    && /bin/bash -c "$GOPATH/bin/hugo env"
   )
 }
 alias hugo_brew="brew upgrade hugo --fetch-HEAD --build-from-source"

@@ -53,12 +53,11 @@ export PATH="$HOMEBREW_PREFIX/opt/jpeg-turbo/bin:$PATH"
 #export LDFLAGS="-L$HOMEBREW_PREFIX/opt/jpeg-turbo/lib"
 #export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/jpeg-turbo/include"
 
-# nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
 
