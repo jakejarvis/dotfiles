@@ -4,13 +4,15 @@ set -euo pipefail
 
 # npm ls --global --parseable --depth=0 | awk '{gsub(/\/.*\//,"",$1); print}' | sort -u
 packages=(
+  @11ty/eleventy
+  @ampproject/toolbox-cli
   @babel/cli
   @babel/core
   @lhci/cli
   autoprefixer
   eslint
-  express-generator
   express
+  express-generator
   firebase-tools
   gatsby-cli
   gitmoji-cli
@@ -20,19 +22,20 @@ packages=(
   netlify-cli
   newman
   nodemon
-  npm-check
   npm-check-updates
   pm2
-  postcss-cli
   postcss
+  postcss-cli
   prettier
   release-it
+  rollup
   serve
   standard
   stylelint
   superstatic
   vercel
-  webtorrent-cli
+  webpack
+  webpack-cli
   yo
 )
 
