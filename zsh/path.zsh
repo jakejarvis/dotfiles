@@ -16,6 +16,7 @@ export PATH="$GOPATH/bin:$PATH"
 #export PATH="$GOROOT/bin:$PATH"
 
 # Ruby
+export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
 export RUBY_HOME="$HOMEBREW_PREFIX/opt/ruby/bin"
 export GEM_PATH="$HOMEBREW_PREFIX/lib/ruby/gems/3.0.0/bin"
 export PATH="$RUBY_HOME:$PATH"
@@ -50,8 +51,6 @@ export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/whois/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/jpeg-turbo/bin:$PATH"
-#export LDFLAGS="-L$HOMEBREW_PREFIX/opt/jpeg-turbo/lib"
-#export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/jpeg-turbo/include"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -60,6 +59,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
+
+# volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # ----- Third-party additions below: -----
 

@@ -47,6 +47,9 @@ compinit -C
 # Load everything!
 source $ZSH/oh-my-zsh.sh
 
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
 # Fix slow paste problem w/ zsh-syntax-highlighting plugin
 # https://github.com/zsh-users/zsh-syntax-highlighting/issues/295
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'

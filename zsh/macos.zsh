@@ -45,9 +45,8 @@ update() {
   brew cleanup
 
   echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
-  npm install npm@latest --global
-  npm update --global
-  yarn global upgrade
+  volta run npm update --global
+  volta run yarn global upgrade
 
   echo -e "${YELLOW}Updating Ruby gems...${NC}"
   gem update --system
@@ -65,8 +64,8 @@ update() {
   echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"
   omz update
 
-  # echo -e "${YELLOW}Updating MAS apps...${NC}"
-  # mas upgrade
+  echo -e "${YELLOW}Updating MAS apps...${NC}"
+  mas upgrade
 
   echo -e "${YELLOW}Check for macOS system updates...${NC}"
   softwareupdate --list

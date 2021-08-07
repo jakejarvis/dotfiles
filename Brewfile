@@ -93,10 +93,6 @@ brew "git-crypt"
 brew "gh"
 brew "hub"
 
-# Node & NPM / NVM
-brew "node"
-brew "nvm"
-
 # Mostly ordinary binaries
 brew "act"
 brew "aws-shell"
@@ -187,14 +183,12 @@ brew "torsocks"
 brew "travis"
 brew "twilio/brew/twilio"
 brew "typescript"
-brew "watchman"
 brew "whois", link: true
 brew "wireguard-tools"
 brew "wireguard-go"
 brew "wp-cli"
 # brew "wpengine/wpe-cli/wpe-cli"
 brew "xz"
-brew "yarn"
 brew "youtube-dl"
 brew "yq"
 brew "yuicompressor"
