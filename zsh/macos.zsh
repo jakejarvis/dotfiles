@@ -58,17 +58,14 @@ update() {
   echo -e "${YELLOW}Updating pip packages...${NC}"
   pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
 
-  echo -e "${YELLOW}Updating Composer packages...${NC}"
-  composer global update
-
-  echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"
-  omz update
-
   echo -e "${YELLOW}Updating MAS apps...${NC}"
-  mas upgrade
+  mas outdated
 
   echo -e "${YELLOW}Check for macOS system updates...${NC}"
   softwareupdate --list
+
+  echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"
+  omz update
 }
 
 alias rehide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
