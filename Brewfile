@@ -182,7 +182,6 @@ brew "tor"
 brew "torsocks"
 brew "travis"
 brew "twilio/brew/twilio"
-brew "typescript"
 brew "whois", link: true
 brew "wireguard-tools"
 brew "wireguard-go"

@@ -1,4 +1,5 @@
-.aws/credentials
-.ssh/known_hosts*
+**/.aws/credentials
+**/.ssh/known_hosts*
+**/.ssh/config_private
 *id_rsa*
 *id_ed25519*

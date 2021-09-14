@@ -8,10 +8,10 @@ then
   curl https://get.volta.sh | bash -s -- --skip-setup
 fi
 
-volta install node@lts
 volta install node@latest # remove when LTS officially supports arm64
 volta install npm@6 # having issues with npm@7 and volta
 volta install yarn@1
+volta fetch node@lts # not native on M1 but good to have
 
 volta list node
 volta list npm
@@ -25,16 +25,20 @@ packages=(
   @lhci/cli
   autoprefixer
   browserify
+  dtslint
+  dts-gen
   eslint
   express
   express-generator
   firebase-tools
   gatsby-cli
   gulp
+  gzip-size-cli
   json-server
   netlify-cli
   nodemon
   npm-check-updates
+  npm-name-cli
   pm2
   postcss
   postcss-cli
@@ -46,13 +50,14 @@ packages=(
   stylelint
   svgo
   terser
+  typescript
   vercel
   webpack
   webpack-cli
 )
 
 for p in "${packages[@]}"; do
-  npm install --global "$p" || echo "$p not found"
+  volta run --no-yarn npm install --global "$p" || echo "$p not found"
 done
 
 volta list all

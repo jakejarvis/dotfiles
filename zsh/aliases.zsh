@@ -76,8 +76,8 @@ alias dcl="docker-compose logs -f"
 #
 # Node
 #
-alias npm_clean="rm -rf node_modules && npm cache clean && npm install"
-alias yarn_clean="rm -rf node_modules && yarn cache clean && yarn install"
+alias fresh_npm="rm -rf node_modules package-lock.json && npm install"
+alias fresh_yarn="rm -rf node_modules yarn.lock && yarn install"
 
 #
 # Hugo

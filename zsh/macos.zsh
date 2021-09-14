@@ -45,8 +45,11 @@ update() {
   brew cleanup
 
   echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
-  volta run npm update --global
-  volta run yarn global upgrade
+  volta install node@latest
+  volta install npm@6 # having issues with npm@7 and volta
+  volta install yarn@1
+  volta run --no-yarn --node latest --npm 6 npm update --global
+  volta run --node latest --yarn 1 yarn global upgrade
 
   echo -e "${YELLOW}Updating Ruby gems...${NC}"
   gem update --system
