@@ -30,7 +30,6 @@ plugins=(
   vscode
   gitignore
   gnu-utils
-  zsh_reload
   zsh-syntax-highlighting
   zsh-autosuggestions
 )

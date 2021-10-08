@@ -57,7 +57,7 @@ packages=(
 )
 
 for p in "${packages[@]}"; do
-  volta run --no-yarn npm install --global "$p" || echo "$p not found"
+  volta run --no-yarn -- npm install --global "$p" || echo "$p not found"
 done
 
 volta list all
