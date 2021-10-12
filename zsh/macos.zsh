@@ -47,8 +47,9 @@ update() {
   echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
   volta install node@latest
   volta install npm@6
+  volta install npm@8
   volta install yarn@1
-  volta run --node latest --npm 6 --no-yarn -- npm update --global
+  volta run --node latest --npm 8 --no-yarn -- npm update --global
   volta run --node latest --yarn 1 -- yarn global upgrade
 
   echo -e "${YELLOW}Updating Ruby gems...${NC}"

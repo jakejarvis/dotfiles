@@ -9,7 +9,7 @@ then
 fi
 
 volta install node@latest # remove when LTS officially supports arm64
-volta install npm@6 # having issues with npm@7 and volta
+volta install npm@8
 volta install yarn@1
 volta fetch node@lts # not native on M1 but good to have
 
