@@ -7,9 +7,6 @@ tap "cloudflare/cloudflare"
 tap "dart-lang/dart"
 tap "dopplerhq/cli"
 tap "facebook/fb"
-tap "github/bootstrap"
-tap "github/gh"
-tap "hashicorp/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -20,10 +17,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
 tap "sass/sass"
-tap "superfly/tap"
 tap "teamookla/speedtest"
-tap "thoughtbot/formulae"
-tap "twilio/brew"
 # tap "wpengine/wpe-cli"
 tap "wpscanteam/tap"
 
@@ -91,10 +85,8 @@ brew "git"
 brew "git-lfs"
 brew "git-crypt"
 brew "gh"
-brew "hub"
 
 # Mostly ordinary binaries
-brew "act"
 brew "aws-shell"
 brew "awscli"
 brew "angular-cli"
@@ -106,13 +98,11 @@ brew "bat"
 brew "caddy"
 brew "carthage"
 brew "certbot"
-brew "cli53"
 brew "cloudflare/cloudflare/cloudflared"
 brew "cocoapods"
 brew "composer"
 brew "dart-lang/dart/dart"
 brew "deno"
-brew "dive"
 brew "docker-credential-helper-ecr"
 brew "doctl"
 brew "dopplerhq/cli/doppler"
@@ -122,10 +112,6 @@ brew "fx"
 brew "geoip"
 brew "go"
 brew "guetzli"
-brew "hashicorp/tap/packer"
-brew "hashicorp/tap/terraform"
-brew "hashicorp/tap/vault"
-brew "hashicorp/tap/waypoint"
 brew "heroku/brew/heroku"
 brew "heroku/brew/heroku-node"
 brew "htop"
@@ -157,7 +143,6 @@ brew "pkg-config"
 brew "pngcheck"
 brew "pngcrush"
 brew "postgresql"
-brew "python@3.8"
 brew "python@3.9"
 brew "python"
 brew "pyenv"
@@ -175,13 +160,9 @@ brew "serverless"
 brew "shellcheck"
 brew "sqlite"
 brew "sub2srt"
-brew "superfly/tap/flyctl"
 brew "teamookla/speedtest/speedtest"
-brew "thoughtbot/formulae/parity"
 brew "tor"
 brew "torsocks"
-brew "travis"
-brew "twilio/brew/twilio"
 brew "whois", link: true
 brew "wireguard-tools"
 brew "wireguard-go"
@@ -190,7 +171,6 @@ brew "wp-cli"
 brew "xz"
 brew "youtube-dl"
 brew "yq"
-brew "yuicompressor"
 brew "zopfli"
 
 # Android SDK
@@ -243,37 +223,30 @@ cask_args appdir: "/Applications"
 
 # System Utilities
 cask "osxfuse"
-cask "appzapper"
+cask "appcleaner"
 cask "backblaze"
 cask "backblaze-downloader"
 cask "carbon-copy-cloner"
-cask "cleanmymac"
 cask "coconutbattery"
 cask "daisydisk"
 cask "dropbox"
 cask "duet"
 cask "etrecheckpro"
-cask "filebot"
 cask "geekbench"
-cask "intel-power-gadget"
 cask "istat-menus"
+cask "macupdater"
 cask "paragon-ntfs"
 cask "the-unarchiver"
 cask "transmission"
 cask "unetbootin"
-cask "unshaky"
 cask "vnc-viewer"
 
 # Passwords, VPNs, other Security
 cask "1password"
 cask "authy"
-cask "expressvpn"
 cask "gpg-suite"
-# cask "gpg-suite-no-mail"     # Install Mail separately: https://github.com/GpgMailNoActivation/GpgMailNoActivation
-# cask "jakejarvis/brew/gpg-suite-no-drm"      # personal cask to install GPG suite and mail.app plugin without activation
 cask "keybase"
 cask "little-snitch"
-cask "nordvpn"
 cask "tor-browser"
 cask "tunnelblick"
 
@@ -304,6 +277,7 @@ cask "xquartz"
 
 # Virtual Machines (& Docker)
 cask "docker"
+cask "parallels"
 # cask "virtualbox"
 # cask "virtualbox-extension-pack"
 # cask "vagrant"
@@ -407,14 +381,11 @@ mas "Xcode", id: 497799835
 mas "Amphetamine", id: 937984704
 mas "Deliveries", id: 290986013
 mas "Disk Speed Test", id: 425264550
-mas "Kindle", id: 405399194
-mas "Magnet", id: 441258766
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053
 mas "Outline", id: 1356178125
 mas "Shazam", id: 897118787
 mas "Silicon Info", id: 1542271266
-mas "TweetDeck", id: 485812721
 mas "Twitter", id: 409789998
 mas "VMware Remote Console", id: 1230249825
 mas "WireGuard", id: 1451685025
