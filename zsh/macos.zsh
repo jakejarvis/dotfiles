@@ -32,21 +32,20 @@ alias dns-set-cloudflare="dns-set 1.1.1.1 1.0.0.1"
 alias dns-set-google="dns-set 8.8.8.8 8.8.4.4"
 alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache"
 
-# Update: brew, npm, gem, app store, macos
+# Update: brew, npm, gems, pip, app store, macos
 update() {
   NC="\033[0m"
   YELLOW="\033[0;33m"
 
   echo -e "${YELLOW}Updating Homebrew formulae and casks...${NC}"
   brew update
-  # git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask" fetch --unshallow
   brew upgrade
-  brew upgrade --cask --greedy
+  # avoid annoying `(latest) != latest` cask updates:
+  brew upgrade $(brew outdated --greedy --verbose | awk '$2 !~ /(latest)/ {print $1}')
   brew cleanup
 
   echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
   volta install node@latest
-  volta install npm@6
   volta install npm@8
   volta install yarn@1
   volta run --node latest --npm 8 --no-yarn -- npm update --global

@@ -1,5 +1,9 @@
 {
-  "ASCII Ligatures" : true,
+  "Ansi 5 Color" : {
+    "Green Component" : 0.26314744353294373,
+    "Red Component" : 0.42564234137535095,
+    "Blue Component" : 0.65052211284637451
+  },
   "Working Directory" : "\/Users\/jake",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -46,7 +50,7 @@
     "telnet"
   ],
   "Scrollback Lines" : 0,
-  "Draw Powerline Glyphs" : false,
+  "Draw Powerline Glyphs" : true,
   "Status Bar Layout" : {
     "components" : [
       {
@@ -56,6 +60,7 @@
             "base: priority" : 5,
             "maxwidth" : 1.7976931348623157e+308,
             "minwidth" : "0",
+            "base: compression resistance" : 1,
             "shared text color" : {
               "Red Component" : 0.59999999999999998,
               "Color Space" : "sRGB",
@@ -63,7 +68,6 @@
               "Alpha Component" : 1,
               "Green Component" : 0.59999999999999998
             },
-            "base: compression resistance" : 1,
             "path" : "hostname",
             "abbreviate-localhost" : ""
           },
@@ -82,14 +86,14 @@
             "iTermStatusBarSpringComponentSizeMultipleKey" : 1,
             "base: priority" : 5,
             "iTermStatusBarSpringComponentSpringConstantKey" : 0.01,
+            "base: compression resistance" : 1,
             "shared text color" : {
               "Red Component" : 0.87515999999999994,
               "Color Space" : "sRGB",
               "Blue Component" : 0.63,
               "Alpha Component" : 1,
               "Green Component" : 0.90000000000000002
-            },
-            "base: compression resistance" : 1
+            }
           },
           "layout advanced configuration dictionary value" : {
             "remove empty components" : false,
@@ -443,8 +447,8 @@
     "Blue Component" : 0.058871746063232422
   },
   "Name" : "JJ-ZSH",
-  "Guid" : "EDCECF3F-4620-4117-8E79-0B8C58327F3E",
   "Blinking Cursor" : true,
+  "Guid" : "EDCECF3F-4620-4117-8E79-0B8C58327F3E",
   "Ansi 8 Color" : {
     "Green Component" : 0.26696832579185525,
     "Red Component" : 0.26696832579185525,
@@ -473,8 +477,8 @@
   },
   "Session Close Undo Timeout" : 15,
   "Blur" : true,
-  "Normal Font" : "MesloLGMForPowerline-Regular 12",
-  "Vertical Spacing" : 1.1000000000000001,
+  "Normal Font" : "Menlo-Regular 12",
+  "Vertical Spacing" : 1.3,
   "Ansi 7 Color" : {
     "Green Component" : 1,
     "Red Component" : 1,
@@ -520,10 +524,6 @@
   "Columns" : 120,
   "Visual Bell" : true,
   "Custom Directory" : "No",
-  "Ansi 5 Color" : {
-    "Green Component" : 0.26314744353294373,
-    "Red Component" : 0.42564234137535095,
-    "Blue Component" : 0.65052211284637451
-  },
-  "Thin Strokes" : 4
+  "Thin Strokes" : 4,
+  "ASCII Ligatures" : true
 }

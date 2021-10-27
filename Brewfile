@@ -5,20 +5,18 @@
 tap "adoptopenjdk/openjdk"
 tap "cloudflare/cloudflare"
 tap "dart-lang/dart"
-tap "dopplerhq/cli"
-tap "facebook/fb"
 tap "heroku/brew"
+tap "homebrew/aliases"
+tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
-tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
 tap "sass/sass"
-tap "teamookla/speedtest"
-# tap "wpengine/wpe-cli"
 tap "wpscanteam/tap"
 
 ###############################
@@ -60,18 +58,14 @@ brew "gmp"
 
 # Other useful binaries
 brew "ack"
-brew "gs"
 brew "imagemagick"  #, args: ["with-webp"]
 brew "ffmpeg"  #, args: ["with-libvpx"]
 brew "gawk"
 brew "less"
 brew "lua"
-brew "lynx"
 brew "mtr"
 brew "nano"
 brew "p7zip"
-brew "pigz"
-brew "pv"
 brew "rename"
 brew "rlwrap"
 brew "ssh-copy-id", link: true
@@ -94,8 +88,6 @@ brew "asciinema"
 brew "autoconf"
 brew "automake"
 brew "azure-cli"
-brew "bat"
-brew "caddy"
 brew "carthage"
 brew "certbot"
 brew "cloudflare/cloudflare/cloudflared"
@@ -105,7 +97,6 @@ brew "dart-lang/dart/dart"
 brew "deno"
 brew "docker-credential-helper-ecr"
 brew "doctl"
-brew "dopplerhq/cli/doppler"
 brew "elixir"
 brew "erlang"
 brew "fx"
@@ -121,8 +112,6 @@ brew "hugo", args: ["HEAD"]
 brew "hydra"
 brew "iproute2mac"
 brew "jq"
-brew "kubernetes-cli"
-brew "kubernetes-helm"
 brew "libsass", args: ["HEAD"]
 brew "mas"
 brew "mcrypt"
@@ -132,7 +121,6 @@ brew "mosh"
 brew "mariadb"
 brew "mysql-client"
 brew "ncurses"
-brew "neofetch"
 brew "netcat"
 brew "openvpn"
 brew "optipng"
@@ -160,27 +148,25 @@ brew "serverless"
 brew "shellcheck"
 brew "sqlite"
 brew "sub2srt"
-brew "teamookla/speedtest/speedtest"
+brew "svn"
 brew "tor"
 brew "torsocks"
 brew "whois", link: true
 brew "wireguard-tools"
 brew "wireguard-go"
 brew "wp-cli"
-# brew "wpengine/wpe-cli/wpe-cli"
 brew "xz"
 brew "youtube-dl"
 brew "yq"
 brew "zopfli"
 
 # Android SDK
-brew "ant"
-brew "maven"
-brew "gradle"
+cask "android-platform-tools"
+# brew "ant"
+# brew "maven"
+# brew "gradle"
 # cask "android-sdk"
 # cask "android-ndk"
-cask "android-platform-tools"
-# cask "android-studio"
 
 # Pentesting tools
 brew "aircrack-ng"
@@ -329,6 +315,7 @@ cask "wireshark"
 
 cask "homebrew/cask-drivers/hp-easy-start"
 cask "homebrew/cask-drivers/logitech-camera-settings"
+cask "homebrew/cask-drivers/razer-synapse"
 cask "homebrew/cask-drivers/sonos"
 
 ###############################
@@ -336,25 +323,19 @@ cask "homebrew/cask-drivers/sonos"
 ###############################
 
 # Monospace
-cask "homebrew/cask-fonts/font-source-code-pro"  # VS Code font
-cask "homebrew/cask-fonts/font-source-code-pro-for-powerline"
+cask "homebrew/cask-fonts/font-source-code-pro"
 cask "homebrew/cask-fonts/font-hack"
 cask "homebrew/cask-fonts/font-ibm-plex-mono"
-cask "homebrew/cask-fonts/font-meslo-for-powerline"  # iTerm font
-cask "homebrew/cask-fonts/font-meslo-lg-nerd-font"
-cask "homebrew/cask-fonts/font-fira-code"
 cask "homebrew/cask-fonts/font-roboto-mono"
-cask "homebrew/cask-fonts/font-ubuntu-mono"
-cask "homebrew/cask-fonts/font-sf-mono"  # comes in .pkg
-cask "homebrew/cask-fonts/font-sf-mono-for-powerline"
+cask "homebrew/cask-fonts/font-sf-mono"  # iTerm/VS Code font, comes in .pkg
 
-# Serif
+# Sans/Serif
+cask "homebrew/cask-fonts/font-comic-neue"
 cask "homebrew/cask-fonts/font-inter"
 cask "homebrew/cask-fonts/font-roboto"
 cask "homebrew/cask-fonts/font-open-sans"
 cask "homebrew/cask-fonts/font-sf-compact"  # comes in .pkg
 cask "homebrew/cask-fonts/font-sf-pro"  # comes in .pkg
-cask "homebrew/cask-fonts/font-ubuntu"
 
 ###############################
 #  macOS Apps via App Store   #
