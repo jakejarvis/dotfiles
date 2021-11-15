@@ -10,8 +10,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Default to nano 'cause I'm a wimp
 export EDITOR="nano"
 export VISUAL="code"
-# export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+# export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
 
 # Adjust history for speed
 HISTFILE=~/.zsh_history
@@ -26,8 +26,8 @@ DEFAULT_USER=jake
 # Oh My ZSH plugins
 plugins=(
   colorize
-  osx
   history
+  macos
   vscode
   gitignore
   gnu-utils
@@ -68,6 +68,9 @@ export GATSBY_TELEMETRY_DISABLED=1
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export SAM_CLI_TELEMETRY=0
 export AZURE_CORE_COLLECT_TELEMETRY=0
+
+# TEMPORARY: fixes some breakage with node 17
+export NODE_OPTIONS=--openssl-legacy-provider
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
