@@ -70,7 +70,7 @@ export SAM_CLI_TELEMETRY=0
 export AZURE_CORE_COLLECT_TELEMETRY=0
 
 # TEMPORARY: fixes some breakage with node 17
-export NODE_OPTIONS=--openssl-legacy-provider
+#export NODE_OPTIONS=--openssl-legacy-provider
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
