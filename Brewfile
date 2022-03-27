@@ -16,6 +16,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
+tap "planetscale/tap"
 tap "sass/sass"
 tap "wpscanteam/tap"
 
@@ -128,6 +129,7 @@ brew "packer"
 brew "pandoc"
 brew "php"
 brew "pkg-config"
+brew "planetscale/tap/pscale"
 brew "pngcheck"
 brew "pngcrush"
 brew "postgresql"
@@ -323,11 +325,13 @@ cask "homebrew/cask-drivers/sonos"
 ###############################
 
 # Monospace
+cask "homebrew/cask-fonts/font-cascadia-code"
 cask "homebrew/cask-fonts/font-source-code-pro"
 cask "homebrew/cask-fonts/font-hack"
 cask "homebrew/cask-fonts/font-ibm-plex-mono"
 cask "homebrew/cask-fonts/font-roboto-mono"
 cask "homebrew/cask-fonts/font-sf-mono"  # iTerm/VS Code font, comes in .pkg
+cask "homebrew/cask-fonts/font-sf-mono-for-powerline"
 
 # Sans/Serif
 cask "homebrew/cask-fonts/font-comic-neue"

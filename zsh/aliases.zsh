@@ -74,8 +74,9 @@ alias dcr="docker-compose down && docker-compose up -d"
 alias dcl="docker-compose logs -f"
 
 #
-# Node
+# Node/NPM/Yarn
 #
+alias npr="npm run"
 alias fresh_npm="rm -rf node_modules package-lock.json && npm install"
 alias fresh_yarn="rm -rf node_modules yarn.lock && yarn install"
 

@@ -23,6 +23,7 @@ packages=(
   @babel/cli
   @babel/core
   @lhci/cli
+  @vercel/ncc
   autoprefixer
   browserify
   dtslint
@@ -36,6 +37,7 @@ packages=(
   gzip-size-cli
   json-server
   netlify-cli
+  next
   nodemon
   npm-check-updates
   npm-name-cli
@@ -45,12 +47,13 @@ packages=(
   prettier
   release-it
   rollup
-  serve
   standard
   stylelint
+  superstatic
   svgo
   terser
   typescript
+  typesync
   vercel
   webpack
   webpack-cli

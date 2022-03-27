@@ -43,10 +43,6 @@ export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# yarn
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 # misc.
 export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/whois/bin:$PATH"
