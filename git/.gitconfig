@@ -36,10 +36,10 @@
 	aliases = config --get-regexp alias
 	contributors = shortlog --summary --numbered
 	new = !git init && git symbolic-ref HEAD refs/heads/main
-[credential]
-	helper = osxkeychain
-[gpg]
-	program = /usr/local/MacGPG2/bin/gpg
+# [credential]
+# 	helper = osxkeychain
+# [gpg]
+# 	program = /usr/local/MacGPG2/bin/gpg
 [github]
 	user = jakejarvis
 [hub]

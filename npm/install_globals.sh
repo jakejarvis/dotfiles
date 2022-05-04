@@ -19,25 +19,26 @@ volta list yarn
 
 # npm ls --global --parseable --depth=0 | awk '{gsub(/\/.*\//,"",$1); print}' | sort -u
 packages=(
-  @11ty/eleventy
   @babel/cli
   @babel/core
   @lhci/cli
   @vercel/ncc
   autoprefixer
   browserify
+  cross-env
+  cross-env-shell
   dtslint
   dts-gen
+  esbuild
   eslint
   express
   express-generator
   firebase-tools
   gatsby-cli
-  gulp
   gzip-size-cli
   json-server
   netlify-cli
-  next
+  new-component
   nodemon
   npm-check-updates
   npm-name-cli
@@ -47,7 +48,6 @@ packages=(
   prettier
   release-it
   rollup
-  standard
   stylelint
   superstatic
   svgo

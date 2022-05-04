@@ -2,6 +2,7 @@
 #  Taps                       #
 ###############################
 
+tap "1password/tap"
 tap "adoptopenjdk/openjdk"
 tap "cloudflare/cloudflare"
 tap "dart-lang/dart"
@@ -82,6 +83,7 @@ brew "git-crypt"
 brew "gh"
 
 # Mostly ordinary binaries
+brew "1password/tap/1password-cli"
 brew "aws-shell"
 brew "awscli"
 brew "angular-cli"
@@ -202,6 +204,11 @@ brew "hashcat"
 brew "nikto"
 brew "tcpdump"
 # brew "wpscanteam/tap/wpscan"  # not yet compatible with M1
+brew "dnsx"
+brew "httpx"
+brew "naabu"
+brew "nuclei"
+brew "subfinder"
 
 ###############################
 #  macOS Apps via Cask        #
