@@ -7,9 +7,6 @@ YOU_ARE_HERE="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 
 echo "👋  Deep breaths, everything will (probably) be fine!"
 
-# Ask for the administrator password upfront
-sudo -v
-
 # Clone this repo if we haven't already
 git clone --recurse-submodules https://github.com/jakejarvis/dotfiles.git "$YOU_ARE_HERE" || true
 
@@ -31,9 +28,12 @@ fi
 # Use Git submodules to get OMZ plugins
 git submodule update --init --recursive
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   # shellcheck disable=SC1090,SC1091
   source "$YOU_ARE_HERE/macos/macos.sh"
+elif [ "$CODESPACES" = "true" ]; then
+  # shellcheck disable=SC1090,SC1091
+  source "$YOU_ARE_HERE/codespaces/codespaces.sh"
 else
   echo ""
   echo "This isn't a Mac, so we're all done here!"

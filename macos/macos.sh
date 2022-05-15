@@ -7,6 +7,9 @@ if test ! "$(uname)" = "Darwin"; then
   exit 0
 fi
 
+# Ask for the administrator password upfront
+sudo -v
+
 # Make sure macOS is fully up to date before doing anything
 sudo softwareupdate --install --all
 
@@ -24,6 +27,9 @@ sudo xcodebuild -license accept
 if test ! "$(which brew)"; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
+
+# fix zplug
+ln -s "$(brew --prefix)/opt/zplug" ~/.zplug
 
 # Disable analytics
 # https://docs.brew.sh/Analytics
