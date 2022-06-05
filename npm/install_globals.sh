@@ -5,7 +5,8 @@ set -euo pipefail
 # fetch and install Volta (better nvm)
 if ! command -v volta &> /dev/null
 then
-  curl https://get.volta.sh | bash -s -- --skip-setup
+  # curl https://get.volta.sh | bash -s -- --skip-setup
+  brew install volta
 fi
 
 volta install node@latest # remove when LTS officially supports arm64
@@ -34,7 +35,6 @@ packages=(
   express
   express-generator
   firebase-tools
-  gatsby-cli
   gzip-size-cli
   json-server
   netlify-cli

@@ -57,6 +57,7 @@ brew "make"
 brew "openssh"
 brew "screen"
 brew "gmp"
+brew "curl", link: true
 
 # Other useful binaries
 brew "ack"
@@ -155,6 +156,7 @@ brew "sub2srt"
 brew "svn"
 brew "tor"
 brew "torsocks"
+brew "volta"
 brew "whois", link: true
 brew "wireguard-tools"
 brew "wireguard-go"
