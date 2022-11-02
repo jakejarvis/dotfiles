@@ -25,21 +25,16 @@ packages=(
   @lhci/cli
   @vercel/ncc
   autoprefixer
-  browserify
   cross-env
-  cross-env-shell
+  depcheck
   dtslint
   dts-gen
   esbuild
-  eslint
-  express
-  express-generator
-  firebase-tools
   gzip-size-cli
   json-server
   netlify-cli
-  new-component
   nodemon
+  np
   npm-check-updates
   npm-name-cli
   pm2

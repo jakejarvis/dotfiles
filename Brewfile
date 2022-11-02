@@ -1,25 +1,3 @@
-###############################
-#  Taps                       #
-###############################
-
-tap "1password/tap"
-tap "adoptopenjdk/openjdk"
-tap "cloudflare/cloudflare"
-tap "dart-lang/dart"
-tap "heroku/brew"
-tap "homebrew/aliases"
-tap "homebrew/autoupdate"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "homebrew/test-bot"
-tap "planetscale/tap"
-tap "sass/sass"
-tap "wpscanteam/tap"
 
 ###############################
 #  Binaries                   #
@@ -140,7 +118,7 @@ brew "python@3.9"
 brew "python"
 brew "pyenv"
 brew "qemu"
-brew "ruby"
+# brew "ruby"
 brew "ruby-build"
 brew "rust"
 brew "rbenv"
@@ -167,7 +145,7 @@ brew "yq"
 brew "zopfli"
 
 # Android SDK
-cask "android-platform-tools"
+# cask "android-platform-tools"
 # brew "ant"
 # brew "maven"
 # brew "gradle"
@@ -205,7 +183,7 @@ brew "bettercap"
 brew "hashcat"
 brew "nikto"
 brew "tcpdump"
-# brew "wpscanteam/tap/wpscan"  # not yet compatible with M1
+brew "wpscanteam/tap/wpscan"
 brew "dnsx"
 brew "httpx"
 brew "naabu"
@@ -219,7 +197,6 @@ brew "subfinder"
 cask_args appdir: "/Applications"
 
 # System Utilities
-cask "osxfuse"
 cask "appcleaner"
 cask "backblaze"
 cask "backblaze-downloader"
@@ -227,15 +204,12 @@ cask "carbon-copy-cloner"
 cask "coconutbattery"
 cask "daisydisk"
 cask "dropbox"
-cask "duet"
 cask "etrecheckpro"
 cask "geekbench"
 cask "istat-menus"
 cask "macupdater"
-cask "paragon-ntfs"
 cask "the-unarchiver"
 cask "transmission"
-cask "unetbootin"
 cask "vnc-viewer"
 
 # Passwords, VPNs, other Security
@@ -253,24 +227,17 @@ cask "adoptopenjdk/openjdk/adoptopenjdk"
 cask "chromedriver"
 cask "eclipse-java"
 cask "github"
-cask "glyphs"
 cask "google-cloud-sdk"
 cask "imageoptim"
 cask "iterm2"
 cask "jetbrains-toolbox"
-cask "mamp"
 cask "microsoft-office"
-cask "ngrok"
-cask "postman"
 cask "powershell"
-cask "robo-3t"
 cask "sequel-pro"
 cask "sketch"
 cask "tower"
 cask "transmit"
 cask "visual-studio-code"
-cask "visual-studio"
-cask "xquartz"
 
 # Virtual Machines (& Docker)
 cask "docker"
@@ -287,7 +254,6 @@ cask "iina"
 cask "plex-media-player"
 cask "pocket-casts"
 cask "spotify"
-cask "vlc"
 
 # Communication/Social
 cask "discord"
@@ -297,7 +263,6 @@ cask "whatsapp"
 cask "zoomus"
 
 # Gaming
-cask "shadow"
 cask "steam"
 cask "minecraft"
 cask "nvidia-geforce-now"
@@ -363,7 +328,6 @@ mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Logic Pro", id: 634148309
-mas "MainStage 3", id: 634159523
 mas "Motion", id: 434290957
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
@@ -373,11 +337,8 @@ mas "Xcode", id: 497799835
 
 # Third Party
 mas "Amphetamine", id: 937984704
-mas "Deliveries", id: 290986013
 mas "Disk Speed Test", id: 425264550
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Microsoft To Do", id: 1274495053
-mas "Outline", id: 1356178125
 mas "Shazam", id: 897118787
 mas "Silicon Info", id: 1542271266
 mas "Twitter", id: 409789998

@@ -68,6 +68,7 @@ export GATSBY_TELEMETRY_DISABLED=1
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export SAM_CLI_TELEMETRY=0
 export AZURE_CORE_COLLECT_TELEMETRY=0
+export CHECKPOINT_DISABLE=1 # prisma
 
 # TEMPORARY: fixes some breakage with node 17
 #export NODE_OPTIONS=--openssl-legacy-provider

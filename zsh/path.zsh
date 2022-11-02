@@ -20,11 +20,11 @@ export PATH="$GOPATH/bin:$PATH"
 #export PATH="$GOROOT/bin:$PATH"
 
 # Ruby
-export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
-export RUBY_HOME="$HOMEBREW_PREFIX/opt/ruby/bin"
-export GEM_PATH="$HOMEBREW_PREFIX/lib/ruby/gems/3.0.0/bin"
-export PATH="$RUBY_HOME:$PATH"
-export PATH="$GEM_PATH:$PATH"
+# export PATH="$HOME/.gem/ruby/3.1.0/bin:$PATH"
+# export RUBY_HOME="$HOMEBREW_PREFIX/opt/ruby/bin"
+# export GEM_PATH="$HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin"
+# export PATH="$RUBY_HOME:$PATH"
+# export PATH="$GEM_PATH:$PATH"
 
 # rbenv
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml)"
@@ -33,7 +33,7 @@ if command -v rbenv 1>/dev/null 2>&1; then
 fi
 
 # Python
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+# export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 # openjdk
 export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"

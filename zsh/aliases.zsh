@@ -110,6 +110,6 @@ alias pubkey_rsa="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied t
 alias ytdl="youtube-dl -f bestvideo+bestaudio"
 alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"
 
-alias weather="curl -4 https://wttr.in/Boston"
+alias weather="curl 'https://wttr.in/mht?format=v2'"
 
 alias shellcheckd="docker run --rm -v \"$PWD:/mnt\" koalaman/shellcheck:latest"

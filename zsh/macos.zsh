@@ -15,8 +15,8 @@ alias awk="gawk"
 command -v md5sum > /dev/null || alias md5sum="md5"
 
 # system python -> homebrew python3
-alias python="python3"
-alias pip="pip3"
+# alias python="python3"
+# alias pip="pip3"
 
 # My own creation! See: https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
@@ -59,7 +59,7 @@ update() {
 
   # https://stackoverflow.com/a/3452888
   echo -e "${YELLOW}Updating pip packages...${NC}"
-  pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
+  pip3 list --outdated --format=json | jq -r '.[] | .name+"="+.latest_version' | cut -d = -f 1 | xargs -n1 pip3 install -U
 
   echo -e "${YELLOW}Updating MAS apps...${NC}"
   mas outdated
