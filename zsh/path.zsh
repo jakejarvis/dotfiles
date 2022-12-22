@@ -3,9 +3,9 @@ if test ! "$(uname)" = "Darwin"; then
 fi
 
 # Default paths
-export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin${PATH+:$PATH}"
 
-# homebrew
+# Homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
 export HOMEBREW_REPOSITORY="/opt/homebrew"
@@ -13,18 +13,15 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
+# Remap macOS core utils to GNU equivalents (from coreutils, findutils, gnu-*, etc.):
+# https://gist.github.com/skyzyx/3438280b18e4f7c490db8a2a2ca0b9da?permalink_comment_id=3049694#gistcomment-3049694
+for p in "$(brew --prefix)"/opt/*/libexec/gnubin; do export PATH=$p:$PATH; done
+# Ensure `man` refers to the new binaries:
+for p in "$(brew --prefix)"/opt/*/libexec/gnuman; do export MANPATH=$p:$MANPATH; done
+
 # Go
 export GOPATH="$HOME/golang"
-#export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$GOPATH/bin:$PATH"
-#export PATH="$GOROOT/bin:$PATH"
-
-# Ruby
-# export PATH="$HOME/.gem/ruby/3.1.0/bin:$PATH"
-# export RUBY_HOME="$HOMEBREW_PREFIX/opt/ruby/bin"
-# export GEM_PATH="$HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin"
-# export PATH="$RUBY_HOME:$PATH"
-# export PATH="$GEM_PATH:$PATH"
 
 # rbenv
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml)"
@@ -32,11 +29,8 @@ if command -v rbenv 1>/dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
 
-# Python
-# export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-
-# openjdk
-export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
+# OpenJDK
+export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
 
 # Metasploit
 export PATH="/opt/metasploit-framework/bin:$PATH"

@@ -2,22 +2,6 @@
 alias intel="arch -x86_64 /bin/zsh"
 alias arm="arch -arm64 /opt/homebrew/bin/zsh"
 
-# Remap macOS core utils to GNU
-alias grep="ggrep"
-alias which="gwhich"
-alias awk="gawk"
-#alias sed="gsed"
-#alias find="gfind"
-#alias make="gmake"
-#alias tar="gtar"
-
-# macOS has no `md5sum`, so use `md5` as a fallback
-command -v md5sum > /dev/null || alias md5sum="md5"
-
-# system python -> homebrew python3
-# alias python="python3"
-# alias pip="pip3"
-
 # My own creation! See: https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
 alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
@@ -33,7 +17,7 @@ alias dns-set-google="dns-set 8.8.8.8 8.8.4.4"
 alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache"
 
 # Update: brew, npm, gems, pip, app store, macos
-update() {
+system_update() {
   NC="\033[0m"
   YELLOW="\033[0;33m"
 
@@ -76,7 +60,6 @@ alias unhide="defaults write com.apple.finder AppleShowAllFiles -bool true && ki
 alias forcetrash="sudo rm -rf ~/.Trash /Volumes/*/.Trashes"
 alias unq="sudo xattr -rd com.apple.quarantine"
 alias verify_sign="codesign --verify --deep --verbose"
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 alias gpu="system_profiler SPDisplaysDataType"
 alias cpu="sysctl -n machdep.cpu.brand_string"

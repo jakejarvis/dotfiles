@@ -10,8 +10,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Default to nano 'cause I'm a wimp
 export EDITOR="nano"
 export VISUAL="code"
-export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-# export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+# export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
 
 # Adjust history for speed
 HISTFILE=~/.zsh_history
@@ -68,14 +68,13 @@ export GATSBY_TELEMETRY_DISABLED=1
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export SAM_CLI_TELEMETRY=0
 export AZURE_CORE_COLLECT_TELEMETRY=0
-export CHECKPOINT_DISABLE=1 # prisma
+export CHECKPOINT_DISABLE=1
 
-# TEMPORARY: fixes some breakage with node 17
-#export NODE_OPTIONS=--openssl-legacy-provider
-
-# 1Password SSH integration
+# 1Password integrations
 # https://developer.1password.com/docs/ssh/get-started/#step-4-configure-your-ssh-or-git-client
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+# https://developer.1password.com/docs/cli/shell-plugins/
+source $HOME/.config/op/plugins.sh
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
