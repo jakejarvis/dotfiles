@@ -64,6 +64,17 @@ alias dcd="docker-compose down"
 alias dcr="docker-compose down && docker-compose up -d"
 alias dcl="docker-compose logs -f"
 
+# Multipass
+alias mp="multipass"
+mpl() {
+  # creates VM and opens its bash shell
+  # `mpl test1 20.04`
+  multipass launch ${2:-22.04} --cpus 4 --mem 4G --disk 20G --name "$1" && \
+  multipass shell "$1"
+}
+alias mpd="multipass delete"
+alias mps="multipass shell"
+
 # Node/NPM/Yarn
 alias npr="npm run"
 alias fresh_npm="rm -rf node_modules package-lock.json && npm install"
@@ -93,6 +104,9 @@ alias sshalt="ssh -p 2222"
 alias moshalt="mosh --ssh=\"ssh -p 2222\""
 alias pubkey="more ~/.ssh/id_ed25519.pub | pbcopy | echo '=> Public key copied to clipboard.'"
 alias pubkey_rsa="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
+
+# Tailscale: https://tailscale.com/kb/1080/cli/?tab=macos
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # youtube-dl
 alias ytdl="youtube-dl -f bestvideo+bestaudio"

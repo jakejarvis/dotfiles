@@ -83,8 +83,6 @@ user_pref("datareporting.policy.dataSubmissionEnabled", false);
 user_pref("device.sensors.enabled", false);
 user_pref("dom.battery.enabled", false);
 user_pref("dom.disable_window_move_resize", true);
-user_pref("dom.enable_performance_navigation_timing", false);
-user_pref("dom.enable_performance_observer", false);
 user_pref("dom.enable_performance", false);
 user_pref("dom.enable_resource_timing", false);
 user_pref("dom.event.contextmenu.enabled", false);

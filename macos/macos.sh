@@ -3,7 +3,8 @@
 set -euo pipefail
 
 # This shouldn't be run if not on macOS, but make double sure
-if test ! "$(uname)" = "Darwin"; then
+if [ ! "$(uname)" = "Darwin" ]; then
+  echo "Skipping macOS steps."
   exit 0
 fi
 
@@ -24,7 +25,7 @@ sudo xcodebuild -license accept
 # This whole thing kinda hinges on having Homebrew...
 # Check for it and install from GitHub if it's not there
 # shellcheck disable=SC2230
-if test ! "$(which brew)"; then
+if [ ! "$(which brew)" ]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -47,6 +48,11 @@ chsh -s "$(brew --prefix)/bin/zsh"
 # https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390187157
 chmod 755 "$(brew --prefix)/share/zsh"
 chmod 755 "$(brew --prefix)/share/zsh/site-functions"
+
+# 1Password SSH integration
+# https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
+mkdir -p ~/.1password
+ln -sf ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
 
 # Install all apps from the Brewfile, ignore errors
 brew tap homebrew/bundle

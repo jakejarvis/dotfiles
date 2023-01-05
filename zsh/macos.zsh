@@ -1,12 +1,12 @@
 # Rosetta hacks for M1 Macs
 alias intel="arch -x86_64 /bin/zsh"
-alias arm="arch -arm64 /opt/homebrew/bin/zsh"
+alias arm="arch -arm64 "$HOMEBREW_PREFIX"/bin/zsh"
 
 # My own creation! See: https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
 alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
 alias ip="ipv4; ipv6"
-alias iploc="ipconfig getifaddr en0"
+alias ip-local="ipconfig getifaddr en0"
 alias ips="ip; ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 alias dns-clear="networksetup -setdnsservers Wi-Fi"
@@ -28,27 +28,30 @@ system_update() {
   brew upgrade $(brew outdated --greedy --verbose | awk '$2 !~ /(latest)/ {print $1}')
   brew cleanup
 
-  echo -e "${YELLOW}Updating NPM/Yarn packages...${NC}"
-  volta install node@latest
-  volta install npm@8
+  echo -e "${YELLOW}Updating global NPM/Yarn packages...${NC}"
+  volta fetch node@latest
+  volta install node@lts
   volta install yarn@1
-  volta run --node latest --npm 8 --no-yarn -- npm update --global
-  volta run --node latest --yarn 1 -- yarn global upgrade
+  volta run --node lts --no-yarn -- npm update --global
+  volta run --node lts --yarn 1 -- yarn global upgrade
 
-  echo -e "${YELLOW}Updating Ruby gems...${NC}"
-  gem update --system
+  echo -e "${YELLOW}Updating Ruby and gems...${NC}"
+  CONFIGURE_OPTS="$RUBY_CONFIGURE_OPTS" \
+    rbenv install --skip-existing $(rbenv install -l | grep -v - | tail -1) && \
+    rbenv global $(rbenv install -l | grep -v - | tail -1)
+  gem install bundler foreman
   gem update
-  # gem upgrade --user-install
   gem cleanup
+  rbenv rehash
 
   # https://stackoverflow.com/a/3452888
   echo -e "${YELLOW}Updating pip packages...${NC}"
   pip3 list --outdated --format=json | jq -r '.[] | .name+"="+.latest_version' | cut -d = -f 1 | xargs -n1 pip3 install -U
 
-  echo -e "${YELLOW}Updating MAS apps...${NC}"
+  echo -e "${YELLOW}Checking for App Store updates...${NC}"
   mas outdated
 
-  echo -e "${YELLOW}Check for macOS system updates...${NC}"
+  echo -e "${YELLOW}Checking for macOS system updates...${NC}"
   softwareupdate --list
 
   echo -e "${YELLOW}Updating Oh-My-ZSH...${NC}"

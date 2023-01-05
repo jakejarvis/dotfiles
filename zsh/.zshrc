@@ -11,7 +11,7 @@ export ZSH=$HOME/.oh-my-zsh
 export EDITOR="nano"
 export VISUAL="code"
 # export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+# export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
 
 # Adjust history for speed
 HISTFILE=~/.zsh_history

@@ -1,4 +1,5 @@
-if test ! "$(uname)" = "Darwin"; then
+# ignore literally everything here if this isn't macOS
+if [ ! "$(uname)" = "Darwin" ]; then
   exit 0
 fi
 

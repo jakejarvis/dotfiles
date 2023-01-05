@@ -1,28 +1,21 @@
 {
-  "experimental" : "disabled",
-  "stackOrchestrator" : "swarm",
-  "credHelpers" : {
+	"auths": {
+		"gcr.io": {},
+		"ghcr.io": {},
+		"https://index.docker.io/v1/": {}
+	},
+	"credsStore": "desktop",
+	"credHelpers": {
+    "194055617947.dkr.ecr.us-east-1.amazonaws.com" : "ecr-login",
     "public.ecr.aws" : "ecr-login",
-    "gcr.io" : "gcloud",
-    "staging-k8s.gcr.io" : "gcloud",
-    "us.gcr.io" : "gcloud",
-    "asia.gcr.io" : "gcloud",
-    "marketplace.gcr.io" : "gcloud",
-    "eu.gcr.io" : "gcloud"
-  },
-  "auths" : {
-    "ghcr.io" : {
-
-    },
-    "gcr.io" : {
-
-    },
-    "registry.digitalocean.com" : {
-
-    },
-    "https://index.docker.io/v1/" : {
-
-    }
-  },
-  "credsStore" : "desktop"
+		"asia.gcr.io": "gcloud",
+		"eu.gcr.io": "gcloud",
+		"gcr.io": "gcloud",
+		"marketplace.gcr.io": "gcloud",
+		"staging-k8s.gcr.io": "gcloud",
+		"us.gcr.io": "gcloud"
+	},
+	"experimental": "enabled",
+	"stackOrchestrator": "swarm",
+	"currentContext": "desktop-linux"
 }

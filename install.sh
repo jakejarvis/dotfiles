@@ -14,6 +14,7 @@ git clone --recurse-submodules https://github.com/jakejarvis/dotfiles.git "$YOU_
 ln -sf "$YOU_ARE_HERE/zsh/.zshrc" ~/.zshrc
 ln -sf "$YOU_ARE_HERE/git/.gitconfig" ~/.gitconfig
 ln -sf "$YOU_ARE_HERE/git/.gitignore_global" ~/.gitignore_global
+ln -sf "$YOU_ARE_HERE/nano/.nanorc" ~/.nanorc
 mkdir -p ~/.ssh
 ln -sf "$YOU_ARE_HERE/ssh/.ssh/config" ~/.ssh/config
 
