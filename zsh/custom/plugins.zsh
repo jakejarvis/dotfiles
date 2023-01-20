@@ -180,6 +180,7 @@ zinit snippet OMZ::lib/clipboard.zsh
 zinit snippet OMZ::lib/termsupport.zsh
 
 # iTerm2 integration
+# shellcheck disable=SC2016
 zinit ice lucid \
   if'[[ "$TERM_PROGRAM" = "iTerm.app" ]]' \
   pick"shell_integration/zsh" \

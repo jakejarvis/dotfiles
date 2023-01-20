@@ -12,7 +12,6 @@ DOTFILES_PATH="${DOTFILES_PATH:="$HOME/.dotfiles"}"
 # https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-personalization-for-codespaces#troubleshooting-dotfiles
 if [[ "$CODESPACES" = "true" ]]; then
   DOTFILES_PATH="/workspaces/.codespaces/.persistedshare/dotfiles"
-  ln -sf "$DOTFILES_PATH" ~/.dotfiles
 elif [[ ! -f "README.md" ]]; then
   # clone this repo if this script is all by its lonesome
   git clone https://github.com/jakejarvis/dotfiles.git "$DOTFILES_PATH"
@@ -45,6 +44,9 @@ if [[ "$(uname)" = "Darwin" ]]; then
 
   # shellcheck disable=SC1090,SC1091
   source "$DOTFILES_PATH/macos/macos.sh"
+elif [[ "$CODESPACES" = "true" ]]; then
+  # shellcheck disable=SC1090,SC1091
+  source "$DOTFILES_PATH/codespaces/codespaces.sh"
 fi
 
 echo "🎉 Done!"
