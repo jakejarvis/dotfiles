@@ -3,8 +3,7 @@
 set -euo pipefail
 
 # fetch and install Volta (better nvm)
-if ! command -v volta &> /dev/null
-then
+if ! command -v volta &>/dev/null; then
   # curl https://get.volta.sh | bash -s -- --skip-setup
   brew install volta
 fi
@@ -30,8 +29,10 @@ packages=(
   dtslint
   dts-gen
   esbuild
+  eslint
   gzip-size-cli
   json-server
+  markdownlint-cli2
   netlify-cli
   nodemon
   np
@@ -57,5 +58,7 @@ packages=(
 for p in "${packages[@]}"; do
   volta run --no-yarn -- npm install --global "$p" || echo "$p not found"
 done
+
+unset p packages
 
 volta list all

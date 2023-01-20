@@ -1,15 +1,15 @@
 # Enable built-in syntax highlighting
-include "/opt/homebrew/Cellar/nano/*/share/nano/*.nanorc"
+# include "/opt/homebrew/Cellar/nano/*/share/nano/*.nanorc"
 
 # Non-default settings
 set historylog      # Save the last 100 history searches for later use.
 # set positionlog     # Saves the cursor position between editing sessions.
 set zap             # Allows you to highlight text (CTRL+SHIFT+ARROW) and delete it with backspace.
-set autoindent      # A new line will have the same number of leading spaces as the previous one.
-# set tabsize 2
-# set tabstospaces
 set afterends       # Ctrl+Right moves to end of word instead of beginning.
 set wordchars "_"   # Recognize _ as part of a word.
+set autoindent      # A new line will have the same number of tabs/leading spaces as the previous one.
+# set tabsize 2
+# set tabstospaces
 
 # Fix option+left/right word skipping
 # https://unix.stackexchange.com/a/392309

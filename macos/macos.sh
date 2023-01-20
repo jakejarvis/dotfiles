@@ -3,9 +3,9 @@
 set -euo pipefail
 
 # This shouldn't be run if not on macOS, but make double sure
-if [ ! "$(uname)" = "Darwin" ]; then
+if [[ ! "$(uname)" = "Darwin" ]]; then
   echo "Skipping macOS steps."
-  exit 0
+  return
 fi
 
 # Ask for the administrator password upfront
@@ -24,13 +24,9 @@ sudo xcodebuild -license accept
 
 # This whole thing kinda hinges on having Homebrew...
 # Check for it and install from GitHub if it's not there
-# shellcheck disable=SC2230
-if [ ! "$(which brew)" ]; then
+if [[ ! "$(which brew)" ]]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
-
-# fix zplug
-ln -s "$(brew --prefix)/opt/zplug" ~/.zplug
 
 # Disable analytics
 # https://docs.brew.sh/Analytics
@@ -49,6 +45,11 @@ chsh -s "$(brew --prefix)/bin/zsh"
 chmod 755 "$(brew --prefix)/share/zsh"
 chmod 755 "$(brew --prefix)/share/zsh/site-functions"
 
+# install zinit
+ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
+mkdir -p "$(dirname "$ZINIT_HOME")"
+git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+
 # 1Password SSH integration
 # https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
 mkdir -p ~/.1password
@@ -60,5 +61,4 @@ brew bundle || true
 
 # Set macOS defaults
 # Needs to be last since this will restart everything when done
-# shellcheck disable=SC1091
 source ./macos/defaults.sh

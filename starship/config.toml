@@ -1,0 +1,105 @@
+# https://starship.rs/config/
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# A minimal left prompt:
+# format = """$character"""
+# right_format = """$all"""
+
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[cmd_duration]
+min_time = 2500
+
+[container]
+disabled = true
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+read_only = " "
+
+[directory.substitutions]
+"~" = " ~"
+" ~/Documents" = " ~/Documents"
+" ~/Downloads" = " ~/Downloads"
+" ~/Desktop" = " ~/Desktop"
+" ~/Music" = " ~/Music"
+" ~/Pictures" = " ~/Pictures"
+" ~/Library" = " ~/Library"
+" ~/Dropbox" = " ~/Dropbox"
+" ~/source" = " ~/source"
+" ~/.dotfiles" = " ~/.dotfiles"
+
+[docker_context]
+symbol = " "
+
+[gcloud]
+disabled = true
+
+[git_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = " "
+tag_disabled = false
+format = '[ $hash$tag]($style) '
+
+[git_status]
+style = "bold bright-yellow"
+format = '([ $all_status$ahead_behind]($style) )'
+ignore_submodules = true
+renamed = ""
+deleted = ""
+stashed = ""
+
+[golang]
+symbol = " "
+
+[localip]
+disabled = true
+
+[nodejs]
+symbol = " "
+
+[os.symbols]
+Alpine = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+Fedora = " "
+FreeBSD = " "
+Gentoo = " "
+Linux = " "
+Macos = " "
+Mint = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[vagrant]
+disabled = true

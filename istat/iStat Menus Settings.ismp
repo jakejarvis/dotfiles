@@ -3,63 +3,74 @@
 <plist version="1.0">
 <dict>
 	<key>build</key>
-	<string>1164</string>
+	<string>1204</string>
 	<key>preferences</key>
 	<dict>
+		<key>Battery_MenubarMode</key>
+		<array>
+			<dict>
+				<key>key</key>
+				<string>1</string>
+				<key>uuid</key>
+				<string>7E56833D-E8AD-4038-9B0A-E7E1764D4D8F</string>
+			</dict>
+			<dict>
+				<key>key</key>
+				<string>2</string>
+				<key>uuid</key>
+				<string>16ED041D-EFD7-4609-9D04-2BA918554AB3</string>
+			</dict>
+		</array>
+		<key>Battery_TimeSize</key>
+		<integer>11</integer>
 		<key>CPU_CombineLogicalCores</key>
 		<integer>1</integer>
 		<key>CPU_DropdownOrderDisabled</key>
 		<string></string>
 		<key>CPU_MenubarGraphBreakdowns</key>
 		<integer>1</integer>
-		<key>CPU_MenubarGroupItems</key>
-		<integer>1</integer>
-		<key>CPU_MenubarMode</key>
+		<key>CPU_ProcessCount</key>
+		<integer>15</integer>
+		<key>Disks_DropdownActivityDisplayMode</key>
+		<integer>2</integer>
+		<key>Disks_DropdownOrderDisabled</key>
+		<string>unmounted</string>
+		<key>Disks_DropdownShowAllActivity</key>
+		<integer>0</integer>
+		<key>Disks_HidePurgable</key>
+		<integer>0</integer>
+		<key>Disks_MenubarItems</key>
+		<array>
+			<dict>
+				<key>key</key>
+				<string>77222F6D-94A5-4B3B-91BF-0A850CDF12E4</string>
+				<key>name</key>
+				<string>Macintosh HD</string>
+			</dict>
+		</array>
+		<key>Disks_MenubarMode</key>
 		<array>
 			<dict>
 				<key>key</key>
 				<string>100</string>
 				<key>uuid</key>
-				<string>8F722CCF-D82B-4D8D-83B0-73C7E59AB2CC</string>
+				<string>8E300A5F-38A2-4F82-A466-EEF6004D70B9</string>
 			</dict>
 			<dict>
 				<key>key</key>
-				<string>6</string>
+				<string>0</string>
 				<key>uuid</key>
-				<string>969E31C3-9F6D-4195-924C-A4733CE99A32</string>
-			</dict>
-		</array>
-		<key>CPU_ProcessCount</key>
-		<integer>15</integer>
-		<key>Disks_DropdownOrderDisabled</key>
-		<string>removable</string>
-		<key>Disks_HidePurgable</key>
-		<integer>1</integer>
-		<key>Disks_MenubarItems</key>
-		<array>
-			<dict>
-				<key>boot</key>
-				<true/>
-				<key>key</key>
-				<string>F0C607FC-F570-4356-9D2C-4585952893F8</string>
+				<string>C2AFF963-B9AE-4BF8-8884-ED913411E137</string>
 			</dict>
 		</array>
 		<key>Disks_ProcessCount</key>
 		<integer>15</integer>
-		<key>DropdownGraphBackground</key>
-		<integer>1</integer>
-		<key>DropdownTheme-Dark</key>
-		<integer>1</integer>
-		<key>DropdownTheme-Light</key>
-		<integer>2</integer>
-		<key>FanControl_Enabled</key>
-		<false/>
-		<key>FanControl_Sets</key>
-		<array/>
 		<key>Memory_AppFormat</key>
 		<integer>0</integer>
+		<key>Memory_DropdownOrder</key>
+		<string>memory,processes,pressure,swap,pages,buttons</string>
 		<key>Memory_DropdownOrderDisabled</key>
-		<string></string>
+		<string>pressure</string>
 		<key>Memory_MenubarGraphBreakdowns</key>
 		<integer>1</integer>
 		<key>Memory_MenubarMode</key>
@@ -68,54 +79,66 @@
 				<key>key</key>
 				<string>100</string>
 				<key>uuid</key>
-				<string>9157E547-B6F1-46B0-B766-988A5EE2B5CC</string>
+				<string>90B3ECC4-6F52-470B-B321-B57FF9101802</string>
 			</dict>
 			<dict>
 				<key>key</key>
 				<string>6</string>
 				<key>uuid</key>
-				<string>F0C02F46-753B-42A4-9565-70AD54EA2435</string>
+				<string>E44DAA8A-4F57-498E-91BD-284828010F04</string>
 			</dict>
 		</array>
 		<key>Memory_ProcessCount</key>
 		<integer>15</integer>
-		<key>Menubar-DetectedColor</key>
-		<string>0.00 0.00 0.00 0.85</string>
-		<key>MenubarGraphOpacity-Dark-Modern</key>
-		<real>0.14743457734584808</real>
-		<key>MenubarGraphOpacity-Modern</key>
-		<real>0.34533438086509705</real>
-		<key>MenubarTheme</key>
-		<integer>1</integer>
 		<key>Migrated_6.0</key>
 		<true/>
 		<key>Migrated_6.22</key>
 		<true/>
 		<key>Migrated_6.5</key>
 		<true/>
+		<key>Migrated_6.52</key>
+		<true/>
+		<key>Migrated_6.60_ARM</key>
+		<true/>
+		<key>Network_AppSort</key>
+		<integer>0</integer>
+		<key>Network_DecimalLevelKB</key>
+		<integer>0</integer>
+		<key>Network_DecimalLevelMB</key>
+		<integer>2</integer>
+		<key>Network_DropdownCombineBandwidth</key>
+		<integer>1</integer>
 		<key>Network_DropdownOrderDisabled</key>
-		<string></string>
+		<string>inactive</string>
+		<key>Network_GraphMode</key>
+		<integer>1</integer>
 		<key>Network_GraphShowBackground</key>
 		<integer>0</integer>
 		<key>Network_GraphWidth</key>
-		<real>24</real>
+		<real>30</real>
+		<key>Network_IPV6Group</key>
+		<integer>1</integer>
+		<key>Network_IPV6ShowDeprecated</key>
+		<integer>0</integer>
 		<key>Network_MenubarMode</key>
 		<array>
 			<dict>
 				<key>key</key>
-				<string>4</string>
+				<string>100</string>
 				<key>uuid</key>
-				<string>25A36940-66EF-49EA-8454-7A4BC218A969</string>
+				<string>3D976805-CA57-40FF-B5FA-0986865859CE</string>
 			</dict>
 			<dict>
 				<key>key</key>
 				<string>1</string>
 				<key>uuid</key>
-				<string>6E6AAC74-763A-445C-86ED-C56F298CB3A4</string>
+				<string>3E479985-8C40-47F6-8238-D7762E82C8B0</string>
 			</dict>
 		</array>
 		<key>Network_ProcessCount</key>
 		<integer>15</integer>
+		<key>Network_ShowBSD</key>
+		<integer>1</integer>
 		<key>Notifications-Enabled</key>
 		<false/>
 		<key>Notifications-Items</key>
@@ -128,7 +151,7 @@
 				<key>rule-type</key>
 				<string>18</string>
 				<key>uuid</key>
-				<string>5A377129-7049-452C-913B-C4150F470DDD</string>
+				<string>3BDA4498-0C70-48B2-B5D9-FE28E6D02A4C</string>
 				<key>value</key>
 				<string>978332400</string>
 			</dict>
@@ -140,7 +163,7 @@
 				<key>rule-type</key>
 				<string>17</string>
 				<key>uuid</key>
-				<string>899753EB-CF97-430B-8DA5-DDD40BE8EB1F</string>
+				<string>2F6A266A-47E4-4BE5-9B2C-D3A347152B55</string>
 				<key>value</key>
 				<string>1.00</string>
 			</dict>
@@ -152,7 +175,7 @@
 				<key>rule-type</key>
 				<string>14</string>
 				<key>uuid</key>
-				<string>03C999A1-5E87-4A0E-9245-20EA49B76D27</string>
+				<string>4D726ED7-6BEC-4530-A444-F3EE5A60954D</string>
 				<key>value</key>
 				<string>10.00</string>
 			</dict>
@@ -164,7 +187,7 @@
 				<key>rule-type</key>
 				<string>20</string>
 				<key>uuid</key>
-				<string>AA659D69-C8D3-4EE9-957C-66BE6FBD8C21</string>
+				<string>B80FB10F-D841-4925-BD1B-E89AA45DBA4F</string>
 				<key>value</key>
 				<string>10.00</string>
 			</dict>
@@ -173,15 +196,17 @@
 		<true/>
 		<key>Sensors_DropdownOrderDisabled</key>
 		<string></string>
+		<key>Sensors_MenubarFontStyle</key>
+		<integer>0</integer>
+		<key>Sensors_TemperatureMode</key>
+		<integer>0</integer>
 		<key>StatusItems-Order</key>
 		<array>
-			<integer>3</integer>
 			<integer>4</integer>
-			<integer>1</integer>
+			<integer>3</integer>
 			<integer>2</integer>
+			<integer>1</integer>
 		</array>
-		<key>Theme-SeperateStyles</key>
-		<true/>
 		<key>Time_MenubarFormat</key>
 		<array>
 			<dict>
@@ -197,8 +222,20 @@
 				</array>
 			</dict>
 		</array>
+		<key>TimerFrequency</key>
+		<integer>2</integer>
+		<key>Zarya-TLE</key>
+		<dict>
+			<key>time</key>
+			<real>1668012542.6079049</real>
+			<key>tle</key>
+			<string>ISS (ZARYA)
+1 25544U 98067A   22313.59953684  .00013763  00000+0  24956-3 0  9998
+2 25544  51.6444 336.2388 0006809  53.3161  93.8274 15.49887825367737
+</string>
+		</dict>
 	</dict>
 	<key>version</key>
-	<string>6.51</string>
+	<string>6.63</string>
 </dict>
 </plist>

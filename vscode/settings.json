@@ -1,8 +1,6 @@
 // Place your settings in this file to overwrite the default settings
 {
     "telemetry.telemetryLevel": "off",
-    "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 12.5,
     "editor.lineHeight": 23,
     "editor.tabSize": 2,
     "editor.rulers": [
@@ -40,7 +38,6 @@
     "git.scanRepositories": [
         "~/source"
     ],
-    "html.format.endWithNewline": true,
     "css.lint.important": "warning",
     "css.lint.unknownVendorSpecificProperties": "warning",
     "css.lint.zeroUnits": "warning",
@@ -49,19 +46,8 @@
     "scss.validate": false,
     "scss.lint.zeroUnits": "warning",
     "stylelint.reportNeedlessDisables": true,
-    "go.useLanguageServer": true,
-    "go.lintTool": "golangci-lint",
-    "go.lintOnSave": "off",
-    "go.formatTool": "gofmt",
-    "go.buildOnSave": "off",
-    "go.vetOnSave": "off",
     "php.validate.run": "onType",
-    "prettier.requireConfig": true,
-    "prettier.configPath": ".prettierrc",
     "markdown.preview.lineHeight": 1.75,
-    "aws.telemetry": false,
-    "aws.profile": "profile:default",
-    "aws.cdk.explorer.enabled": false,
     "githubPullRequests.defaultMergeMethod": "rebase",
     "githubIssues.useBranchForIssues": "prompt",
     "githubIssues.queries": [
@@ -75,34 +61,10 @@
         }
     ],
     "dotfiles.repository": "https://github.com/jakejarvis/dotfiles.git",
-    "codespaces.accountProvider": "GitHub",
     "material-icon-theme.activeIconPack": "none",
-    "material-icon-theme.showReloadMessage": false,
-    "material-icon-theme.showWelcomeMessage": false,
     "material-icon-theme.folders.theme": "specific",
-    "settingsSync.ignoredSettings": [
-
-    ],
-    "settingsSync.ignoredExtensions": [
-        "amazonwebservices.aws-toolkit-vscode",
-        "ms-vscode.azure-account",
-        "msjsdiag.debugger-for-chrome",
-        "firefox-devtools.vscode-firefox-debug",
-        "shan.code-settings-sync"
-    ],
-    "docker.showStartPage": false,
     "editor.minimap.enabled": false,
     "editor.inlineSuggest.enabled": true,
-    "github.copilot.advanced": {
-
-    },
-    "github.copilot.enable": {
-        "*": true,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": false,
-        "javascript": true
-    },
     "diffEditor.ignoreTrimWhitespace": false,
     "javascript.inlayHints.parameterNames.enabled": "all",
     "javascript.inlayHints.parameterTypes.enabled": true,
@@ -116,8 +78,9 @@
     "typescript.inlayHints.parameterNames.enabled": "all",
     "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
     "javascript.inlayHints.enumMemberValues.enabled": true,
-    "terminal.integrated.fontFamily": "'SF Mono Powerline', 'Meslo LG M for Powerline', Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "'SFMono Nerd Font', 'SF Mono', 'Meslo LG M for Powerline', Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.lineHeight": 1.25,
     "editor.renderWhitespace": "none",
     "files.associations": {
@@ -125,16 +88,12 @@
         "*.htm": "html",
         "*.mdx": "markdown"
     },
-    "workbench.iconTheme": "material-icon-theme",
     "explorer.autoReveal": "focusNoScroll",
-    "eslint.packageManager": "yarn",
     "git.autoStash": true,
-    "git.defaultCloneDirectory": "~/source/",
     "git.rebaseWhenSync": true,
     "githubIssues.workingIssueFormatScm": "${issueTitle} (fixes #${issueNumber})",
     "gulp.autoDetect": "on",
     "html.format.templating": true,
-    "prettier.trailingComma": "all",
     "dotfiles.targetPath": "~/.dotfiles",
     "stylelint.packageManager": "yarn",
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
@@ -165,14 +124,17 @@
     "remoteHub.richNavigation.enabled": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "terminal.integrated.env.osx": {
-        "FIG_NEW_SESSION": "1"
-    },
     "editor.accessibilitySupport": "off",
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "typescript.implementationsCodeLens.enabled": true,
     "typescript.preferences.importModuleSpecifierEnding": "minimal",
-    "editor.inlayHints.enabled": false,
+    "editor.inlayHints.enabled": "off",
+    "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 12.5,
     "typescript.tsserver.log": "off",
-    "terminal.integrated.defaultProfile.linux": "zsh",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.unicodeHighlight.allowedCharacters": {
+        "–": true
+    },
+    "githubPullRequests.pullBranch": "never"
 }
