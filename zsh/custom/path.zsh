@@ -1,49 +1,76 @@
-# a lot of this file only applies to macOS
-if [[ "$(uname)" = "Darwin" ]]; then
-  # set PATH, MANPATH, etc., for Homebrew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+#!/usr/bin/env zsh
 
+# set PATH, MANPATH, etc., for Homebrew
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  # macOS on Apple Silicon
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  # macOS on x86
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -d /home/linuxbrew/.linuxbrew ]]; then
+  # Linux, system install
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ -d "$HOME/.linuxbrew" ]]; then
+  # Linux, user install
+  eval "$("$HOME/.linuxbrew/bin/brew" shellenv)"
+fi
+
+# a lot of this file only applies to macOS
+if [[ "$OSTYPE" = "darwin"* ]]; then
   # remap macOS core utils to GNU equivalents (from coreutils, findutils, gnu-*, etc.):
   # https://gist.github.com/skyzyx/3438280b18e4f7c490db8a2a2ca0b9da?permalink_comment_id=3049694#gistcomment-3049694
-  for gbin in "$(brew --prefix)"/opt/*/libexec/gnubin; do
-    export PATH="$gbin:$PATH"
-  done
-  # Ensure `man` refers to the new binaries:
-  for gman in "$(brew --prefix)"/opt/*/libexec/gnuman; do
-    export MANPATH="$gman:$MANPATH"
-  done
-  unset gbin gman
+  if command -v brew &>/dev/null; then
+    for gbin in "$(brew --prefix)"/opt/*/libexec/gnubin; do
+      export PATH="$gbin:$PATH"
+    done
+    # Ensure `man` refers to the new binaries:
+    for gman in "$(brew --prefix)"/opt/*/libexec/gnuman; do
+      export MANPATH="$gman:$MANPATH"
+    done
+    unset gbin gman
 
-  # OpenJDK
-  export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
+    # shellcheck disable=SC2155
+    export HELPDIR="$(brew --prefix)/share/zsh/help"
 
-  # metasploit
-  export PATH="/opt/metasploit-framework/bin:$PATH"
+    # OpenJDK
+    # shellcheck disable=SC2155
+    export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
 
-  # macOS-only fixes for rbenv/ruby below
-  # shellcheck disable=SC2155
-  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml)"
+    # macOS-only fixes for rbenv/ruby below
+    # shellcheck disable=SC2155
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml) --with-jemalloc-dir=$(brew --prefix jemalloc)"
+
+    # tell compilers where to find all of this stuff
+    # shellcheck disable=SC2155
+    export LDFLAGS="$LDFLAGS -L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix jemalloc)/lib"
+    # shellcheck disable=SC2155
+    export CPPFLAGS="$CPPFLAGS -I$(brew --prefix openjdk)/include -I$(brew --prefix openssl@1.1)/include -I$(brew --prefix readline)/include -I$(brew --prefix jemalloc)/include"
+  fi
 fi
 
 # go
-export GOPATH="$HOME/golang"
-export PATH="$GOPATH/bin:$PATH"
-
-# rbenv
-if command -v rbenv 1>/dev/null 2>&1; then
-  eval "$(rbenv init -)"
+if [[ -d "$HOME/golang" ]]; then
+  export GOPATH="$HOME/golang"
+  export PATH="$GOPATH/bin:$PATH"
 fi
 
 # rust/cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+if [[ -d "$HOME/.cargo" ]]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# rbenv
+if command -v rbenv &>/dev/null; then
+  eval "$(rbenv init --no-rehash - zsh)"
+fi
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+if command -v pyenv &>/dev/null; then
+  eval "$(pyenv init --no-rehash - zsh)"
 fi
 
 # volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+if [[ -d "$HOME/.volta" ]]; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi

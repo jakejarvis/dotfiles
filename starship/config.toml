@@ -1,5 +1,5 @@
 # https://starship.rs/config/
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
 # A minimal left prompt:
 # format = """$character"""
@@ -46,11 +46,11 @@ symbol = " "
 [git_commit]
 tag_symbol = " "
 tag_disabled = false
-format = '[ $hash$tag]($style) '
+format = "[ $hash$tag]($style) "
 
 [git_status]
 style = "bold bright-yellow"
-format = '([ $all_status$ahead_behind]($style) )'
+format = "([ $all_status$ahead_behind]($style) )"
 ignore_submodules = true
 renamed = ""
 deleted = ""
@@ -58,6 +58,12 @@ stashed = ""
 
 [golang]
 symbol = " "
+
+[hostname]
+ssh_only = true
+ssh_symbol = " "
+style = "bold green"
+format = "[$ssh_symbol$hostname]($style) "
 
 [localip]
 disabled = true
@@ -100,6 +106,11 @@ symbol = " "
 
 [rust]
 symbol = " "
+
+[username]
+format = "[ $user]($style) "
+style_root = "bold bright-red"
+style_user = "bold bright-red"
 
 [vagrant]
 disabled = true

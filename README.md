@@ -17,7 +17,7 @@ All of the juicy stuff you're probably looking for is at:
 
 ## Usage
 
-Designed for macOS, kinda works on Linux (requires [ZSH to be installed](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#ubuntu-debian--derivatives-windows-10-wsl--native-linux-kernel-with-windows-10-build-1903) first):
+Designed for macOS, also works on Linux (specifially Debian and Ubuntu):
 
 ```bash
 git clone https://github.com/jakejarvis/dotfiles.git ~/.dotfiles

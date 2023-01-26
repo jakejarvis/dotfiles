@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # check for zinit and clone if not installed
 ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
 if [[ ! -d "$ZINIT_HOME" ]]; then
@@ -57,8 +59,25 @@ zinit ice from"gh-r" as"command" \
     mv -vf bat-*/bat.1 ${ZINIT[MAN_DIR]}/man1
   " \
   atpull"%atclone" \
-  atload"alias cat='bat --paging=never --color=auto --style=\"numbers,changes\" --theme=\"Dracula\"'"
+  atload"
+    export BAT_THEME='base16'
+    export BAT_PAGER='less -R -F -+X --mouse'
+    export MANPAGER='sh -c \"col -bx | bat --color=always --style=plain --language=man\"'
+    alias cat='bat --paging=never --color=auto --style=numbers,changes'
+    alias cats='bat --paging=always --color=always --style=numbers,changes'
+    alias catcat='\cat --paging=never --color=auto --style=plain'
+  "
 zinit light sharkdp/bat
+
+# grab delta binary
+zinit ice from"gh-r" as"command" \
+  mv"delta-*/delta -> delta" \
+  dl"https://github.com/dandavison/delta/raw/HEAD/etc/completion/completion.zsh -> _delta" \
+  atload"
+    # https://dandavison.github.io/delta/mouse-scrolling.html
+    export DELTA_PAGER='less -R -F -+X --mouse'
+  "
+zinit light dandavison/delta
 
 # grab fd binary
 # TODO: preview commands are an absolute sh*tshow, maybe use .lessfilter?
@@ -73,7 +92,7 @@ zinit ice from"gh-r" as"command" \
   atpull"%atclone" \
   atload'
     FZF_FD_OPTS="--color always --hidden --follow --exclude .git --exclude node_modules"
-    FZF_PREVIEW_FILE_COMMAND="bat --color=always --paging=never --style=plain --theme=Dracula"
+    FZF_PREVIEW_FILE_COMMAND="bat --color=always --paging=never --style=plain"
     FZF_PREVIEW_DIR_COMMAND="exa -1a --color=always --icons --group-directories-first"
     FZF_DEFAULT_OPTS="--no-mouse --bind \"tab:accept,ctrl-y:preview-page-up,ctrl-v:preview-page-down,ctrl-e:execute-silent(\${VISUAL:-code} {+} >/dev/null 2>&1)\""
     FZF_DEFAULT_COMMAND="fd --type f $FZF_FD_OPTS"
@@ -86,28 +105,20 @@ zinit light sharkdp/fd
 
 # grab fzf binary from release & other files from source
 zinit ice from"gh-r" as"command" \
-  dl"https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh -> key-bindings.zsh" \
-  dl"https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh -> _fzf" \
-  dl"https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1 -> ${ZINIT[MAN_DIR]}/man1/fzf.1" \
-  dl"https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf-tmux.1 -> ${ZINIT[MAN_DIR]}/man1/fzf-tmux.1" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/shell/key-bindings.zsh -> key-bindings.zsh" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/shell/completion.zsh -> _fzf" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/man/man1/fzf.1 -> ${ZINIT[MAN_DIR]}/man1/fzf.1" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/man/man1/fzf-tmux.1 -> ${ZINIT[MAN_DIR]}/man1/fzf-tmux.1" \
   src"key-bindings.zsh"
 zinit light junegunn/fzf
 
-# all the colors
+# grab vivid binary (for all the colors)
 # https://github.com/sharkdp/vivid/tree/master/themes
 # shellcheck disable=SC2016
 zinit ice from"gh-r" as"command" \
   mv"vivid-*/vivid -> vivid" \
   atload'export LS_COLORS="$(vivid generate snazzy)"'
 zinit load sharkdp/vivid
-
-# direnv
-zinit ice from"gh-r" as"command" \
-  mv"direnv* -> direnv" \
-  atclone"./direnv hook zsh > zhook.zsh" \
-  atpull"%atclone" \
-  src"zhook.zsh"
-zinit light direnv/direnv
 
 # history substring searching
 # only bind these keys once they're ready
@@ -122,9 +133,8 @@ zinit ice wait lucid \
 zinit light zsh-users/zsh-history-substring-search
 
 # tab completions via fzf
-# TODO: fix git-* completions, apparently there's some conflict with brew's git
-# https://github.com/Aloxaf/fzf-tab/wiki/Preview#git
-zinit ice wait lucid \
+zinit ice wait"1" lucid \
+  has"fzf" \
   atload"
     zstyle ':completion:*' verbose yes
     zstyle ':completion:*' list-colors \${(s.:.)LS_COLORS}
@@ -133,19 +143,20 @@ zinit ice wait lucid \
     zstyle ':completion::complete:*:*:globbed-files' ignored-patterns '.DS_Store' 'Icon?' '.Trash'
     zstyle ':completion::complete:rm:*:globbed-files' ignored-patterns
     zstyle ':fzf-tab:*' fzf-command fzf
+    zstyle ':fzf-tab:*' fzf-flags '--ansi'
     zstyle ':fzf-tab:*' fzf-bindings \
       'tab:accept' \
       'ctrl-y:preview-page-up' \
       'ctrl-v:preview-page-down' \
-      'ctrl-e:execute-silent(${VISUAL:-code} \${realpath:-\$word} >/dev/null 2>&1)' \
-      'ctrl-w:execute(${EDITOR:-nano} \${realpath:-\$word} >/dev/tty </dev/tty)+refresh-preview'
+      'ctrl-e:execute-silent(\${VISUAL:-code} \$realpath >/dev/null 2>&1)' \
+      'ctrl-w:execute(\${EDITOR:-nano} \$realpath >/dev/tty </dev/tty)+refresh-preview'
     zstyle ':fzf-tab:*' fzf-min-height 15
     zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
-      'git --no-pager diff --color=always --no-ext-diff \${realpath:-\$word} | delta'
+      'git diff --no-ext-diff \$word | delta --paging=never --no-gitconfig --line-numbers --file-style=omit --hunk-header-style=omit --theme=base16'
     zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
-      'git --no-pager log --color=always --format=oneline --abbrev-commit --follow \${realpath:-\$word}'
+      'git --no-pager log --color=always --format=oneline --abbrev-commit --follow \$word'
     zstyle ':fzf-tab:complete:man:*' fzf-preview \
-      'man \$word'
+      'man -P \"col -bx\" \$word | $FZF_PREVIEW_FILE_COMMAND --language=man'
     zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview \
       'brew info \$word'
     zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview \
@@ -159,20 +170,67 @@ zinit ice wait lucid \
   "
 zinit light Aloxaf/fzf-tab
 
+# TODO: fix git-* completions, apparently there's some conflict with brew's git
+# https://github.com/Aloxaf/fzf-tab/wiki/Preview#git
+# shellcheck disable=SC2016
+zinit ice wait lucid as"completions" \
+  id-as"git-completions" \
+  has"git" \
+  dl"https://github.com/git/git/raw/HEAD/contrib/completion/git-completion.zsh -> _git" \
+  dl"https://github.com/git/git/raw/HEAD/contrib/completion/git-completion.bash -> git-completion.bash" \
+  atpull"zinit creinstall -q ." \
+  atload'
+    zstyle ":completion:*:*:git:*" script "$PWD/git-completion.bash"
+  ' \
+  nocompile
+zinit light zdharma-continuum/null
+
+# use zinit to track completions from non-zinit programs
+zinit ice wait lucid blockf as"completions" \
+  id-as"local-completions" \
+  dl"https://github.com/docker/cli/raw/HEAD/contrib/completion/zsh/_docker -> _docker" \
+  dl"https://github.com/docker/compose/raw/master/contrib/completion/zsh/_docker-compose -> _docker-compose" \
+  dl"https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_node -> _node" \
+  dl"https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_yarn -> _yarn" \
+  dl"https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_bundle -> _bundle" \
+  dl"https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_rails -> _rails" \
+  dl"https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_golang -> _golang" \
+  dl"https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_shellcheck -> _shellcheck" \
+  dl"https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_httpie -> _httpie" \
+  dl"https://github.com/rbenv/rbenv/raw/HEAD/completions/rbenv.zsh -> _rbenv" \
+  dl"https://github.com/pyenv/pyenv/raw/HEAD/completions/pyenv.zsh -> _pyenv" \
+  atclone"
+    command -v volta &>/dev/null && volta completions zsh > _volta || true
+    command -v npm &>/dev/null && npm completion > _npm || true
+    command -v gh &>/dev/null && gh completion -s zsh > _gh || true
+    command -v op &>/dev/null && op completion zsh > _op || true
+    command -v hugo &>/dev/null && hugo completion zsh > _hugo || true
+  " \
+  atpull"zinit creinstall -q ." \
+  nocompile
+zinit light zdharma-continuum/null
+
+# additional completions
+# zinit ice wait lucid blockf as"completion" \
+#   atpull"zinit creinstall -q ."
+# zinit light zsh-users/zsh-completions
+
 # autosuggestions, trigger precmd hook upon load
 zinit ice wait lucid \
   atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
-# additional completions
-zinit ice wait lucid blockf as"completion" \
-  atpull"zinit creinstall -q ."
-zinit light zsh-users/zsh-completions
-
 # syntax highlighting
 zinit ice wait lucid \
   atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
 zinit light zsh-users/zsh-syntax-highlighting
+
+# 1Password plugins: https://developer.1password.com/docs/cli/shell-plugins/
+zinit ice wait lucid \
+  id-as"op-plugins" \
+  has"op" \
+  if"[[ -f ~/.config/op/plugins.sh ]]"
+zinit snippet ~/.config/op/plugins.sh
 
 # oh-my-zsh leftovers
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/lib
@@ -187,16 +245,10 @@ zinit ice lucid \
   sbin"utilities/*"
 zinit light gnachman/iTerm2-shell-integration
 
-# 1Password plugins: https://developer.1password.com/docs/cli/shell-plugins/
-zinit ice \
-  if"command -v op &>/dev/null" \
-  atclone"op completion zsh > _op || true"
-zinit snippet ~/.config/op/plugins.sh
-
 # starship prompt
 zinit ice from"gh-r" as"command" \
   atclone"
-    ./starship init zsh > init.zsh
+    ./starship init zsh --print-full-init > init.zsh
     ./starship completions zsh > _starship
   " \
   atpull"%atclone" \

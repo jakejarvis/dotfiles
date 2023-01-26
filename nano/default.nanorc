@@ -1,5 +1,5 @@
 # Enable built-in syntax highlighting
-# include "/opt/homebrew/Cellar/nano/*/share/nano/*.nanorc"
+include "/usr/share/nano/*.nanorc"
 
 # Non-default settings
 set historylog      # Save the last 100 history searches for later use.

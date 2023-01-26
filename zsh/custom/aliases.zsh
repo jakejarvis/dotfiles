@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # allow sudo-able aliases
 alias sudo="sudo "
 
@@ -22,6 +24,7 @@ alias gpom="git push origin main"
 alias glom="git pull origin main"
 alias gpo="git push origin"  # + branch name
 alias glo="git pull origin"  # + branch name
+alias glfm="git fetch && git reset origin/main --hard"
 alias gb="git checkout"  # + existing branch name
 alias gbn="git checkout -b"  # + new branch name
 alias grm="git rebase -i origin/main"
@@ -65,26 +68,10 @@ alias npr="npm run"
 alias fresh_npm="rm -rf node_modules package-lock.json && npm install"
 alias fresh_yarn="rm -rf node_modules yarn.lock && yarn install"
 
-# Hugo
-# install from source
-make_hugo() {
-  # parentheses lets us cd to Hugo path without changing our current location
-  (
-    cd "$GOPATH/src/github.com/gohugoio/hugo" \
-    && bash -c "$GOPATH/bin/hugo env" \
-    && git checkout master \
-    && mage uninstall \
-    && git pull origin master \
-    && git reset --hard HEAD \
-    && mage -v hugo \
-    && HUGO_BUILD_TAGS=extended mage -v install \
-    && bash -c "$GOPATH/bin/hugo env"
-  )
-}
-# install from brew
-alias hugo_brew="brew upgrade hugo --fetch-HEAD --build-from-source"
-# run `hugo config` first to make sure we're in a Hugo directory:
-alias hugo_clean="hugo config 1>/dev/null && rm -rf public/ resources/ build/"
+# uncomment to use VS Code insiders build
+# alias code="code-insiders"
+# open current working directory in VS Code
+alias vs="code ."
 
 # an original creation, see https://github.com/jakejarvis/simpip
 alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
@@ -93,18 +80,38 @@ alias ip="ipv4; ipv6"
 alias ip-local="ipconfig getifaddr en0"
 alias ips="ip; ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-# keys
-alias pubkey="pbcopy < ~/.ssh/id_ed25519.pub && echo '=> Public key copied to clipboard.'"
-alias pubkey_rsa="pbcopy < ~/.ssh/id_rsa.pub && echo '=> Public key copied to clipboard.'"
-
-# tailscale: https://tailscale.com/kb/1080/cli/?tab=macos
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias tscl="tailscale"
-
 # youtube-dl
-alias youtube-dl="yt-dlp"  # fork: https://github.com/yt-dlp/yt-dlp
+alias youtube-dl="yt-dlp"  # better youtube-dl fork: https://github.com/yt-dlp/yt-dlp
 alias ytdl="youtube-dl -f bestvideo+bestaudio"
 alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"
+
+# Hugo: build & install from source as `hugo-dev`
+make_hugo() {
+  if [[ ! -d "$GOPATH"/src/github.com/gohugoio/hugo ]]; then
+    mkdir -p "$GOPATH"/src/github.com/gohugoio/hugo
+    git clone https://github.com/gohugoio/hugo.git "$GOPATH"/src/github.com/gohugoio/hugo
+  fi
+
+  if ! command -v mage &>/dev/null; then
+    go install github.com/magefile/mage@latest
+  fi
+
+  # parentheses lets us cd to Hugo path without changing our current location
+  (
+    cd "$GOPATH"/src/github.com/gohugoio/hugo \
+    && "$GOPATH"/bin/hugo-dev env 2>/dev/null || true \
+    && git checkout master \
+    && mage uninstall \
+    && git pull origin master \
+    && git reset --hard HEAD \
+    && mage -v hugo \
+    && HUGO_BUILD_TAGS=extended mage -v install \
+    && mv -fv "$GOPATH"/bin/hugo "$GOPATH"/bin/hugo-dev \
+    && "$GOPATH"/bin/hugo-dev env
+  )
+}
+# run `hugo config` first to make sure we're in a Hugo directory:
+alias hugo_clean="hugo config 1>/dev/null && rm -rf public/ resources/ build/"
 
 # misc.
 alias screenfetch="neofetch"

@@ -1,5 +1,6 @@
 [core]
 	editor = code --wait
+	pager = delta
 	excludesfile = ~/.gitignore_global
 
 	# Make `git rebase` safer on macOS
@@ -25,6 +26,8 @@
 	tool = default-difftool
 [difftool "default-difftool"]
 	cmd = code --wait --diff $LOCAL $REMOTE
+[interactive]
+	diffFilter = delta --color-only --features=interactive
 [alias]
 	undo = reset --soft HEAD~1
 	pom = push origin main
@@ -53,3 +56,11 @@
 	keepBackup = true
 [color]
 	ui = auto
+[delta]
+	features = decorations
+[delta "interactive"]
+	keep-plus-minus-markers = false
+[delta "decorations"]
+	hunk-header-style = omit
+	line-numbers = true
+	syntax-theme = base16

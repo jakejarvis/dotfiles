@@ -1,10 +1,18 @@
+#!/usr/bin/env zsh
+
 autoload -U colors && colors
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
 autoload -Uz select-word-style
-select-word-style shell
+select-word-style bash
+
+# enable bash-like 'help' command for zsh:
+# https://stackoverflow.com/questions/4405382/how-can-i-read-documentation-about-built-in-zsh-commands
+unalias run-help 2>/dev/null
+autoload run-help
+alias help=run-help
 
 # ---
 
@@ -42,7 +50,7 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
-export HISTFILE=~/.zsh_history
+export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 export HISTSIZE=10000
 export SAVEHIST=10000
 

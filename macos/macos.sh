@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
-# This shouldn't be run if not on macOS, but make double sure
-if [[ ! "$(uname)" = "Darwin" ]]; then
-  echo "Skipping macOS steps."
-  return
-fi
+set -e
 
 # Ask for the administrator password upfront
 sudo -v
@@ -24,8 +18,8 @@ sudo xcodebuild -license accept
 
 # This whole thing kinda hinges on having Homebrew...
 # Check for it and install from GitHub if it's not there
-if [[ ! "$(which brew)" ]]; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if ! command -v brew &>/dev/null; then
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 fi
 
 # Disable analytics
@@ -44,11 +38,6 @@ chsh -s "$(brew --prefix)/bin/zsh"
 # https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390187157
 chmod 755 "$(brew --prefix)/share/zsh"
 chmod 755 "$(brew --prefix)/share/zsh/site-functions"
-
-# install zinit
-ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
-mkdir -p "$(dirname "$ZINIT_HOME")"
-git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 # 1Password SSH integration
 # https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
