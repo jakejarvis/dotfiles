@@ -100,6 +100,7 @@ symbol = " "
 
 [python]
 symbol = " "
+pyenv_version_name = true
 
 [ruby]
 symbol = " "

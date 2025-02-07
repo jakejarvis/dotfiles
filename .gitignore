@@ -1,3 +1,13 @@
+# auto-generated files
+.zcompdump*
+.zcompcache*
+
+# compiled .zsh sources
+*.zwc
+
+# homebrew lockfile
+Brewfile.lock.json
+
 # oopsie proofing
 **/.ssh/known_hosts*
 *id_rsa*

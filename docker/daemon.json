@@ -5,8 +5,17 @@
       "enabled": true
     }
   },
+  "dns": [
+    "1.1.1.1",
+    "1.0.0.1"
+  ],
   "experimental": true,
   "features": {
     "buildkit": true
+  },
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "5"
   }
 }

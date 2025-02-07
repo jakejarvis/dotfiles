@@ -3,6 +3,7 @@
 ###############################
 tap "1password/tap"
 tap "dart-lang/dart"
+tap "dopplerhq/cli"
 tap "hashicorp/tap"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
@@ -13,144 +14,144 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "microsoft/git"
 tap "ngrok/ngrok"
 tap "planetscale/tap"
 tap "sass/sass"
-tap "sidneys/homebrew"
 
 ###############################
-#  Binaries                   #
+#  Formulae                   #
 ###############################
 
-# Perhaps most importantly...
+# perhaps most importantly...
 brew "zsh" unless OS.linux?
 
-# Better bash as a backup
+# modern bash as a backup
 brew "bash" unless OS.linux?
 
-# GNU utilities (those that come with macOS are outdated)
-brew "coreutils"
-brew "findutils"
-brew "gnu-indent"
+# correct Apple's GPL stubbornness...
+brew "coreutils" if OS.mac?
+brew "findutils" if OS.mac?
 brew "gnu-sed"
 brew "gnu-tar"
 brew "gnu-which"
-brew "gnupg"
+brew "gnupg" if OS.mac?
 brew "gnutls"
 brew "grep"
 brew "make"
-brew "moreutils"
 
-# More recent versions of some macOS tools
+# more recent versions of some other macOS tools/libraries
+brew "bzip2", link: true
 brew "curl", link: true
 brew "gcc"
-brew "gmp"
+brew "icu4c"
+brew "less"
+brew "libffi"
+brew "libxml2"
 brew "nano"
-brew "openssh"
+brew "ncurses"
+brew "openssh" unless OS.linux?
+brew "openssl@1.1" if OS.mac?
+brew "readline"
 brew "screen"
+brew "sqlite"
+brew "tcl-tk"
 brew "unzip", link: true
 brew "vim"  #, args: ["with-override-system-vi"]
+brew "wget"  #, args: ["with-iri"]
+brew "whois", link: true
+brew "zlib"
 
-# Other useful binaries
-brew "ack"
-brew "autoconf"
-brew "automake"
+# common binaries/libraries
 brew "ffmpeg"  #, args: ["with-libvpx"]
+brew "fx"
+brew "gettext"
+brew "groff"
+brew "guetzli"
+brew "htop" if OS.mac?
+brew "hyperfine"
 brew "imagemagick"  #, args: ["with-webp"]
 brew "jemalloc"
-brew "less"
+brew "jq"
 brew "libsass", args: ["HEAD"]
 brew "libyaml"
+brew "mhash"
 brew "mtr"
-brew "openssl@1.1" if OS.mac?
 brew "p7zip"
 brew "pkg-config"
-brew "readline"
-brew "sidneys/homebrew/unrar" if OS.mac?
-brew "ssh-copy-id", link: true
+brew "protobuf"
+brew "rlwrap"
+brew "rsync"
 brew "tmux"
 brew "tree"
-brew "wget"  #, args: ["with-iri"]
+brew "webp"
+brew "xz"
+brew "yq"
+brew "zopfli"
 
-# Git
+# Git (and GitHub/GitLab CLIs)
 brew "git"
 brew "git-lfs"
 brew "gh"
+brew "glab"
 
-# Mostly ordinary binaries
+# mostly development stuff
 brew "1password/tap/1password-cli" if OS.mac?
-brew "angular-cli"
 brew "asciinema"
 brew "aws-shell"
 brew "awscli"
-brew "carthage"
-brew "cocoapods"
+brew "carthage" if OS.mac?
+brew "cocoapods" if OS.mac?
 brew "composer"
+brew "croc"
 brew "dart-lang/dart/dart"
 brew "deno"
+brew "dive"
 brew "doctl"
-brew "fx"
+brew "dopplerhq/cli/doppler"
+brew "fnm"
 brew "go"
-brew "guetzli"
 brew "hashicorp/tap/packer"
 brew "hashicorp/tap/terraform"
 brew "hashicorp/tap/vault"
-brew "htop"
 brew "httpie"
 brew "httrack"
 brew "hugo", args: ["HEAD"]
-brew "ipinfo-cli"
-brew "iproute2mac"
-brew "jq"
-brew "mariadb"
+brew "iproute2mac" if OS.mac?
+brew "mariadb" unless OS.linux?
 brew "mas" if OS.mac?
-brew "mhash"
 brew "mkcert"
-brew "mysql-client"
-brew "ncurses"
+brew "mysql-client" unless OS.linux?
 brew "neofetch"
+brew "neonctl"
 brew "netcat"
-brew "openjdk"
+brew "openjdk", link: true
 brew "openvpn"
-brew "optipng"
 brew "pandoc"
-brew "php"
+brew "php" unless OS.linux?
 brew "planetscale/tap/pscale"
-brew "pngcrush"
-brew "postgresql"
-brew "protobuf"
-brew "pyenv" unless OS.linux?
+brew "postgresql" unless OS.linux?
+brew "pyenv"
+brew "pyenv-virtualenv"
 # brew "python"
-# brew "python@3"
+# brew "python@2"
 brew "qemu"
-brew "rbenv" unless OS.linux?
-brew "rclone"
-brew "rlwrap"
-brew "ruby-build" unless OS.linux?
+brew "rbenv"
 # brew "ruby"
+brew "ruby-build"
 brew "rust"
 brew "s3cmd"
 brew "sass/sass/dart-sass-embedded"
 brew "sass/sass/sass"
-brew "serverless"
 brew "shellcheck"
-brew "shfmt"
-brew "sqlite"
-brew "subversion"
-brew "svn"
+brew "tea"
 brew "tor"
 brew "torsocks"
-brew "volta" unless OS.linux?
-brew "whois", link: true
-brew "wireguard-tools"
 brew "wp-cli"
-brew "xz"
 # brew "youtube-dl"
-brew "yq"
 brew "yt-dlp"
-brew "zopfli"
 
-# Pentesting tools
+# infosec & pentesting
 brew "aircrack-ng"
 brew "apktool"
 brew "bettercap"
@@ -162,6 +163,7 @@ brew "geoip"
 brew "hashcat"
 brew "httpx"
 brew "hydra"
+brew "ipinfo-cli"
 brew "john"
 brew "knock"
 brew "massdns"
@@ -208,10 +210,9 @@ cask "1password"
 cask "authy"
 cask "gpg-suite"
 cask "little-snitch"
+# cask "microsoft/git/git-credential-manager-core"
 cask "tailscale"
 cask "tunnelblick"
-cask "yubico-authenticator"
-cask "yubico-yubikey-manager"
 
 # Development/Work
 cask "adobe-creative-cloud"
@@ -221,7 +222,8 @@ cask "eclipse-java"
 cask "github"
 cask "google-cloud-sdk", args: { appdir: "~/Applications" }
 cask "imageoptim"
-cask "iterm2"
+# cask "iterm2"
+cask "iterm2-beta"
 cask "jetbrains-toolbox"
 cask "microsoft-office"
 cask "ngrok/ngrok/ngrok"
@@ -234,7 +236,9 @@ cask "visual-studio-code"
 
 # Virtual Machines (& Docker)
 cask "docker"
+# cask "multipass"
 cask "parallels"
+cask "vagrant"
 # cask "virtualbox"
 cask "virtualbox-beta"  # supports M1!
 
@@ -253,9 +257,6 @@ cask "skype"
 cask "slack"
 cask "zoomus"
 
-# Gaming
-cask "steam"
-
 # Pentesting
 cask "burp-suite"
 cask "charles"
@@ -267,19 +268,17 @@ cask "wireshark"
 cask "firefox"
 cask "firefox-developer-edition"
 cask "google-chrome"
-cask "safari-technology-preview"
 cask "tor-browser"
 
 ###############################
 #  Drivers                    #
 ###############################
 
-cask "homebrew/cask-drivers/hp-easy-start"
-cask "homebrew/cask-drivers/logitech-camera-settings"
 cask "homebrew/cask-drivers/logi-options-plus"
-cask "homebrew/cask-drivers/logitech-unifying"
-cask "homebrew/cask-drivers/razer-synapse"
+cask "homebrew/cask-drivers/philips-hue-sync"
 cask "homebrew/cask-drivers/sonos"
+cask "homebrew/cask-drivers/yubico-authenticator"
+cask "homebrew/cask-drivers/yubico-yubikey-manager"
 
 ###############################
 #  Fonts                      #
@@ -288,14 +287,12 @@ cask "homebrew/cask-drivers/sonos"
 # Monospace
 cask "homebrew/cask-fonts/font-cascadia-code"
 cask "homebrew/cask-fonts/font-hack"
-cask "homebrew/cask-fonts/font-ibm-plex-mono"
 cask "homebrew/cask-fonts/font-roboto-mono"
 cask "homebrew/cask-fonts/font-sf-mono"
 cask "homebrew/cask-fonts/font-sf-mono-for-powerline"
 cask "homebrew/cask-fonts/font-source-code-pro"
 
 # Sans/Serif
-cask "homebrew/cask-fonts/font-comic-neue"
 cask "homebrew/cask-fonts/font-inter"
 cask "homebrew/cask-fonts/font-open-sans"
 cask "homebrew/cask-fonts/font-roboto"

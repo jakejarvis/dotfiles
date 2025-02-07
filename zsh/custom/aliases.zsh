@@ -11,6 +11,7 @@ alias l="ll"
 
 # easier dotfile tinkering
 alias shreload="exec \$SHELL"
+alias shdebug="DOTFILES_DEBUG=1 exec \$SHELL"
 
 # git
 alias g="git"
@@ -37,36 +38,42 @@ alias gist="gh gist create --web"
 # docker
 alias dps="docker ps -a"
 dbar() {
-  # build and run:
+  # build a Dockerfile in the current directory and run it interactively:
   # https://stackoverflow.com/questions/45141402/build-and-run-dockerfile-with-one-command/59220656#59220656
-  docker build --progress=plain --no-cache . | tee /dev/tty | tail -n1 | cut -d' ' -f3 | xargs -I{} docker run --rm -i {}
+  docker run --rm -it "$(docker build --no-cache -q .)"
 }
 dsh() {
   docker exec -it "$1" /bin/sh
 }
+# alias dc="docker-compose"
 alias dc="docker compose"
-alias dcu="docker compose up -d"
-alias dcd="docker compose down"
-alias dcr="docker compose down && docker compose up -d"
-alias dcl="docker compose logs -f"
+alias dcu="dc up -d"
+alias dcd="dc down"
+alias dcr="dcd && dcu"
+alias dcl="dc logs -f"
 
 # multipass
 alias mp="multipass"
 mpl() {
   # creates VM and opens its bash shell
   # `mpl test1 4G 20.04`
-  multipass launch "${2:-jammy}" --cpus 4 --mem "${3:-2G}" --disk 20G --name "$1" && \
+  multipass launch "${2:-jammy}" --cpus=4 --memory="${3:-2G}" --disk="${4:-20G}" --name="$1" && \
   multipass shell "$1"
+}
+mpd() {
+  multipass delete "$1" && multipass purge
 }
 alias mpls="multipass list"
 alias mpsh="multipass shell"
 alias mpk="multipass stop"
-alias mpd="multipass delete"
 
 # Node/NPM/Yarn
 alias npr="npm run"
+alias yar="yarn run"
+alias pnpr="pnpm run"
 alias fresh_npm="rm -rf node_modules package-lock.json && npm install"
 alias fresh_yarn="rm -rf node_modules yarn.lock && yarn install"
+alias fresh_pnpm="rm -rf node_modules pnpm-lock.yaml && pnpm install"
 
 # uncomment to use VS Code insiders build
 # alias code="code-insiders"

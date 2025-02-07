@@ -2,8 +2,18 @@
 
 # Make a new directory and `cd` right into it (this seems like a no-brainer)
 mkcd() {
-  mkdir -p -- "$1" &&
-  cd -P -- "$1" || return
+  mkdir -p "$1" && cd "$1"
+}
+
+# Load .env file into shell session for environment variables
+# https://github.com/thoughtbot/dotfiles/blob/main/zsh/functions/envup
+envup() {
+  if [ -f .env ]; then
+    export $(sed '/^ *#/ d' .env)
+  else
+    echo 'No .env file found' 1>&2
+    return 1
+  fi
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
@@ -59,6 +69,13 @@ extract() {
   else
     echo "'$1' is not a valid file"
   fi
+}
+
+# create a jrvs.io short URL
+# ex: short https://github.com/jakejarvis/dotfiles jakesdotfiles => https://jrvs.io/jakesdotfiles
+# https://github.com/jakejarvis/jrvs.io/blob/main/short.sh
+short() {
+  ( cd "$HOME/source/jrvs.io" && bash -c "./short.sh $*" )
 }
 
 # Create a git.io short URL (custom slug optional)

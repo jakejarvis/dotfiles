@@ -26,16 +26,15 @@ if [[ -e /etc/debian_version ]]; then
 fi
 
 # set machine's timezone to local time
-sudo timedatectl set-timezone America/New_York
+sudo timedatectl set-timezone America/New_York || true
 
 # install linuxbrew:
 # https://docs.brew.sh/Homebrew-on-Linux#install
 if ! command -v brew &>/dev/null; then
-  # TODO: hack to permit installing as root, find a better way
-  # https://github.com/Homebrew/install/blob/master/install.sh#L306
-  sudo touch /.dockerenv
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-  sudo rm /.dockerenv
+  # TODO: currently tricking installer into thinking we're running it as a non-root user, it doesn't _really_ matter in
+  # my use cases (e.g. codespaces) but this is apparently very unsafe.
+  # https://github.com/Homebrew/install/blob/master/install.sh#L302
+  NONINTERACTIVE=1 UID=999 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # install tailscale
@@ -43,13 +42,10 @@ if ! command -v tailscale &>/dev/null; then
   curl -fsSL https://tailscale.com/install.sh | bash
 fi
 
-# install volta
-if ! command -v volta &>/dev/null; then
-  export VOLTA_HOME="$HOME/.volta"
-  export PATH="$VOLTA_HOME/bin:$PATH"
-  curl -fsSL https://get.volta.sh | bash -s -- --skip-setup
+# install fnm
+if ! command -v fnm &>/dev/null; then
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 fi
-volta install node@lts npm@latest yarn@latest
 
 # install rbenv & ruby-build
 if ! command -v rbenv &>/dev/null; then

@@ -1,7 +1,7 @@
 [core]
 	editor = code --wait
 	pager = delta
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore
 
 	# Make `git rebase` safer on macOS
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
@@ -9,7 +9,17 @@
 [user]
 	email = jake@jarv.is
 	name = Jake Jarvis
-	signingkey = 3BC6E5776BF379D36F6714802B0C9CF251E69A39
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHeuNlSZmqygM4XN7++pmfrNUsFzAjlxaYHoO/JXVdT5
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [init]
 	defaultBranch = main
 [push]
@@ -39,10 +49,6 @@
 	aliases = config --get-regexp alias
 	contributors = shortlog --summary --numbered
 	new = !git init && git symbolic-ref HEAD refs/heads/main
-# [credential]
-# 	helper = osxkeychain
-# [gpg]
-# 	program = /usr/local/MacGPG2/bin/gpg
 [github]
 	user = jakejarvis
 [hub]

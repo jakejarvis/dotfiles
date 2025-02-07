@@ -1,5 +1,5 @@
 {
-  "ASCII Ligatures" : true,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/jake",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -56,7 +56,9 @@
     "slogin",
     "telnet"
   ],
+  "Scrollback With Status Bar" : true,
   "Scrollback Lines" : 0,
+  "Scrollback in Alternate Screen" : true,
   "Draw Powerline Glyphs" : false,
   "Status Bar Layout" : {
     "components" : [
@@ -70,9 +72,9 @@
             "iTermStatusBarSpringComponentSizeMultipleKey" : 1
           },
           "layout advanced configuration dictionary value" : {
-            "auto-rainbow style" : 0,
             "algorithm" : 1,
-            "remove empty components" : false
+            "remove empty components" : false,
+            "auto-rainbow style" : 0
           }
         }
       }
@@ -138,8 +140,11 @@
     },
     {
       "notes" : "Paths",
+      "precision" : "normal",
       "regex" : "\\~?\/?([[:letter:][:number:]._-]+\/+)+[[:letter:][:number:]._-]+\/?",
-      "precision" : "normal"
+      "actions" : [
+
+      ]
     },
     {
       "notes" : "Quoted string",
@@ -188,108 +193,108 @@
   "Title Components" : 2,
   "Keyboard Map" : {
     "0x5e-0x60000" : {
-      "Action" : 11,
-      "Text" : "0x1e"
+      "Text" : "0x1e",
+      "Action" : 11
     },
     "0xf702-0x280000" : {
-      "Text" : "b",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "b"
     },
     "0xf702-0x260000" : {
-      "Action" : 11,
-      "Text" : "0x1b 0x1b 0x5b 0x44"
+      "Text" : "0x1b 0x1b 0x5b 0x44",
+      "Action" : 11
     },
     "0xf703-0x280000" : {
-      "Text" : "f",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "f"
     },
     "0xf70a-0x20000" : {
-      "Action" : 10,
-      "Text" : "[28~"
+      "Text" : "[28~",
+      "Action" : 10
     },
     "0xf703-0x260000" : {
-      "Action" : 10,
-      "Text" : "[C"
+      "Text" : "[C",
+      "Action" : 10
     },
     "0x2d-0x40000" : {
-      "Action" : 11,
-      "Text" : "0x1f"
+      "Text" : "0x1f",
+      "Action" : 11
     },
     "0xf702-0x220000" : {
-      "Action" : 10,
-      "Text" : "[D"
+      "Text" : "[D",
+      "Action" : 10
     },
     "0xf703-0x240000" : {
-      "Action" : 10,
-      "Text" : "[5C"
+      "Text" : "[5C",
+      "Action" : 10
     },
     "0xf703-0x220000" : {
-      "Action" : 10,
-      "Text" : "[C"
+      "Text" : "[C",
+      "Action" : 10
     },
     "0xf700-0x280000" : {
-      "Action" : 10,
-      "Text" : "[A"
+      "Text" : "[A",
+      "Action" : 10
     },
     "0xf72b-0x20000" : {
-      "Action" : 10,
-      "Text" : "[F"
+      "Text" : "[F",
+      "Action" : 10
     },
     "0xf700-0x260000" : {
-      "Action" : 10,
-      "Text" : "[A"
+      "Text" : "[A",
+      "Action" : 10
     },
     "0xf701-0x280000" : {
-      "Action" : 10,
-      "Text" : "[B"
+      "Text" : "[B",
+      "Action" : 10
     },
     "0xf700-0x240000" : {
-      "Action" : 10,
-      "Text" : "[A"
+      "Text" : "[A",
+      "Action" : 10
     },
     "0xf701-0x260000" : {
-      "Action" : 10,
-      "Text" : "[B"
+      "Text" : "[B",
+      "Action" : 10
     },
     "0xf700-0x220000" : {
-      "Action" : 10,
-      "Text" : "[A"
+      "Text" : "[A",
+      "Action" : 10
     },
     "0xf701-0x240000" : {
-      "Action" : 10,
-      "Text" : "[B"
+      "Text" : "[B",
+      "Action" : 10
     },
     "0xf72b-0x40000" : {
-      "Action" : 4,
-      "Text" : ""
+      "Text" : "",
+      "Action" : 4
     },
     "0xf708-0x20000" : {
-      "Action" : 10,
-      "Text" : "[25~"
+      "Text" : "[25~",
+      "Action" : 10
     },
     "0xf701-0x220000" : {
-      "Action" : 10,
-      "Text" : "[B"
+      "Text" : "[B",
+      "Action" : 10
     },
     "0xf709-0x20000" : {
-      "Action" : 10,
-      "Text" : "[26~"
+      "Text" : "[26~",
+      "Action" : 10
     },
     "0xf70b-0x20000" : {
-      "Action" : 10,
-      "Text" : "[29~"
+      "Text" : "[29~",
+      "Action" : 10
     },
     "0xf702-0x240000" : {
-      "Action" : 10,
-      "Text" : "[5D"
+      "Text" : "[5D",
+      "Action" : 10
     },
     "0xf729-0x20000" : {
-      "Action" : 10,
-      "Text" : "[H"
+      "Text" : "[H",
+      "Action" : 10
     },
     "0xf729-0x40000" : {
-      "Action" : 5,
-      "Text" : ""
+      "Text" : "",
+      "Action" : 5
     }
   },
   "Ansi 14 Color" : {
@@ -319,7 +324,7 @@
     "Green Component" : 0.36078426241874695
   },
   "Use Bold Font" : true,
-  "Silence Bell" : false,
+  "Silence Bell" : true,
   "Ansi 12 Color" : {
     "Red Component" : 0.34117650985717773,
     "Color Space" : "sRGB",
@@ -329,8 +334,8 @@
   },
   "Window Type" : 0,
   "Allow Title Reporting" : false,
-  "Use Bright Bold" : true,
   "Has Hotkey" : false,
+  "Use Bright Bold" : true,
   "Cursor Text Color" : {
     "Red Component" : 0.15686270594596863,
     "Color Space" : "sRGB",
@@ -379,9 +384,9 @@
     "Green Component" : 0.1491314172744751
   },
   "Semantic History" : {
+    "editor" : "com.microsoft.VSCode",
     "text" : "",
-    "action" : "editor",
-    "editor" : "com.microsoft.VSCode"
+    "action" : "editor"
   },
   "Ambiguous Double Width" : false,
   "Blur Radius" : 10.045428856382978,
@@ -457,7 +462,7 @@
   "Columns" : 120,
   "Use Tab Color" : false,
   "Visual Bell" : true,
-  "Custom Directory" : "No",
+  "ASCII Ligatures" : true,
   "Ansi 5 Color" : {
     "Red Component" : 1,
     "Color Space" : "sRGB",

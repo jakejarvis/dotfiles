@@ -19,7 +19,7 @@ sudo xcodebuild -license accept
 # This whole thing kinda hinges on having Homebrew...
 # Check for it and install from GitHub if it's not there
 if ! command -v brew &>/dev/null; then
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Disable analytics
@@ -39,14 +39,9 @@ chsh -s "$(brew --prefix)/bin/zsh"
 chmod 755 "$(brew --prefix)/share/zsh"
 chmod 755 "$(brew --prefix)/share/zsh/site-functions"
 
-# 1Password SSH integration
-# https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
-mkdir -p ~/.1password
-ln -sf ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
-
 # Install all apps from the Brewfile, ignore errors
 brew tap homebrew/bundle
-brew bundle || true
+brew bundle --no-lock || true
 
 # Set macOS defaults
 # Needs to be last since this will restart everything when done
