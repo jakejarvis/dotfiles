@@ -87,8 +87,6 @@ if [[ -x "$BREW_BIN" ]]; then
     export LDFLAGS CPPFLAGS PKG_CONFIG_PATH RUBY_CONFIGURE_OPTS
     unset gnubin gnuman compiler_libs lib
   fi
-else
-  echo "⚠️ Homebrew can't be found in any of the normal locations. Are you sure it's installed?"
 fi
 
 # go
@@ -120,6 +118,11 @@ if command -v pyenv &>/dev/null; then
   if command -v pyenv-virtualenv-init &>/dev/null; then
     eval "$(pyenv virtualenv-init - zsh)"
   fi
+fi
+
+# pnpm
+if [[ -d "$HOME/.local/share/pnpm" ]]; then
+  path=("$HOME/.local/share/pnpm" $path)
 fi
 
 # docker user mode, see: https://docs.docker.com/desktop/mac/permission-requirements/#installing-symlinks

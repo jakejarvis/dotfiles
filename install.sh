@@ -63,7 +63,7 @@ if [[ "$OSTYPE" = darwin* ]]; then
   touch ~/.bash_sessions_disable
 
   source "$DOTFILES/macos/macos.sh"
-elif [[ "$OSTYPE" = linux-gnu* ]]; then
+elif [[ "$OSTYPE" = linux-gnu* ]] && [[ -z "$CODESPACES" ]]; then
   # final symlinks
   ln -sf "$DOTFILES/nano/default.nanorc" ~/.nanorc
 

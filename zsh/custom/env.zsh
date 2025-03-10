@@ -17,6 +17,7 @@ export NPM_CONFIG_FUND=false
 export NPM_CONFIG_UPDATE_NOTIFIER=false
 export OPEN_SOURCE_CONTRIBUTOR=true
 export OPENCOLLECTIVE_HIDE=1
+export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 
 # can everyone stop being so creepy pls
 export AZURE_CORE_COLLECT_TELEMETRY=0
