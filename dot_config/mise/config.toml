@@ -1,0 +1,12 @@
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
+
+[settings.python]
+compile = false
+
+[tools]
+bun = "latest"
+node = "24"
+python = ["3.14", "3.13", "3.12", "3.11"]
+ruby = "latest"
+uv = "latest"

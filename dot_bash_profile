@@ -1,0 +1,59 @@
+# super minimal bash setup for fallback, debugging, miscellaneous tasks, etc.
+
+# disable unnecessary history
+set +o history
+export SHELL_SESSION_HISTORY=0
+
+# hide macOS zsh default warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# set PATH, MANPATH, etc., for Homebrew
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  # macOS on Apple Silicon
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  # macOS on Intel
+  eval "$(/usr/local/bin/brew shellenv)"
+elif [[ -x "$HOME/.linuxbrew/bin/brew" ]]; then
+  # Linux, user install
+  eval "$("$HOME/.linuxbrew/bin/brew" shellenv)"
+elif [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  # Linux, system install
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# go
+if [[ -d "$HOME/golang" ]]; then
+  export GOPATH="$HOME/golang"
+  path=("$GOPATH/bin" $path)
+fi
+
+# rust/cargo
+if [[ -d "$HOME/.cargo" ]]; then
+  path=("$HOME/.cargo/bin" $path)
+fi
+
+# mise
+if command -v mise &>/dev/null; then
+  eval "$(mise activate bash)"
+fi
+
+# rbenv
+if command -v rbenv &>/dev/null; then
+  eval "$(rbenv init - --no-rehash bash)"
+fi
+
+# pnpm
+if [[ -d "$HOME/.local/share/pnpm" ]]; then
+  path=("$HOME/.local/share/pnpm" $path)
+fi
+
+# bun
+if [[ -d "$HOME/.cache/.bun" ]]; then
+  path=("$HOME/.cache/.bun/bin" $path)
+fi
+
+# uv, apparently?
+if [[ -d "$HOME/.local/bin" ]]; then
+  path=("$HOME/.local/bin" $path)
+fi

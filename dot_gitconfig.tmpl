@@ -1,0 +1,71 @@
+[core]
+	editor = code --wait
+	pager = delta
+	excludesfile = ~/.gitignore_global
+	{{ if eq .chezmoi.os "darwin" }}
+	# Make `git rebase` safer on macOS
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+	{{ end }}
+[user]
+	email = {{ .user.git.email | quote }}
+	name = {{ .user.git.name | quote }}
+	signingkey = {{ .user.git.signingkey | quote }}
+[gpg]
+	format = ssh
+{{ if eq .chezmoi.os "darwin" }}
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+{{ end }}
+[init]
+	defaultBranch = main
+[push]
+	default = tracking
+[pull]
+	rebase = true
+[commit]
+	gpgsign = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+[diff]
+	tool = default-difftool
+[difftool "default-difftool"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[alias]
+	undo = reset --soft HEAD~1
+	pom = push origin main
+	# Show verbose output about tags, branches, remotes, aliases and contributors
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+	aliases = config --get-regexp alias
+	contributors = shortlog --summary --numbered
+	new = !git init && git symbolic-ref HEAD refs/heads/main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[mergetool]
+	keepBackup = true
+[color]
+	ui = auto
+{{ if lookPath "delta" }}
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+[delta]
+	features = decorations
+[delta "interactive"]
+	keep-plus-minus-markers = false
+[delta "decorations"]
+	hunk-header-style = omit
+	line-numbers = true
+	syntax-theme = base16
+{{ end }}

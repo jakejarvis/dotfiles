@@ -1,0 +1,714 @@
+#!/usr/bin/env zsh
+
+# set DOTFILES_DEBUG to trace startup times (1/2)
+[[ "$DOTFILES_DEBUG" != "1" ]] || zmodload zsh/zprof
+
+
+###########################
+# Config
+###########################
+
+autoload -U colors && \
+colors
+
+autoload -Uz select-word-style && \
+select-word-style bash
+
+# autoload -Uz bracketed-paste-magic && \
+# zle -N bracketed-paste bracketed-paste-magic
+# zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
+autoload -Uz url-quote-magic && \
+zle -N self-insert url-quote-magic
+zstyle ":urlglobber" url-other-schema ftp git gopher http https magnet && \
+
+export DISABLE_MAGIC_FUNCTIONS=true     # make pasting into terminal faster
+
+# enable bash-like 'help' command for zsh:
+# https://stackoverflow.com/questions/4405382/how-can-i-read-documentation-about-built-in-zsh-commands
+unalias run-help 2>/dev/null
+autoload run-help
+alias help=run-help
+
+# ---
+
+setopt notify
+setopt complete_aliases
+# setopt complete_in_word
+# setopt always_to_end
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt share_history
+setopt inc_append_history
+setopt rc_quotes
+setopt extended_glob
+setopt glob_dots
+unsetopt case_glob
+unsetopt beep  # kindly stfu
+unsetopt list_beep
+unsetopt correct
+unsetopt correct_all
+
+# ---
+
+export LC_ALL="${LC_ALL:-en_US.UTF-8}"
+export LANG="${LANG:-en_US.UTF-8}"
+
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+export EDITOR="nano"  # don't judge me
+export VISUAL="cursor --wait"
+
+export PAGER="less"
+export LESS="$LESS -RF --mouse --silent"
+
+# resolve GPG terminal at shell runtime
+# fixes "signing failed: Inappropriate ioctl for device"
+if tty -s 2>/dev/null; then
+  GPG_TTY=$(tty)
+  export GPG_TTY
+fi
+
+#export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+export BROWSER="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
+
+# https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
+if [[ -S "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" ]]; then
+  export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+fi
+
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"  # --require-sha
+export HOMEBREW_FORCE_BREWED_CURL=1
+export HOMEBREW_FORCE_BREWED_GIT=1
+
+
+###########################
+# Env vars
+###########################
+
+# homebrew tweaks
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+
+# docker tweaks
+export DOCKER_BUILDKIT=1
+export DOCKER_SCAN_SUGGEST=false
+export COMPOSE_DOCKER_CLI_BUILD=1
+
+# npm tweaks
+export DISABLE_OPENCOLLECTIVE=1
+export NO_UPDATE_NOTIFIER=1
+export NPM_CONFIG_FUND=false
+export NPM_CONFIG_UPDATE_NOTIFIER=false
+export OPEN_SOURCE_CONTRIBUTOR=true
+export OPENCOLLECTIVE_HIDE=1
+export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+export MISE_NODE_COREPACK=1
+
+# can everyone stop being so creepy pls
+export AZURE_CORE_COLLECT_TELEMETRY=0
+export CHECKPOINT_DISABLE=1
+export CLI_COLLECT_METRICS=0
+export CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true
+export DOTNET_CLI_TELEMETRY_OPTOUT=true
+export GATSBY_TELEMETRY_DISABLED=1
+export NEXT_TELEMETRY_DISABLED=1
+export POWERSHELL_TELEMETRY_OPTOUT=1
+export SAM_CLI_TELEMETRY=0
+export SLS_TELEMETRY_DISABLED=1
+export VAGRANT_CHECKPOINT_DISABLE=1
+export YARN_ENABLE_TELEMETRY=0
+
+
+###########################
+# Path
+###########################
+
+# Homebrew's location is different depending on OS...
+# https://github.com/Homebrew/install/blob/master/install.sh#L122
+if [[ -d /opt/homebrew ]]; then
+  # macOS on Apple Silicon
+  BREW_BIN="/opt/homebrew/bin/brew"
+elif [[ -d "$HOME/.linuxbrew" ]]; then
+  # Linux, user install
+  # NOTE: definitely discouraged, maybe deprecated? https://github.com/Homebrew/install/pull/702
+  BREW_BIN="$HOME/.linuxbrew/bin/brew"
+elif [[ -d /home/linuxbrew/.linuxbrew ]]; then
+  # Linux, system install
+  BREW_BIN="/home/linuxbrew/.linuxbrew/bin/brew"
+else
+  # macOS on Intel (hopefully, or else we're kinda doomed...)
+  BREW_BIN="/usr/local/bin/brew"
+fi
+
+# set PATHs for Homebrew (if we found it)
+if [[ -x "$BREW_BIN" ]]; then
+  eval "$("$BREW_BIN" shellenv)"
+fi
+
+# go
+if [[ -d "$HOME/golang" ]]; then
+  export GOPATH="$HOME/golang"
+  path=("$GOPATH/bin" $path)
+fi
+
+# rust/cargo
+if [[ -d "$HOME/.cargo" ]]; then
+  path=("$HOME/.cargo/bin" $path)
+fi
+
+# mise
+if command -v mise &>/dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
+# rbenv
+if command -v rbenv &>/dev/null; then
+  eval "$(rbenv init - --no-rehash zsh)"
+fi
+
+# bun
+if [[ -d "$HOME/.cache/.bun" ]]; then
+  path=("$HOME/.cache/.bun/bin" $path)
+fi
+
+# uv, apparently?
+if [[ -d "$HOME/.local/bin" ]]; then
+  path=("$HOME/.local/bin" $path)
+fi
+
+# docker user mode, see: https://docs.docker.com/desktop/mac/permission-requirements/#installing-symlinks
+if [[ -d "$HOME/.docker/bin" ]]; then
+  path=("$HOME/.docker/bin" $path)
+fi
+
+if [[ -d "$HOME/.orbstack" ]]; then
+  source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
+fi
+
+if [[ -d "$HOME/.opencode" ]]; then
+  path=("$HOME/.opencode/bin" $path)
+fi
+
+# let zsh sort out formatting and deduplication
+typeset -aU path fpath manpath
+export PATH FPATH MANPATH
+
+
+###########################
+# Aliases
+###########################
+
+# allow sudo-able aliases
+alias sudo="sudo "
+
+# colorful ls
+alias ls="ls -G --color=auto"
+alias ll="ls -lah"
+alias la="ls -a"
+alias l="ll"
+
+# easier dotfile tinkering
+alias shreload="exec \$SHELL"
+alias shdebug="DOTFILES_DEBUG=1 exec \$SHELL"
+
+# git
+alias g="git"
+alias gc="git commit -m"  # + commit message
+alias gca="git add . && git commit -m"  # + commit message
+alias gs="git status -sb"
+alias gl="git log --pretty=short"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gpom="git push origin main"
+alias glom="git pull origin main"
+alias gpo="git push origin"  # + branch name
+alias glo="git pull origin"  # + branch name
+alias glfm="git fetch && git reset origin/main --hard"
+alias gb="git checkout"  # + existing branch name
+alias gbn="git checkout -b"  # + new branch name
+alias grm="git rebase -i origin/main"
+alias gsub="git submodule update --recursive --remote"
+alias gundo="git reset --soft HEAD~1"
+alias gres="git reset"
+alias github="gh repo view --web"
+alias gist="gh gist create --web"
+
+# docker
+alias dps="docker ps -a"
+dbar() {
+  # build a Dockerfile in the current directory and run it interactively:
+  # https://stackoverflow.com/questions/45141402/build-and-run-dockerfile-with-one-command/59220656#59220656
+  docker run --rm -it "$(docker build --no-cache -q .)"
+}
+dsh() {
+  docker exec -it "$1" /bin/sh
+}
+# alias dc="docker-compose"
+alias dc="docker compose"
+alias dcu="dc up -d"
+alias dcd="dc down"
+alias dcr="dcd && dcu"
+alias dcl="dc logs -f"
+
+# Node/NPM/Yarn
+alias npr="npm run"
+alias yar="yarn run"
+alias pnpr="pnpm run"
+alias fresh_npm="rm -rf node_modules package-lock.json && npm install"
+alias fresh_yarn="rm -rf node_modules yarn.lock && yarn install"
+alias fresh_pnpm="rm -rf node_modules pnpm-lock.yaml && pnpm install"
+
+# open current working directory in VS Code
+alias vs="code ."
+
+# an original creation, see https://github.com/jakejarvis/simpip
+alias ipv4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
+alias ipv6="curl -6 simpip.com --max-time 1 --proto-default https --silent"
+alias ip="ipv4; ipv6"
+alias ip-local="ipconfig getifaddr en0"
+alias ips="ip; ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# youtube-dl
+alias youtube-dl="yt-dlp"  # better youtube-dl fork: https://github.com/yt-dlp/yt-dlp
+alias ytdl="youtube-dl -f bestvideo+bestaudio"
+alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --audio-quality 320K"
+
+# misc.
+alias screenfetch="neofetch"
+alias weather="curl 'https://wttr.in/?format=v2'"
+
+# mac shortcuts
+alias unhidden="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias rehidden="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias force_empty="sudo rm -rf ~/.Trash \"/Volumes/*/.Trashes\""
+alias unq="sudo xattr -rd com.apple.quarantine"
+
+# hide/show all desktop icons (useful when presenting)
+alias hidedesk="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesk="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+alias ripfinder="killall Finder"
+alias ripdock="killall Dock"
+alias ripmenu="killall SystemUIServer NotificationCenter"
+
+# open current directory in Finder
+alias finder="open -a Finder ."
+
+alias dns-clear="networksetup -setdnsservers Wi-Fi"
+alias dns-check="networksetup -getdnsservers Wi-Fi"
+alias dns-set="networksetup -setdnsservers Wi-Fi "
+alias dns-set-cloudflare="dns-set 1.1.1.1 1.0.0.1"
+alias dns-set-google="dns-set 8.8.8.8 8.8.4.4"
+alias flush="sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache"
+
+# Xcode simulators
+alias ios_sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+alias watchos_sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
+
+# convenient access to ssh public key
+alias pubkey="pbcopy < ~/.ssh/id_ed25519.pub && echo '=> Public key copied to clipboard.'"
+
+# workaround for lack of tailscale CLI on mac:
+# https://tailscale.com/kb/1080/cli/?tab=macos#using-the-cli
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+
+###########################
+# Functions
+###########################
+
+system_update() {
+  local NC="\033[0m"
+  local YELLOW="\033[0;33m"
+
+  # homebrew
+  echo -e "${YELLOW}Updating Homebrew formulae and casks...${NC}"
+  brew update
+  brew upgrade
+  # avoid annoying `(latest) != latest` cask updates:
+  brew upgrade $(brew outdated --greedy --verbose | awk '$2 !~ /(latest)/ {print $1}')
+  brew cleanup
+
+  # node, npm, yarn
+  # echo -e "${YELLOW}Updating global NPM/Yarn packages...${NC}"
+  # fnm install --latest --corepack-enabled
+  # npm update --global --no-audit
+
+  # ruby, gems
+  echo -e "${YELLOW}Updating Ruby and gems...${NC}"
+  CONFIGURE_OPTS="$RUBY_CONFIGURE_OPTS" \
+    rbenv install --skip-existing "$(rbenv install -l | grep -v - | tail -1)" && \
+    rbenv global "$(rbenv install -l | grep -v - | tail -1)"
+  gem install bundler foreman
+  gem update
+  gem cleanup
+  rbenv rehash
+
+  # pips
+  # https://stackoverflow.com/a/3452888
+  echo -e "${YELLOW}Updating pip packages...${NC}"
+  pip3 list --outdated --format=json | jq -r '.[] | .name+"="+.latest_version' | cut -d = -f 1 | xargs -n1 pip3 install -U
+
+  # zinit & plugins
+  echo -e "${YELLOW}Updating zinit...${NC}"
+  zinit self-update
+  zinit update --all
+
+  # App Store
+  echo -e "${YELLOW}Checking for App Store updates...${NC}"
+  mas outdated
+
+  # macOS system
+  echo -e "${YELLOW}Checking for macOS system updates...${NC}"
+  softwareupdate --list
+}
+
+# Make a new directory and `cd` right into it
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+serve() {
+  local port="${1:-8090}"
+  sleep 1 && open "http://localhost:${port}/" &
+  # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+  # And serve everything as UTF-8 (although not technically correct, this doesn't break anything for binary files)
+  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+}
+
+
+###########################
+# Plugins
+###########################
+
+# these custom values must be set *before* sourcing zinit
+export ZINIT_HOME="${ZINIT_HOME:-"${XDG_DATA_HOME:-"${HOME}/.local/share"}/zinit/zinit.git"}"
+declare -A ZINIT=(
+  [ZCOMPDUMP_PATH]="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/.zcompdump-$ZSH_VERSION"
+)
+
+# check for zinit
+if [[ -f "$ZINIT_HOME/zinit.zsh" ]]; then
+  source "$ZINIT_HOME/zinit.zsh"
+else
+  echo "zinit not found in '$ZINIT_HOME', either check the value of ZINIT_HOME or install zinit."
+  return
+fi
+
+# initialize zinit && ensure compinit recognizes its completions
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# TODO: figure out why zinit stopped adding itself to MANPATH automatically...
+if [[ -d "${ZINIT[MAN_DIR]}" ]]; then
+  manpath=(
+    "${ZINIT[MAN_DIR]}"
+    $manpath
+  )
+fi
+
+# various zinit add-ons
+zinit light zdharma-continuum/zinit-annex-patch-dl
+
+# oh-my-zsh was good at setting iTerm tab titles, keep doing it pls
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/lib
+zinit snippet OMZ::lib/functions.zsh
+zinit snippet OMZ::lib/termsupport.zsh
+zinit snippet OMZ::lib/compfix.zsh
+
+# async support
+zinit ice lucid depth"1" \
+  atload"async_init" \
+  src"async.zsh"
+zinit light mafredri/zsh-async
+
+# grab exa (better ls) binary
+zinit ice lucid from"gh-r" as"command" \
+  mv"bin/exa* -> exa" \
+  atclone"
+    mv -vf completions/exa.zsh _exa
+    mv -vf man/exa.1 ${ZINIT[MAN_DIR]}/man1
+    mv -vf man/exa_colors.5 ${ZINIT[MAN_DIR]}/man5
+  " \
+  atpull"%atclone" \
+  atload"
+    alias ls='exa --color=auto -GF --icons --group-directories-first'
+    alias ll='exa --color=auto -1laF --git --icons --group-directories-first --ignore-glob=\".DS_Store*|~*\"'
+    alias lt='ll -T -L=2'
+  "
+zinit light ogham/exa
+
+# grab bat (better cat) binary
+zinit ice lucid from"gh-r" as"command" \
+  mv"bat-*/bat -> bat" \
+  atclone"
+    mv -vf bat-*/autocomplete/bat.zsh _bat
+    mv -vf bat-*/bat.1 ${ZINIT[MAN_DIR]}/man1
+  " \
+  atpull"%atclone" \
+  atload"
+    export BAT_THEME='base16'
+    export MANPAGER='sh -c \"col -bx | bat --color=always --style=plain --language=man\"'
+    #alias cat='bat --paging=always --color=auto --style=numbers,changes'
+    alias plcat='bat --paging=never --color=auto --style=plain'
+  "
+zinit light sharkdp/bat
+
+# grab delta binary
+zinit ice lucid from"gh-r" as"command" \
+  mv"delta-*/delta -> delta" \
+  dl"https://github.com/dandavison/delta/raw/HEAD/etc/completion/completion.zsh -> _delta"
+zinit light dandavison/delta
+
+# grab fd binary
+zinit ice lucid from"gh-r" as"command" \
+  mv"fd-*/fd -> fd" \
+  atclone"
+    mv -vf fd-*/autocomplete/_fd _fd
+    mv -vf fd-*/fd.1 ${ZINIT[MAN_DIR]}/man1
+  " \
+  atpull"%atclone"
+zinit light sharkdp/fd
+
+# grab fzf binary from release & other files from source
+# TODO: preview commands are an absolute sh*tshow, maybe use .lessfilter?
+# https://github.com/Aloxaf/fzf-tab/wiki/Preview#show-file-contents
+zinit ice lucid from"gh-r" as"command" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/shell/key-bindings.zsh -> key-bindings.zsh" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/shell/completion.zsh -> _fzf" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/man/man1/fzf.1 -> ${ZINIT[MAN_DIR]}/man1/fzf.1" \
+  dl"https://github.com/junegunn/fzf/raw/HEAD/man/man1/fzf-tmux.1 -> ${ZINIT[MAN_DIR]}/man1/fzf-tmux.1" \
+  atload'
+    export FZF_FD_OPTS="--color always --hidden --follow --exclude .git --exclude node_modules"
+    export FZF_PREVIEW_FILE_COMMAND="bat --color=always --paging=never --style=plain"
+    export FZF_PREVIEW_DIR_COMMAND="exa -1a --color=always --icons --group-directories-first"
+    export FZF_DEFAULT_OPTS="--cycle --select-1 --exit-0 --height=60% --no-mouse --bind=\"tab:accept,ctrl-y:preview-page-up,ctrl-v:preview-page-down,ctrl-e:execute-silent(\${VISUAL:-\$EDITOR} {+} >/dev/null 2>&1)\""
+    export FZF_DEFAULT_COMMAND="fd --type f $FZF_FD_OPTS"
+    export FZF_ALT_C_OPTS="-i --ansi --preview=\"$FZF_PREVIEW_DIR_COMMAND {}\""
+    export FZF_ALT_C_COMMAND="fd --type d . $FZF_FD_OPTS"
+    export FZF_CTRL_T_OPTS="-i --ansi --bind=\"ctrl-w:execute(\$EDITOR {1} >/dev/tty </dev/tty)+refresh-preview\" --preview=\"$FZF_PREVIEW_FILE_COMMAND {} 2>/dev/null\""
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  ' \
+  src"key-bindings.zsh"
+zinit light junegunn/fzf
+
+# zoxide
+# zinit ice wait"0b" lucid from"gh-r" as"command" \
+#   atclone"
+#     mv -vf man/man1/zoxide* ${ZINIT[MAN_DIR]}/man1
+#     ./zoxide init zsh > init.zsh
+#     zcompile init.zsh
+#   " \
+#   atpull"%atclone" \
+#   atinit'
+#     export _ZO_DATA_DIR="${XDG_DATA_HOME:-"$HOME/.local/share"}/zoxide"
+#     export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS --exact --no-sort --ansi --reverse --preview=\"$FZF_PREVIEW_DIR_COMMAND {2..}\""
+#   ' \
+#   src"init.zsh"
+# zinit light ajeetdsouza/zoxide
+
+# grab vivid binary (for all the colors)
+# https://github.com/sharkdp/vivid/tree/master/themes
+# by outputting the generated LS_COLORS variable to a file and sourcing it, we only need to call vivid once on
+# installation rather than every time a new session begins.
+zinit ice lucid from"gh-r" as"command" \
+  mv"vivid-*/vivid -> vivid" \
+  atclone"
+    ./vivid generate snazzy | xargs printf 'export LS_COLORS=%q' > colors.zsh
+  " \
+  atpull"%atclone" \
+  atload"zstyle ':completion:*' list-colors \${(s.:.)LS_COLORS}" \
+  src"colors.zsh"
+zinit light sharkdp/vivid
+
+# better Ctrl+R history searching
+# zinit ice wait lucid depth"1" \
+#   atload"
+#     zstyle ':history-search-multi-word' highlight-color 'fg=yellow,bold'
+#     zstyle ':history-search-multi-word' page-size 15
+#     zstyle ':plugin:history-search-multi-word' active 'standout'
+#     zstyle ':plugin:history-search-multi-word' reset-prompt-protect 1
+#   " \
+#   trackbinds
+# zinit light zdharma-continuum/history-search-multi-word
+
+# tab completions via fzf
+zinit ice wait"0b" lucid depth"1" \
+  has"fzf" \
+  blockf \
+  atpull"zinit creinstall -q ." \
+  atload"
+    zstyle ':completion:*' verbose true
+    zstyle ':completion:*' cache-path '$(dirname ${ZINIT[ZCOMPDUMP_PATH]})/.zcompcache'
+    zstyle ':completion:*' menu select
+    zstyle ':completion:*' group-name ''
+    zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+    zstyle ':completion:*:descriptions' format '%d'
+    zstyle ':completion:*:functions' ignored-patterns '_*'
+    zstyle ':completion::complete:*:*:files' ignored-patterns '.DS_Store' 'Icon?'
+    zstyle ':completion::complete:*:*:globbed-files' ignored-patterns '.DS_Store' 'Icon?'
+    zstyle ':completion::complete:rm:*:globbed-files' ignored-patterns
+    zstyle ':fzf-tab:*' fzf-command 'fzf'
+    zstyle ':fzf-tab:*' fzf-flags $FZF_DEFAULT_OPTS '-i' '--ansi'
+    zstyle ':fzf-tab:*' fzf-bindings \
+      'tab:accept' \
+      'ctrl-y:preview-page-up' \
+      'ctrl-v:preview-page-down' \
+      'ctrl-e:execute-silent(\${VISUAL:-\$EDITOR} \$realpath >/dev/null 2>&1)' \
+      'ctrl-w:execute(\$EDITOR \$realpath >/dev/tty </dev/tty)+refresh-preview'
+    zstyle ':fzf-tab:*' fzf-min-height 15
+    zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+      'git diff --no-ext-diff \$word | delta --paging=never --no-gitconfig --line-numbers --file-style=omit --hunk-header-style=omit --theme=base16'
+    zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+      'git --no-pager log --color=always --format=oneline --abbrev-commit --follow \$word'
+    zstyle ':fzf-tab:complete:man:*' fzf-preview \
+      'man -P \"col -bx\" \$word | $FZF_PREVIEW_FILE_COMMAND --language=man'
+    zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview \
+      'brew info \$word'
+    zstyle ':fzf-tab:complete:*:options' fzf-preview
+    zstyle ':fzf-tab:complete:*:options' fzf-flags '--no-preview'
+    zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+    zstyle ':fzf-tab:complete:*:argument-1' fzf-flags '--no-preview'
+    zstyle ':fzf-tab:complete:*:*' fzf-preview \
+      '($FZF_PREVIEW_FILE_COMMAND \$realpath || $FZF_PREVIEW_DIR_COMMAND \$realpath) 2>/dev/null'
+  "
+zinit light Aloxaf/fzf-tab
+
+    # zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview \
+    #   'echo \${(P)word}'
+
+# fix git-* completions, apparently there's some conflict with brew's git
+# TODO: investigate more... https://github.com/Aloxaf/fzf-tab/wiki/Preview#git
+zinit ice wait lucid as"null" \
+  atload'zstyle ":completion:*:*:git:*" script "$(pwd)/git-completion.bash"'
+zinit snippet https://github.com/git/git/raw/HEAD/contrib/completion/git-completion.bash
+
+# grab completions as snippets from GitHub repos
+zinit wait lucid as"completion" \
+  atpull"zinit creinstall -q ." \
+  nocompile \
+  for \
+    has"node"             https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_node \
+    has"psql"             https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_pgsql_utils \
+    has"rails"            https://github.com/zsh-users/zsh-completions/raw/HEAD/src/_rails \
+    has"git"    mv"git-completion.zsh -> _git"    https://github.com/git/git/raw/HEAD/contrib/completion/git-completion.zsh
+
+# generate other completions from externally installed programs
+zinit wait lucid as"completion" \
+  atpull"zinit creinstall -q ." \
+  nocompile \
+  for \
+    has"docker"     id-as"_local/completions/docker"      atclone"docker completion zsh > _docker"        zdharma-continuum/null \
+    has"gh"         id-as"_local/completions/gh"          atclone"gh completion -s zsh > _gh"             zdharma-continuum/null \
+    has"hugo"       id-as"_local/completions/hugo"        atclone"hugo completion zsh > _hugo"            zdharma-continuum/null \
+    has"mise"       id-as"_local/completions/mise"        atclone"mise completion zsh > _mise"            zdharma-continuum/null \
+    has"op"         id-as"_local/completions/op"          atclone"op completion zsh > _op"                zdharma-continuum/null \
+    has"pip"        id-as"_local/completions/pip"         atclone"pip completion --zsh > pip"             zdharma-continuum/null \
+    has"pnpm"       id-as"_local/completions/pnpm"        atclone"pnpm completion zsh > _pnpm"            zdharma-continuum/null \
+    has"tailscale"  id-as"_local/completions/tailscale"   atclone"tailscale completion zsh > _tailscale"  zdharma-continuum/null
+
+# macOS-only completion fixes
+zinit ice wait lucid as"null" \
+  id-as"_local/extra/mac" \
+  if'[[ "$OSTYPE" = darwin* ]]' \
+  atload"
+    zstyle ':completion:*:*:*:*:processes' command 'ps -o comm=\"\" -w -w'
+    zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+      '[[ \$group == \"process ID\" ]] && ps -p\$word -o comm=\"\" -w -w'
+  "
+zinit light zdharma-continuum/null
+
+# Linux-only completion fixes
+zinit ice wait lucid as"null" \
+  id-as"_local/extra/linux" \
+  if'[[ "$OSTYPE" = linux-gnu* ]]' \
+  atload"
+    zstyle ':completion:*:*:*:*:processes' command 'ps -o cmd --no-headers -w -w'
+    zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+      '[[ \$group == \"process ID\" ]] && ps --pid=\$word -o cmd --no-headers -w -w'
+    zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status \$word'
+  "
+zinit light zdharma-continuum/null
+
+# autopairing of quotes, brackets, etc.
+zinit ice wait"0b" lucid depth"1" \
+  atload"ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(autopair-insert)"
+zinit light hlissner/zsh-autopair
+
+# syntax highlighting
+zinit ice wait lucid depth"1" \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+  atload"
+    zle_highlight+=('paste:reverse')
+    zstyle ':plugin:fast-syntax-highlighting' theme ''
+    typeset -gA FAST_HIGHLIGHT_STYLES
+    FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME:-}variable]='fg=cyan,bold'
+  "
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# autosuggestions, trigger precmd hook upon load
+zinit ice wait"0a" lucid depth"1" \
+  atinit"
+    export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+    export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+    export ZSH_AUTOSUGGEST_USE_ASYNC=1
+  " \
+  atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+# 1Password plugins: https://developer.1password.com/docs/cli/shell-plugins/
+# NOTE: this needs to happen *after* generating the completions above, otherwise it'll ask for touch ID to do very
+# simple tasks...
+zinit ice wait"1" lucid \
+  id-as"_local/op-auth" \
+  has"op" \
+  if"[[ -f ~/.config/op/plugins.sh ]]" \
+  nocompile
+zinit snippet ~/.config/op/plugins.sh
+
+# iTerm2 integration
+zinit ice lucid depth"1" \
+  if'[[ "$TERM_PROGRAM" = "iTerm.app" ]]' \
+  atload'path=("$(pwd)/utilities" $path)' \
+  src"shell_integration/zsh" \
+  nocompile
+zinit light gnachman/iTerm2-shell-integration
+
+# starship prompt
+zinit ice from"gh-r" as"command" \
+  atclone"
+    ./starship completions zsh > _starship
+    ./starship init zsh --print-full-init > init.zsh
+    zcompile init.zsh
+  " \
+  atpull"%atclone" \
+  src"init.zsh"
+zinit light starship/starship
+
+
+##############################
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/jake/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
+
+# uncomment to debug startup time (2/2)
+[[ "$DOTFILES_DEBUG" != "1" ]] || zprof
