@@ -15,46 +15,19 @@ background-blur = true
 # Cursor (bar style, matching iTerm2 cursor type 1)
 cursor-style = bar
 
-# Shell
-command = /opt/homebrew/bin/zsh
-
 # Scrollback (unlimited)
 scrollback-limit = 10000000
 
 # Option key behavior (left=esc, right=normal)
 macos-option-as-alt = left
 
-# Colors
+# Theme
 theme = Material Darker
-#background = none
-# background = #141414
-# foreground = #edf0eb
-# cursor-color = #eaeaea
-# selection-background = #bcc085
-# selection-foreground = #141414
 
-# # ANSI colors (normal)
-# palette = 0=#000000
-# palette = 1=#ff5c57
-# palette = 2=#5af78e
-# palette = 3=#f3f99d
-# palette = 4=#57c7ff
-# palette = 5=#ff6ac1
-# palette = 6=#9aedfe
-# palette = 7=#f1f1f0
-
-# # ANSI colors (bright)
-# palette = 8=#000000
-# palette = 9=#ff5c57
-# palette = 10=#5af78e
-# palette = 11=#f3f99d
-# palette = 12=#57c7ff
-# palette = 13=#ff6ac1
-# palette = 14=#9aedfe
-# palette = 15=#f1f1f0
-
-# Other settings matching iTerm2
 copy-on-select = false
-# confirm-close-surface = false
 shell-integration-features = true
+macos-titlebar-style = tabs
 
+working-directory = home
+window-inherit-working-directory = false
+tab-inherit-working-directory = true

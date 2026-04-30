@@ -35,4 +35,8 @@ Temporary Items
 # allow
 !.gitkeep
 
-.claude/*.local.*
+**/.claude/*.local.*
+**/.claude/*.lock
+
+.pnpm-store/
+.tmp/
